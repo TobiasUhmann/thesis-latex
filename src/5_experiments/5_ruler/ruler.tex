@@ -15,15 +15,7 @@ The mined rules are then used for prediction by searching for rule groundings wi
     \label{tab:5_experiments/5_ruler/results}
 \end{table}
 
-rules found after 100s evaluated against valid facts
-known valid facts used for predictions
-could evaluate against unknown valid facts, close to use case, or could eval against all valid facts as usual []
-ok to validate against known + unknown facts because known not seen during training
-eval against unknown means filter out predicted known facts
-table ? shows comparison between both eval methods
-when evaluating against known + unknown, best result for 100
-when evaluating against unknwon, best result for 50 as balance between known and remaining for prediction. 0 = open world = no preds, 100 = no left for prediction
-results on FB better because more data
+
 
 \subsection{Eval against unknown}
 \label{subsec:5_experiments/5_ruler/1_unknown}
@@ -31,7 +23,7 @@ results on FB better because more data
 
 \subsection{More rules}
 \label{subsec:5_experiments/5_ruler/2_rule_count}
-\input{5_experiments/5_ruler/2_rule_count/rule_count}
+\input{5_experiments/5_ruler/2_rule_count/rule_count.tex}
 
 \subsection{Rule Quality}
 \label{subsec:5_experiments/5_ruler/3_rule_quality}
