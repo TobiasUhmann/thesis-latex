@@ -1,0 +1,10 @@
+In addition to the open-world fact splits of FB15k-237 and CoDExM, Hamann provides multiple text sets for each split's entities. Thereby, the text sets' contents vary in quality and quantity, ranging from text sets that offer single specific entity descriptions to text sets that provide multiple low-quality contexts for each entity. Furthermore, some of the text sets mark the entity's mentions within the text via special tokens, while others mask them, providing further information in addition to the texts themselves. Together with the choice between CoDEx and Freebase, this allows for graph-text combinations suiting different real-world scenarios.
+
+Table~\ref{tab:5_experiments/1_base_datasets/2_text_sets/text_sets_table} lists some example sentences from selected text sets and shortly describes the naming convention behind the names of the text sets that will be used throughout this chapter. For example, the text set "cde-irt-5-marked" contains up to five marked sentences for each of the CoDEx entities. Thereby, "irt" marks the origin of the sentences: The \emph{IRT sentences} introduced in the IRT paper are randomly entity contexts from the English Wikipedia that mention the entity in a more or less meaningful way anywhere in the sentence. In contrast, the "owe" sentences are very compact entity descriptions, often consisting of only a few words, created by Villmov et al. for their work on open-world KGC~\cite{Shah2019AnOE}. A middle between the vagueness of the \emph{OWE sentences} and the compactness of the "owe" sentences are the \emph{CDE sentences} provided by the authors of the CoDEx paper, which are the entities' first sentence from their respective Wikipedia page. Table~\ref{tab:5_experiments/1_base_datasets/2_text_sets/text_sets_table} in appendix~\ref{ch:a_appendix} shows the full list of all text sets used for evaluation.
+
+\begin{table}
+    \centering
+    \input{5_experiments/1_base_datasets/2_text_sets/text_sets_table}
+    \caption{Example sentences from some of the IRT text sets}
+    \label{tab:5_experiments/1_base_datasets/2_text_sets/text_sets_table}
+\end{table}

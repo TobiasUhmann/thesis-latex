@@ -1,0 +1,107 @@
+\documentclass[11pt,a4paper]{report}
+
+\include{preamble}
+
+\usepackage{amsmath}
+\usepackage{csquotes}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+\pgfplotscreateplotcyclelist{tb}{
+    thick,tb_color_1 \\
+    thick,tb_color_2 \\
+    thick,tb_color_3 \\
+    thick,tb_color_4 \\
+    thick,tb_color_5 \\
+    thick,tb_color_6 \\
+    thick,tb_color_7 \\
+}
+
+\definecolor{tb_color_1}{HTML}{b71c1c}
+\definecolor{tb_color_2}{HTML}{ff6f00}
+\definecolor{tb_color_3}{HTML}{ffeb3b}
+\definecolor{tb_color_4}{HTML}{212121}
+\definecolor{tb_color_5}{HTML}{4caf50}
+\definecolor{tb_color_6}{HTML}{2196f3}
+\definecolor{tb_color_7}{HTML}{9c27b0}
+
+\newcommand{\welchethesis}{Master}
+\newcommand{\thesisofwas}{of Science}
+\newcommand{\titel}{An Open-World Extension to Rule-Based Knowledge Graph Completion}
+\newcommand{\autor}{Tobias Uhmann}
+\newcommand{\datum}{17. Mai 2021}
+\newcommand{\ort}{Wiesbaden}
+\newcommand{\referent}{Prof.\ Dr.\ Adrian Ulges}
+\newcommand{\korreferent}{Dr.\ Jörn Hees}
+
+\begin{document}
+
+    \include{vorspann}
+
+    \begin{abstract}
+
+        Knowledge graphs store facts about objects, e.g. "Angela Merkel is the chancellor of Germany" in a graph. Typical use cases include recommender systems and voice assistants. The graph's nodes represent entities, like "Angela Merkel" and "Germany", while its edges represent relationships between the entities, like "is chancellor of". Large knowledge graphs are usually incomplete and need to be updated continuously. AI supports this task by recommending probable facts it can infer from the existing graph structure. Additional information, like textual descriptions, can help improve the quality of the predictions. For objects about which no further knowledge is known, this is even the only possibility to predict knowledge.
+
+        Most current approaches focus on basic knowledge graphs without further text information and can be roughly divided into embedding-based and rule-based approaches. Embedding-based approaches embed the graph into a low-dimensional vector space that is trained such that similar entities are located near to each other while rule-based approaches search for patterns in the graph structure that can be expressed as Horn rules. Currently, embedding-based approaches yield better superior results, but rules have the advantage that they are comprehensible by humans. For textual information, transformer models, like Google's BERT and its successors, provide state-of-the-art performance in NLP (natural language processing).
+
+        In this work, the ensemble model POWER is presented that combines an entity's graph and text information to predict further facts. The rule-based model AnyBURL is used to mine rules from the graph structure that allow comprehensible predictions. In addition, an attention-based classifier predicts facts based on the entity's textual descriptions. An aggregator combines both models' predictions. Depending on the available knowledge about the entity, the aggregator predictions lean more towards the rule- or text-based sub model. POWER explains its prediction by giving the most relevant rules and texts that led to its decision. On closed-world entities, POWER outperforms current models that do not leverage additional text information, on open-world entities, it performs similar.
+
+    \end{abstract}
+
+    \tableofcontents
+    \newpage
+
+
+    \chapter{Introduction}
+    \label{ch:1_introduction}
+    \input{1_introduction/introduction}
+
+
+    \chapter{Related Work}
+    \label{ch:2_related_work}
+    \input{2_related_work/related_work}
+
+
+    \chapter{Basics}
+    \label{ch:3_basics}
+    \input{3_basics/basics}
+
+
+    \chapter{Approach}
+    \label{ch:4_approach}
+    \input{4_approach/approach}
+
+
+    \chapter{Experiments}
+    \label{ch:5_experiments}
+    \input{5_experiments/experiments}
+
+
+    \chapter{Conclusion}
+    \label{ch:6_conclusion}
+    \input{6_conclusion/conclusion}
+
+
+    \chapter{Appendix}
+    \label{ch:a_appendix}
+    \input{a_appendix/appendix}
+
+    \newpage
+
+    \bibliographystyle{plain}
+
+    \begin{btSect}{main}
+        \section*{References}
+        \btPrintCited
+    \end{btSect}
+
+    \begin{btSect}{online}
+        \section*{Online Sources}
+        \btPrintCited
+    \end{btSect}
+
+\end{document}

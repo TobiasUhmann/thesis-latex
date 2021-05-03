@@ -1,0 +1,15 @@
+from embedded tokens multiple ways to chose from
+for classification usually take class embedding, as done by bert authors (?), captures whole sentence meaning
+alternative idea is to average word embeddings instead
+while on it, also tried average cls + word embs and average all embs including out of sentence, i.e. padding
+table \ref{tab:5_experiments/4_texter/3_context/2_pooling/grid_search} shows results
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/4_texter/3_context/2_pooling/grid_search}
+    \caption{Pooling}
+    \label{tab:5_experiments/4_texter/3_context/2_pooling/grid_search}
+\end{table}
+
+best is to average all embs followed by word embs followed by cls default
+but difference not big, absolute ?\%

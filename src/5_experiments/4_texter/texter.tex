@@ -1,0 +1,33 @@
+With a Power dataset in place, the next step is training the Power model's components. In case of the Texter, however, an intermediate step is necessary. The Texter is trained in respect to a certain set of relation-tail tuples that make up its classes and requires a fixed number of sentences per entity. Given a fixed number of classes $c$, the $c$ most common relation-tail tuples in the training facts are determined and become the Texter's classes. A Texter dataset is created from the Power dataset that specifies which of the classes hold true for each entity. Furthermore, the Texter dataset contains the specified number of randomly samples sentences for each entity. Table~\ref{tab:5_experiments/4_texter/texter_dataset} shows an excerpt from the a Texter dataset with eight classes and one sentece per entity, created from the Power dataset over FB entities with OWE sentences.
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/4_texter/texter_dataset}
+    \caption{Excerpt from Texter dataset with eight classes and one sentence per entity}
+    \label{tab:5_experiments/4_texter/texter_dataset}
+\end{table}
+
+In general, the Texter dataset's classes array is very sparse, especially for diverse knowledge graphs without frequently occurring relation-tail tuples. Therefore, it is important to weight the classes when calculating the loss and punish false negatives more than false positives. Otherwise, the Texter would learn that always predicting 0 keeps the loss as low as possible. The best approach for calculating the class weights proved to be taking the inverse of the class' frequency in the training data. Table~\ref{tab:5_experiments/4_texter/classes} gives an overview of the imbalance between the top 100 classes that were selected for this evaluation. As the top FB classes are more frequent than the top CDE classes, one would expect better performance on FB, which will be confirmed by later experiments.
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/4_texter/classes}
+    \caption{Most and least common classes on the CDE and FB splits. Frequencies are given in percent.}
+    \label{tab:5_experiments/4_texter/classes}
+\end{table}
+
+Evaluation is generally performed against the Texter dataset's test subset, following the form shown in Table~\ref{tab:5_experiments/4_texter/texter_dataset}. That means that the Texter's predictions are evaluated against the classes it was trained on and that the results are comparable to the validation results during training. The metric chosen is macro precision, recall and F1 over the classes. This is rather demanding, as rare classes are equally weighted as the common classes, that represent more facts, but it follows the objective of predicting all classes as good as possible. For the final comparison with Ruler and Aggregator, however, the Texter is also evaluated against the Power split's test set, which includes facts the Texter is unable to predict, using the common metrics discussed before in Section~\ref{sec:5_experiments/3_metrics}.
+
+The following subsection~\ref{subsec:5_experiments/4_texter/1_zero_rule}  applies the presented metrics to several baselines to give an idea of the problem's complexity. Given the reference values from the baselines, sections~\ref{subsec:5_experiments/4_texter/2_static} and~\ref{subsec:5_experiments/4_texter/3_context} present two ways of implementing the Texter's embedding block using static or contextual word embeddings, whereby the latter represents the final Power implementation described in Chapter~\ref{ch:4_approach}. Both sections include several experiments that led to the final versions of the models. In addition, each of the experiments is evaluated and compared to the simple Texter to show which adjustments have the greatest impact on the Texter's performance.
+
+\subsection{Zero Rule Baselines}
+\label{subsec:5_experiments/4_texter/1_zero_rule}
+\input{5_experiments/4_texter/1_zero_rule/zero_rule}
+
+\subsection{Static Word Embeddings}
+\label{subsec:5_experiments/4_texter/2_static}
+\input{5_experiments/4_texter/2_static/static}
+
+\subsection{Contextual Word Embeddings}
+\label{subsec:5_experiments/4_texter/3_context}
+\input{5_experiments/4_texter/3_context/context}

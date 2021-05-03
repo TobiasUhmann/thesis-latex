@@ -1,0 +1,35 @@
+\begin{tabular}{| l | l | l | l | r | r | r | r | r |}
+    \hline
+
+    \multicolumn{1}{|c|}{\textbf{Graph}} &
+    \multicolumn{1}{|c|}{\textbf{Text}} &
+    \multicolumn{1}{|c|}{\textbf{Model}} &
+    \multicolumn{1}{|c|}{\textbf{Tokenizer}} &
+    \multicolumn{1}{|c|}{\textbf{Vocab}} &
+    \multicolumn{3}{|c|}{\textbf{Macro over Classes}} \\
+
+    \multicolumn{1}{|c|}{} &
+    \multicolumn{1}{|c|}{\textbf{Set}} &
+    \multicolumn{1}{|c|}{} &
+    \multicolumn{1}{|c|}{} &
+    \multicolumn{1}{|c|}{\textbf{Size}} &
+    \multicolumn{1}{|c|}{\textbf{Prec}} &
+    \multicolumn{1}{|c|}{\textbf{Rec}} &
+    \multicolumn{1}{|c|}{\textbf{F1}} \\
+
+    \hline \hline
+
+    CDE & irt-5 & Baseline & SpaCy & \num{98421} &
+    23.84 & 73.89 & 33.86 \\
+
+    CDE & irt-5 & Baseline & Whitespace & \num{173389} &
+    23.15 & 72.85 & 32.98 \\
+
+    CDE & irt-5 & POWER & SpaCy & \num{98421} & 
+    24.24 & 69.03 & 33.99 \\
+
+    CDE & irt-5 & POWER & Whitespace & \num{173389} &
+    23.62 & 68.45 & 33.19 \\
+
+    \hline
+\end{tabular}

@@ -1,0 +1,38 @@
+Während der Texter auf den Texten der Entitäten trainiert wird, kann man beim Ruler das Rule-Mining als Äquivalent auffassen bei dem in den zur Trainingszeit bekannten Fakten des Power-Splits nach Mustern gesucht wird. Die gefundenen Regeln werden dann bei der Inferenz genutzt um anhand der wenigen Fakten die über eine Abfrage-Entität bekannt sind weitere Fakten vorherzusagen. Im Gegensatz zum Texter werden zur Evaluation des Rulers grundsätzlich alle Testfakten aus dem Power-Split herangezogen, wobei in einem Experiment eine kleine Abweichung erfolgt. Ohne weitere Angaben wird für die Bewertung des Rulers also immer der Makro-F1-Score und der mAP über alle Entitäten betrachtet.
+
+Für das Rule-Mining stehen im CDE- und im FB-Split 137738 bzw. 238191 Trainings-Fakten zur Verfügung. Je nachdem wie lange AnyBURL läuft werden verschieden viele Regeln gefunden. Für die finale Evaluation wurde eine Laufzeit von 200s festgelegt nach der ? Regeln auf CDE und ? Regeln auf FB gefunden wurden. Die meisten dieser Regeln haben einen Rule Body der aus einem einzigen Fakt besteht wie zum Beispiel bei der Regel (lebt in, Norwegen) => (spricht, Englisch).
+
+Die geminten Regeln werden dann zur Vorhersage genutzt indem in den zur Inferenzzeit bekannten Fakten, das heißt in den Trainingsfakten und in den bekannten Testfakten, nach Groundings für die Regeln gesucht wird. Die Köpfe der Regeln für die ein Grounding gefunden werden konnte ergeben dann die vorhergesagten Fakten welche gegen die gesamte Menge der Testfakten evaluiert werden. Tabelle X zeigt die Evaluationsergebnisse für alle CDE- und FB-Splits. Die Splits mit 0 bekannten Testfakten passt zu einem Evaluierungsszenario für Open-World-Entitäten. Die Splits mit 100 bekannten Testfakten entspricht zwar keinem praktischen Szenario, wurde aber zum Darstellen der theoretisch oberen Schranke des Modells mit aufgenommen. Erwartet wurde, dass F1 und mAP mit zunehmendem Anteil bekannter Testfakten ansteigt. Bei 0 bekannten Testfakten sollten F1 un mAP gleich null sein. Die Ergebnisse auf dem FB-Split sollten besser sein, da mehr Trainingsfakten und mehr bekannte Testfakten pro Entität exisitieren.
+
+% confidence distribution = ?
+% support distribution = ?
+% rule length distribution = ?
+
+\begin{table}
+    \centering
+    \input{5_experiments/5_ruler/results}
+    \caption{Ruler evaluation against known+unknown. Codex 50 means 50\% known test facts}
+    \label{tab:5_experiments/5_ruler/results}
+\end{table}
+
+rules found after 100s evaluated against valid facts
+known valid facts used for predictions
+could evaluate against unknown valid facts, close to use case, or could eval against all valid facts as usual []
+ok to validate against known + unknown facts because known not seen during training
+eval against unknown means filter out predicted known facts
+table ? shows comparison between both eval methods
+when evaluating against known + unknown, best result for 100
+when evaluating against unknwon, best result for 50 as balance between known and remaining for prediction. 0 = open world = no preds, 100 = no left for prediction
+results on FB better because more data
+
+\subsection{Eval against unknown}
+\label{subsec:5_experiments/5_ruler/1_unknown}
+\input{5_experiments/5_ruler/1_unknown/unknown}
+
+\subsection{More rules}
+\label{subsec:5_experiments/5_ruler/2_rule_count}
+\input{5_experiments/5_ruler/2_rule_count/rule_count}
+
+\subsection{Rule Quality}
+\label{subsec:5_experiments/5_ruler/3_rule_quality}
+\input{5_experiments/5_ruler/3_rule_quality/rule_quality}

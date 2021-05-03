@@ -1,0 +1,19 @@
+After the entity embeddings have been formed from the sentence embeddings in the attention block, they are passed through the classification block which outputs the final class logits of the forward() function. In case of the simple model, the attention block is omitted and the sentence embeddings are used directly for classification. In either case, the forward() function's class logits are taken as input by the loss function during training to calculate the model's loss in regard to the ground truth class labels. To make the logits comparable with the usual 0 and 1 ground truth labels, they are normalized to range $[0, 1]$ during the loss calculation - usually by applying the sigmoid function.
+
+For the multilabel problem at hand, the binary cross-entropy (BCE) loss function is used. A convenient property of the BCE function is that it produces very large loss values for very wrong predictions which contributes to an initially fast learning process. To counteract the unbalanced classes in the Power dataset, the weighted binary cross entropy loss function (wBCE) shown in Equation~\ref{eq:5_experiments/4_texter/2_static/7_weight_factor/wbce} is used. It calculates the loss for the multi-label output logits $x$ and the respective ground truth labels $y$, both of which are c-dimensional vectors with $c$ being the number of output classes. Without the weights, the model would learn that it gets off best by always making negative predictions for very rare classes. This would be good for high accuracy, but is bad for the metrics used during evaluation, which do not measure true negatives. A class' weight $w_c$ is calculated as the reciprocal of the class' frequence it occurs in the training data with. A class that is true for every fifth entity, for example, would be assigned a class weight of five.
+
+\begin{align}
+    wBCE(x, y) = - \frac{1}{C} \sum_{c = 1}^C w_c \cdot log(\sigma(x)) + (1 - y) \cdot log(1 - \sigma(x))
+    \label{eq:5_experiments/4_texter/2_static/7_weight_factor/wbce}
+\end{align}
+
+In an experiment, whose results fill Table~\ref{tab:5_experiments/4_texter/2_static/7_weight_factor/grid_search}, it should be verified that the use of class weights has a positive effect. Furthermore, it should be ensured that the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, also smaller and larger weights were included in the comparison by halving and doubling the classes' reciprocals, respectively.
+
+\begin{table}[t]
+    \centering
+    \input{5_experiments/4_texter/2_static/7_weight_factor/grid_search}
+    \caption{Applying different class weights}
+    \label{tab:5_experiments/4_texter/2_static/7_weight_factor/grid_search}
+\end{table}
+
+The empirical values are in line with the theoretical expectations. Although omitting class weights produces useful values - especially on the FB split where the 100 most frequent classes have higher frequencies than on the CDE split - applying class weights significantly improve performance. Thereby, it seems more important to apply weights at all than to fine-tune the weights. In most cases, it does not matter much whether the weights are halved or doubled. On average, the plain reciprocals seem to be the best choice, which is why they are set as the default.

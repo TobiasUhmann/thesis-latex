@@ -1,0 +1,19 @@
+Given the IRT CoDEx-M or FB15k-237 split combined with one of the IRT text sets for that graph, one could already train and evaluate the Power model. However, although Power is capable of open-world prediction due to its Texter component, it only develops its full potential when it can leverage the rules mined from the training facts, which requires some knowledge about the query entity. Therefore an IRT split is transformed to a \emph{Power split} by dividing the IRT split's open-world facts into so-called \emph{known facts}, that are allowed to be used for rule application during inference, and \emph{unknown facts} that stay unknown. This resembles the use case in which the knowledge about a new, partly known entity should be completed. Meanwhile, the close-world entities' training and validation facts are merged as there is no need for the latter. Figure~\ref{fig:5_experiments/2_power_datasets/splits} illustrates how the complete repartitioning.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{5_experiments/2_power_datasets/splits}
+    \caption{Transforming IRT split into POWER split by merging train facts and splitting valid/test facts}
+    \label{fig:5_experiments/2_power_datasets/splits}
+\end{figure}
+
+The percentage of known and unknown facts can be varied when creating the Power split to study the Ruler's effectiveness on more or less known entities. Table~\ref{tab:5_experiments/2_power_datasets/power_splits} lists the splits used for the evaluation. In practice, few-shot splits are of particular interest. Since there are only about 20 facts per entity on average, knowing of 5\% or 15\% of these can be considered few-shot scenarios. The splits with 0\% known facts correspond to the zero-shot open-world scenario studied in the IRT paper.
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/2_power_datasets/power_splits}
+    \caption{Power splits}
+    \label{tab:5_experiments/2_power_datasets/power_splits}
+\end{table}
+
+Combining a Power split with an IRT text set yields a full Power dataset. Training the Texter makes use of the whole Power dataset except for the test entities' facts and texts. For the Ruler, only the Power split is used.

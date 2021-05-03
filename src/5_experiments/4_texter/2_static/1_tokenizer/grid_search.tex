@@ -1,0 +1,35 @@
+\begin{tabular}{| l | l | l | r | r | r | r |}
+    \hline
+
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Text Set}}} &
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Texter}}} &
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Tokenizer}}} &
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{\thead{Vocab \\ Size}}}} &
+    \multicolumn{3}{|c|}{\textbf{Macro over Classes}} \\
+
+    &
+    &
+    &
+    &
+    \multicolumn{1}{|c|}{\textbf{Prec}} &
+    \multicolumn{1}{|c|}{\textbf{Rec}} &
+    \multicolumn{1}{|c|}{\textbf{F1}} \\
+
+    \hline \hline
+
+    \multirow{4}{*}{fb-irt-30}
+    & \multirow{2}{*}{Simple}    & SpaCy      & \num{218742} & 29.39 & 93.80 & 41.42 \\
+    &                            & Whitespace & \num{444192} & 28.36 & 95.07 & 40.23 \\ \cline{2-7}
+    & \multirow{2}{*}{Attentive} & SpaCy      & \num{218742} & 31.32 & 86.75 & 42.96 \\
+    &                            & Whitespace & \num{444192} & 29.83 & 90.87 & 41.55 \\
+
+    \hline
+
+    \multirow{4}{*}{fb-owe-1}
+    & \multirow{2}{*}{Simple}    & SpaCy      & \num{6098}   & 33.21 & 96.35 & 46.05 \\
+    &                            & Whitespace & \num{7990}   & 28.03 & 94.03 & 40.24 \\ \cline{2-7}
+    & \multirow{2}{*}{Attentive} & SpaCy      & \num{6098}   & 32.80 & 96.02 & 45.60 \\
+    &                            & Whitespace & \num{7990}   & 27.89 & 93.93 & 40.08 \\
+
+    \hline
+\end{tabular}

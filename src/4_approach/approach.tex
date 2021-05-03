@@ -1,0 +1,31 @@
+In general, the goal of knowledge graph completion is the prediction of missing knowledge, i.e. the prediction of missing facts. In practice, one is often interested in the facts of a particular entity. A useful model might thus accept an entity together with known facts and text about it and predict new facts from that information. For example, given the entity "Angela Merkel", the fact that it is a person who lives in Germany, and associated sentences about politics, a useful model might predict facts like $(Angela~Merkel, speaks, German)$ or $(Angela~Merkel, has~occupation, politician)$. To obtain all knowledge, one could then iteratively apply the model to all entities.
+
+Aside from getting bare, recommended facts it would be desirable to get a rationale for the model's decision as well as a ranking of the predicted facts, ranging from highly ranked facts the model is sure about to lowly-ranked facts that might or might not be helpful.
+
+The POWER model implements those concepts by invoking a rule-based and a text-based component whose predictions are then combined. The so-called \emph{Ruler} component leverages patterns in the graph structure of the existing knowledge graph while the \emph{Texter} component performs natural language processing on the entities' sentences to predict new facts. The \emph{Aggregator} component then combines the Ruler's and the Texter's predictions, returning the final output of the model. All predictions include the confidence for the predicted fact as well as the rules or sentences the prediction is based on.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{4_approach/power_architecture}
+    \caption{POWER model architecture; Given an entity's known facts and textual description, the Ruler processes the known facts, the Texter processes the textual information and the Aggregator combines both components predictions to the final result}
+    \label{fig:4_approach/power_architecture}
+\end{figure}
+
+The Texter performs particularly well on common facts but cannot predict rare facts while the ruler can potentially cover all kinds of facts seen in the train set but is unable to predict anything for open-world entities on its own. Through combining the Ruler's and Texter's predictions one obtains predictions with higher average precision than each component achieves on its own. The exact results vary, depending on the choice of hyperparameters during training, like the Texter's learning rate. Furthermore, each of the components can be adjusted architecturally as demonstrated by the experiments in chapter~\ref{ch:5_experiments}.
+
+
+\section{Texter}
+\label{sec:4_approach/1_texter}
+\input{4_approach/1_texter/texter}
+
+
+\section{Ruler}
+\label{sec:4_approach/2_ruler}
+\input{4_approach/2_ruler/ruler}
+
+
+\section{Aggregator}
+\label{sec:4_approach/3_aggregator}
+\input{4_approach/3_aggregator/aggregator}
+
+For example, the class (is, married) should especially to sethe assumption was that sentences containing words such as "married", "spouse" or "single" would help in rating the class (type\_of\_union, marriage)

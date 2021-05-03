@@ -1,0 +1,52 @@
+Moderne NLP-Modelle setzen an der Stelle an wo klassische Modelle mit statischen Word-Embeddings an ihre Grenzen stoßen - bei langen Sätzen in denen der Bezug zwischen den Wörtern noch wichtiger für die Bedeutung der Wörter und somit die Bedeutung des ganzen Satzes ist. Dazu nutzen die besonders erfolgreichen Transformer-basierten Modelle interne Attention-Mechanismen die für jedes Wort erlernen welche anderen Worte im Satz besonders relevant sind und somit in das Wort-Embedding mit einfließen sollten. Somit ergibt sich für jedes Vorkomnis eines Wortes ein kontextabhängiges Embedding.
+
+Neben normalen Worten und Tokens für unbekannte Wörter und Padding unterstützt das hier verwendete BERT-Modell noch das spezielle [CLS]-Token das während des Trainings den Sinn des Satzes als ganzem erfasst sowie das [SEP]-Token das zur Abgrenzung zwischen mehreren Sätzen dient, bei Power's Texter aber keine Rolle spielt. Außerdem fügt der Texter dem Standard-BERT noch Spezialtokens hinzu die zur Markierung bzw. Maskierung dienen. In den Text-Mengen mit markierten bzw. maskierten Sätzen werden diese benutzt um die Erwähnung der Entität zu kennzeichnen bzw. zu maskieren. Diese Zusatzinformation sollte zu einer deutlichen Performancesteigerung des Texters führen - auch im Falle der Maskierung bei der zwar die Entitätserwähnung selbst verloren geht, aber dennoch die wertvolle Information mitgeliefert wird wo sich die betrachtete Entität im Text befindet.
+
+Für die Architektur des Texters bedeutet der Umstieg auf Transformer keine große Änderung. Die Anpassung beschränkt sich auf den Embedding-Block wo statt der Nachschlage-Tabelle für Wörter nun der BERT-Encoder zum Einsatz kommt und im Pooling-Layer das Sentence-Embedding anders aus den Wort-Embeddings gebildet wird. Der Klassifizierungsblock und, im Falle des komplexen Texters, der Attentionblock bleiben gleich. Im Attentionblock kommt weiterhin die bewährte Sigmoid-Aktivierungsfunktion zum Einsatz. Außerhalb der forward()-Funktion muss allerdings der Optimizer angepasst werden um den tiefen Transformern innerhalb des Embeddings-Blocks gerecht zu werden.
+
+Optimiert man die neuen Versionen des einfachen und komplexen Texters an den geänderten Stellen ergeben sich nach 50 Episoden Trainingszeit die finalen Testergebnisse auf allen Text-Mengen gemäß Tabelle A. Neben dem bisher angegebenen Makro-F1-Score über alle Klassen wie er aus dem Test-Teil des Texter-Datensets berechnet wird sind auch die Ergebnisse der Evaluation gegen alle Fakten aus dem CDE-Split bzw. FB-Split angegeben - inklusive derer die durch den Texter nicht vorhersehbar sind. Es gilt zu beachten, dass der Makro-F1-Score und die mAP über alle Entitäten gemittelt werden - nicht über die Klassen des Texters. Daher muss das F1-Ergebnis gegen alle Fakten nicht unbedingt schlechter als der F1-Wert gegen die vorhersagbaren Fakten sein - zwar erschweren die nicht vorhersagbaren Fakten das Erreichen eines hohen F1 über alle Entitäten, doch gleichzeit entfällt der runterziehende Effekt der seltenen Klassen. Zusätzlich werden bei den reinen Text-Mengen zur einfacheren Vergleichbarkeit nochmals die Werte des Texters mit statischen Embeddings in der ersten Spalte des einfachen bzw. komplexen Texters angegeben. Die Präzisions- und Recallwerte sind aus Platzgründen in Tabelle B im Anhang ausgelagert.
+
+\begin{table}
+    \centering
+    \input{5_experiments/4_texter/3_context/results}
+    \caption{Texter evaluation against all facts for all text sets}
+    \label{tab:5_experiments/4_texter/3_context/results}
+\end{table}
+
+although possible to somehow include word context with n-grams of adjacent tokens, contextual embs better capable to capture words meaning in regard to complete sent
+therefore, using same architecture for simple and attending Texter, but replace embedding block with contextual word embs
+expectation that better performance than static word embs
+but much slower
+in addition, special tokens [MARK] and [MASK] useful, therefore make use of all datasets in contrast to static experiments
+
+table \ref{tab:5_experiments/4_texter/3_context/results} shows complete overview, results for context embs for simple and attend Texter and compares to static results from before
+like for static, f1 is macro f1 over classes against predictable
+in addition, this final version of texter also evaluated against all facts, given as f1 all and map
+one one hand harder on other hand easier because rare classes drag down macro prfs, therefore similar to f1 predictable
+static given if available for dataset
+
+
+result is that context is always better than static
+furthermore attending better than simple
+marked better than masked, masked even better than clean, makes sense if trying as human
+
+following subsections look at experiments that led to final results in order ocurring during inference
+for brevity, restrict to marked versions where marked available and show f1 against predictable
+look at new possible variations concerning cont embs, stay with choices learned from static, like activation function in attention mechanism
+finally look at attention mechanism
+
+\subsubsection{Varying sentence length}
+\label{subsubsec:5_experiments/4_texter/3_context/1_sent_len}
+\input{5_experiments/4_texter/3_context/1_sent_len/sent_len}
+
+\subsubsection{Pooling}
+\label{subsubsec:5_experiments/4_texter/3_context/2_pooling}
+\input{5_experiments/4_texter/3_context/2_pooling/pooling}
+
+\subsubsection{Optimizer}
+\label{subsubsec:5_experiments/4_texter/3_context/3_optimizer}
+\input{5_experiments/4_texter/3_context/3_optimizer/optimizer}
+
+\subsubsection{Attention Mechanism}
+\label{subsubsec:5_experiments/4_texter/3_context/4_attention}
+\input{5_experiments/4_texter/3_context/4_attention/attention}

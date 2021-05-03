@@ -1,0 +1,10 @@
+\begin{table}
+    \centering
+    \input{5_experiments/4_texter/2_static/5_pooling/grid_search}
+    \caption{Pooling Functions}
+    \label{tab:5_experiments/4_texter/2_static/5_pooling/grid_search}
+\end{table}
+
+As the last step in the embedding block, the sentences' word embeddings are combined to form sentence embeddings, also known as pooling. A simple way to do so would be summing up each sentence's word embeddings. However, this results in long sentences tending to get larger values in the summed embedding vector. This can be counteracted by dividing by the number of words, i.e. by calculating the average of the word embeddings. Furthermore, in later investigations of the attention mechanism, the idea of calculating the sentence embedding as a component-wise maximum of the word embeddings came up. The rationale behind the idea was that the attentive Texter's class embeddings did not focus on specific keywords as hoped, the reason of which was assumed to be that keywords might go lost in long sentences. By using max pooling, characteristic peaks in those keyword embeddings were expected to be preserved in the sentence embedding. For the simple Texter, the standard averaging procedure was assumed to be optimal. Table~\ref{tab:5_experiments/4_texter/2_static/5_pooling/grid_search} compares the three pooling appraoches for both models.
+
+Surprisingly, sum pooling works best for the simple Texter, followed closely by max pooling and mean pooling. For the attentive model, however, max and sum pooling do not work at all. Only on the cde-cde-1 and fb-owe-1 text sets, whose sentences are shorter than the IRT sentences, are results somewhat close to those from mean pooling. Since mean pooling works almost optimally for the simple model as well, it is used by default in all other experiments. Therewith the optimization of the embedding block is complete.

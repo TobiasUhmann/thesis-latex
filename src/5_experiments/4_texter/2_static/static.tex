@@ -1,0 +1,79 @@
+The traditional way to implement the embedding block in both, the simple and the attentive Texter, is using static word embeddings, i.e. a word is embedded independent from where it occurs in the sentence. The advantages include ease of implementation using a simple look-up table, few hyperparameters and quick training. However, although it is possible to somehow include a word's immediate context by forming n-grams consisting of multiple adjacent tokens, the sentence embedding cannot properly capture the meaning of markings and maskings via special tokens such as those in sentences from the "cde-irt-5-marked" or "cde-irt-5-masked" text sets exemplified in Table~\ref{tab:5_experiments/1_base_datasets/2_text_sets/text_sets_table}. Therefore all experiments in this section are conducted on the clean text sets containing no special tokens. Table~\ref{tab:5_experiments/4_texter/2_static/results} shows the final results over all clean text sets for both the baseline and the Power model.
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/4_texter/2_static/results}
+    \caption{Final results for simple and attentive Texter using static word embeddings. All values are in percent.}
+    \label{tab:5_experiments/4_texter/2_static/results}
+\end{table}
+
+The numbers show that both, the simple and the attentive Texter, outperform the zero rule baselines by far. The attentive version, however, is not far ahead of the simple one. On text sets with few sentences per entity, the simple Texter performs slightly better, while its the ther way around on text sets with many sentences. The largest difference can be observed on the "fb-irt-30-clean" text set, where the attentive model leads by 1.5\%. Similar to other text sets with multiple sentences per entity, the higher F1 score results from an improved precision that overcompensates the worse recall that exists at the same time. The attentive Texter benefits more from increasing the number of sentences, but the effect wears off beyond 15 sentences per entity. By far the best results are achieved on the qualitative single-sentence text sets. On the CDE split, the CDE sentences, i.e. the first sentence of an entity's Wikipedia page, seems to be more descriptive than 30 randomly samples contexts. Even greater is the success of the short OWE descriptions on the FB split that cause a 3\% advance over the next best attentive performance on 30 randomly sampled contexts. This can be regarded two ways: On the one hand, the text quality plays a significant role. On the other hand, On the other hand, a sufficiently large set of low-quality sentences can substitute a good description.
+
+In addition to the test results, Figure~\ref{figure:experiments/static_f1} shows the development of the F1 score during training for selected text sets on the (a) CDE and (b) FB splits. On both, CDE and FB, the attentive Texter's curves start below the simple Texter's curves and catch up over time. The diagrams show, that the validation curves converge towards the test results after 30 episodes. In total, all trainings were run for 100 episodes. During the 70 episodes not shown, performance increases monotonically by another 3\% and the validation loss starts to increase slowly. It can be assumed that the test results could be minimally improved if training was continued for another 100 episodes.
+
+%\begin{figure}[t]
+%    \centering
+%
+%    \subfloat[Precision (micro)]{
+%        \includegraphics[width=0.48\textwidth]{images/experiments/static_cde_f1.png}
+%        \label{figure:experiments/static_cde_f1}
+%    }
+%    \subfloat[Recall (micro)]{
+%        \includegraphics[width=0.48\textwidth]{images/experiments/static_fb_f1.png}
+%        \label{figure:experiments/static_fb_f1}
+%    }
+%
+%    \caption{Development of the F1 score on the validation data during training}
+%    \label{figure:experiments/static_f1}
+%\end{figure}
+
+What the F1 curves in Figure~\ref{figure:experiments/static_f1} don't answer, however, is how well the texter can handle rare classes. This is addressed by Figure~\ref{fig:5_experiments/4_texter/2_static/static_classes} which presents the Texter's performance for individual classes. It compares the validation F1 scores between the most common classes, the least common classes and the macro F1 score that results from averaging the scores of all classes. Furthermore, the results are compared between the simple and the attentive Texter.
+
+\begin{figure}[t]
+    \centering
+    \input{5_experiments/4_texter/2_static/static_classes/static_classes}
+    \caption{Per-class validation F1 scores during training; Comparison between most common classes (red, orange, yellow), least common classes (green, blue, purple) and the averaged value over all classes (black)}
+    \label{fig:5_experiments/4_texter/2_static/static_classes}
+\end{figure}
+
+The graphs reveal that predictions for common classes are much more reliable. The three most common classes on the CDE split, with frequencies of almonst 20\% each, reach performances between 50\% and 80\%, whereas the three least common classes, with frequencies of around 1\% each, reach strongly divergent values, from 0\% to 60\%. Despite the tendency that frequent classes perform better, however, there is no close correlation between frequency and performance. The least common classes have very similar frequencies but perform very differently. For the second least common class prediction does not work at all, while the third least common class performs even better than the third most common class. There are also significant performance differences between the three most frequent classes although the frequencies are similar. Another, more obvious, finding is that frequent classes are learned within fewer episodes than less common classes. Interestingly, the attentive Texter seems to learn faster than the simple Texter. Finally, the graph shows that both Texters converge to similar values for all classes, as might have been assumed from the similar macro F1 values.
+
+Looking at the results for the other datasets shown in Tables~\ref{fig:a_appendix/static_classes_1}~--~\ref{fig:a_appendix/static_classes_3} in the appendix, the same patterns can be detected with only a few exceptions where class results differ significantly between simple and attentive Texter. However, although there are no major differences between the Texter variants, it is noticeable that the results for rare classes fluctuate between IRT text sets instead of improving with increasing number of sentences per entity. This assumption was confirmed in another experiment: When forming new fb-irt-1-clean text sets from the fb-irt-30-clean text set by randomly taking one of the 30 sentences for each entity the rare classes' F1 curves vary seemingly randomly between the text sets. The average and the frequent classes' scores, on the other hand, remain practically unaffected.
+
+With the final results for static word embeddings at hand, the following subsections show what impact various model changes and hyperparameters have. The affected model components are examined in the order in which they are invoked during training, beginning with the tokenizer and ending with the optimizer. Finally, the attentive Texter's attention mechanism is investigated to explain why it does not improve upon the simple Texter as hoped.
+
+\subsubsection{Changing the tokenizer}
+\label{subsubsec:5_experiments/4_texter/2_static/1_tokenizer}
+\input{5_experiments/4_texter/2_static/1_tokenizer/tokenizer}
+
+\subsubsection{Initializing word embeddings randomly}
+\label{subsubsec:5_experiments/4_texter/2_static/2_emb_size}
+\input{5_experiments/4_texter/2_static/2_emb_size/emb_size}
+
+\subsubsection{Using pre-trained word embeddings}
+\label{subsubsec:5_experiments/4_texter/2_static/3_pre_trained}
+\input{5_experiments/4_texter/2_static/3_pre_trained/pre_trained}
+
+\subsubsection{Freezing pre-trained embeddings}
+\label{subsubsec:5_experiments/4_texter/2_static/4_update_vectors}
+\input{5_experiments/4_texter/2_static/4_update_vectors/update_vectors}
+
+\subsubsection{Pooling}
+\label{subsubsec:5_experiments/4_texter/2_static/5_pooling}
+\input{5_experiments/4_texter/2_static/5_pooling/pooling}
+
+\subsubsection{Activation Function}
+\label{subsubsec:5_experiments/4_texter/2_static/6_activation}
+\input{5_experiments/4_texter/2_static/6_activation/activation}
+
+\subsubsection{Appplying class weights}
+\label{subsubsec:5_experiments/4_texter/2_static/7_weight_factor}
+\input{5_experiments/4_texter/2_static/7_weight_factor/weight_factor}
+
+\subsubsection{Choosing an optimizer}
+\label{subsubsec:5_experiments/4_texter/2_static/8_optimizer}
+\input{5_experiments/4_texter/2_static/8_optimizer/optimizer}
+
+\subsubsection{Inspecting the attention mechanism}
+\label{subsubsec:5_experiments/4_texter/2_static/9_attention}
+\input{5_experiments/4_texter/2_static/9_attention/attention}

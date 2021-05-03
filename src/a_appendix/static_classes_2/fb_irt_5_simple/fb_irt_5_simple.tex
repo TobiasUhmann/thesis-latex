@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        cycle list name = tb,
+        grid = both,
+        legend pos = outer north east,
+        scale = 0.6,
+        xlabel = epoch,
+        ylabel = F1,
+    ]
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_1.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_2.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_3.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_avg.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_98.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_99.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {a_appendix/static_classes_2/fb_irt_5_simple/class_100.csv};
+    \end{axis}
+\end{tikzpicture}

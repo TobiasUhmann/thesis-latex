@@ -1,0 +1,21 @@
+When designing and implementing machine learning models, scientists act on experience when it comes to architectural decisions and hyperparameter choices. In the early stages of a model, a trained eye on processing examples and observing the loss curve enable rapid progress. However, as the model matures, it becomes essential to quantify its performance with respect to a comprehensive test set. Besides the selection of appropriate test data, it is important to choose a meaningful metric that fits the problem. For example, with a search function whose results would be automatically evaluated in full, one would pay attention to an overall high precision, whereas with a display intended for humans, the prioritization of the top 10 results is more important, even if the other thousands of results suffer from it. The following is a brief explanation of the metrics relevant to the evaluation of the model.
+
+\subsection{Confusion Matrix}
+\label{subsec:3_basics/4_metrics/1_confusion_matrix}
+\input{3_basics/4_metrics/1_confusion_matrix/confusion_matrix}
+
+\subsection{Accuracy}
+\label{subsec:3_basics/4_metrics/2_accuracy}
+\input{3_basics/4_metrics/2_accuracy/accuracy}
+
+\subsection{Precision, Recall and F1}
+\label{subsec:3_basics/4_metrics/3_prf}
+\input{3_basics/4_metrics/3_prf/prf}
+
+\subsection{Mean Reciprocal Rank}
+\label{subsec:3_basics/4_metrics/4_mrr}
+\input{3_basics/4_metrics/4_mrr/mrr}
+
+\subsection{Mean Average Precision}
+\label{subsec:3_basics/4_metrics/5_map}
+\input{3_basics/4_metrics/5_map/map}

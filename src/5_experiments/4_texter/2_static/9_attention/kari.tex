@@ -1,0 +1,54 @@
+\begin{tabular}{|l|l|r|r|r|r|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Sentence}}} &
+   &
+  \multicolumn{4}{c|}{\textbf{Class}} \\ \cline{2-6} 
+\multicolumn{1}{|c|}{} &
+   &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}from\\ USA\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}is\\ writer\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}speaks\\ English\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}is\\ actor\end{tabular}}} \\ \cline{2-6} 
+ &
+  $\phi_c(S)$ &
+  -1.43 &
+  2.19 &
+  0.85 &
+  -0.14 \\ \cline{2-6} 
+ &
+  GT &
+  \multicolumn{1}{c|}{0} &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{0} &
+  \multicolumn{1}{c|}{0} \\ \hline
+\begin{tabular}[c]{@{}l@{}}the film was written by\\ kari \_ and juha \_\end{tabular} &
+  \multirow{5}{*}{\begin{tabular}[c]{@{}l@{}} \\ \\ \\ \\ $\sigma(\langle e_c, e_s \rangle)$ \end{tabular}} &
+  0.47 &
+  \textbf{0.74} &
+  0.27 &
+  0.36 \\ \cline{1-1} \cline{3-6} 
+\begin{tabular}[c]{@{}l@{}}it is based on kari \_ semi-\\ autobiographical novel \_\end{tabular} &
+   &
+  0.40 &
+  0.54 &
+  0.23 &
+  0.23 \\ \cline{1-1} \cline{3-6} 
+\begin{tabular}[c]{@{}l@{}}the film is inspired by kari \\ \_ novel of the same name.\end{tabular} &
+   &
+  0.36 &
+  0.45 &
+  \textbf{0.13} &
+  \textbf{0.21} \\ \cline{1-1} \cline{3-6} 
+\begin{tabular}[c]{@{}l@{}}the unknown \_ \_ () is an\\ authorised biography on \\ finnish racing driver \_ \_ \\ by kari \_\end{tabular} &
+   &
+  0.31 &
+  0.62 &
+  0.20 &
+  0.30 \\ \cline{1-1} \cline{3-6} 
+\begin{tabular}[c]{@{}l@{}}\_ is a 2002 novel by \\ finnish author kari \_\end{tabular} &
+   &
+  \textbf{0.27} &
+  0.57 &
+  0.27 &
+  0.38 \\ \hline
+\end{tabular}

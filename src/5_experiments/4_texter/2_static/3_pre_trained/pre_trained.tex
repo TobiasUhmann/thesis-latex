@@ -1,0 +1,36 @@
+Studies show that pre-trained word embeddings can produce better results after a shorter training period - especially when little training data is available~\cite{}. Especially for the attentive model, there was the assumption that pre-trained embeddings could help the model to focus on training the class embeddings. Until the unexpectedly good experiment with randomly initialized embeddings, pre-trained embeddings even seemed indispensable.
+
+When pre-trained embeddings are provided, Texter's embedding block initializes as many of the vocabulary's words with them as possible. Tokens for which no pre-trained embeddings are available are still initialized randomly. Therefore, when using pre-trained embeddings, it is important to use a tokenizer that produces tokens similar to the ones produced during pre-training - another reason why SpaCy's tokenizer led to better results than the Whitespace tokenizer.
+
+Just as the models used in pre-training use different tokenizers, the resulting pre-trained embeddings also differ. In the experiment at hand, a total of 13 variants of three different types of pre-trained embedding sets were tried. The embedding sets vary in embedding size, vocabulary size and the text corpus pre-training was conducted on. Table~\ref{tab:5_experiments/4_texter/2_static/3_pre_trained/vector_sets} lists all embedding sets tried during the experiment.
+
+\begin{table}[h]
+    \centering
+    \input{5_experiments/4_texter/2_static/3_pre_trained/vector_sets}
+    \caption{Pre-trained word embedding sets considered for evaluation}
+    \label{tab:5_experiments/4_texter/2_static/3_pre_trained/vector_sets}
+\end{table}
+
+The three types of embedding differ in how word embeddings are obtained:
+
+\begin{itemize}
+    \item \textbf{\emph{GloVe}}~\cite{Pennington2014GloveGV}, coined from "global vectors", is an unsupervised learning algorithm dedicated to obtaining the popular, equally named embeddings. GloVe learns embeddings for whole words so that co-occurring, semantically similar words are close in embedding space. Thereby, remarkable relations between related word embeddings emerge, such as the equation $king - queen = man - woman$. Since English has many different words, GloVe has a very large vocabulary.
+
+    \item \textbf{\emph{fastText}}~\cite{Bojanowski2017EnrichingWV,Mikolov2018AdvancesIP}  is based on the idea that words can be viewed as sums of n-grams they exist of. Leveraging the internal structure of words has the advantage that rare or even unknown words can be handled. For example, different declensions of verbs can be related without resorting to stemming, that is, without reducing words to their root. The approach of composing words from n-grams also offers the potential advantage of a small vocabulary.
+
+    \item \textbf{\emph{Charagram}}, referred to as charngram in the library used for implementing Power's Texter, forms word embeddings, as the name suggests, from charachter n-grams as well. Charagram was introduced at the same time as fastText and serves as an alternative to fastText in the experiment.
+\end{itemize}
+
+In the experiment all 13 embedding sets were evaluated. For brevity, Table~\ref{tab:5_experiments/4_texter/2_static/3_pre_trained/vector_sets} is limited to the evaluation results for the Charagram, fastText and GloVe embeddings obtained from training on Wikipedia and Gigaword. Thus, the selected embedding sets cover all three embedding types and give an impression of the influence the embedding size has by comparing the four otherwise equal GloVe embedding sets. Table~\ref{} in Appendix~\ref{ch:a_appendix} contains the second part of the table listing the results for the remaining six GloVe embedding sets.
+
+The expected outcome of the experiment was a significant performance increase for both, simple and attentive Texter, just as other works did. Between the embedding sets, medium deviations were assumed, depending on how similar the data during pre-training resembled those of the IRT text sets. In case of the text sets with CDE and IRT sentences taken from Wikipedia, the GloVe embeddings were therefore the favorite candidate. Regarding the embedding type, there were no clear expectations, as both a large GloVe vocabulary and compound charachter n-grams should be able to cover the vocabulary of the natural language texts. However, it was assumed that a larger text corpus used for pre-training would lead to a noteable performance improvement, for example for fasttext.en.300d compared to fasttext.simple.300d or glove.840B.300d compared to glove.42B.300d. Finally, it was expected that an increase in embedding size would have a similar strong effect as for randomly initialized embeddings.
+
+\begin{table}[h]
+    \input{5_experiments/4_texter/2_static/3_pre_trained/grid_search}
+    \makebox[\textwidth][c]{
+    }
+    \caption{Pre-trained embs}
+    \label{tab:5_experiments/4_texter/2_static/3_pre_trained/grid_search}
+\end{table}
+
+As Tables~\ref{tab:5_experiments/4_texter/2_static/3_pre_trained/vector_sets} and~\ref{table:appendix/static_vectors_2} show, many of the assumptions were not met to the extent expected. Overall, it does not matter very much which embedding set is chosen. All three embedding types offer similar top performances with their respective best embedding sets, a multiplication of pre-training data is not necessarily better, as a look into Table~\ref{table:appendix/static_vectors_2} reveals, and even increasing the embedding size causes only a marginal improvement. Overall, pre-trained embeddings yield better results than randomly initialized ones, so that the last statement can also be formulated the other way around, namely that pre-trained embeddings already work well with small embedding sizes. Besides the small difference between the embedding sets, it is noticeable that the attentive Texter benefits particularly strongly from pre-trained embeddings, although the simple model still performs better on most text sets. On closer inspection, there is a tendency for the attentive model to work better with charachter n-grams, while the simple model might work slightly better with GloVe embeddings. However, the latter performance gain is so small that all further experiments were performed with character n-grams for the sake of clarity. Among the n-gram based Charagram and fastText embeddings, the slightly better fastText embeddings were chosen, and among these again the smaller fasttext.simple.300d embeddings set whose performance is barely distinguishable from fasttext.en.300d.

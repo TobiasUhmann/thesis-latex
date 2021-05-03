@@ -1,0 +1,21 @@
+Besides the loss function, another important aspect of training is the way the gradients calculated from the loss are applied during backpropagation, i.e. the way to perform gradient descent. Plain batch gradient descent is generally too slow and while stochastic gradient descent and mini-batch gradient descent improve in this matter, they still cannot be considered fast. Therefore, a whole series of extensions have been developed over time to optimize Gradient Descent~\cite{Ruder2016AnOO}.
+
+\begin{table}[t]
+    \centering
+    \input{5_experiments/4_texter/2_static/8_optimizer/grid_search}
+    \caption{Different learning rates}
+    \label{tab:5_experiments/4_texter/2_static/8_optimizer/grid_search}
+\end{table}
+
+In this work, SGD with momentum~\cite{Qian1999OnTM} and Adam~\cite{Kingma2015AdamAM} are tried. SGD with Momentum serves as a representative of the classical, non-adaptive gradient descent methods for which are generally better suited to find the minimum of a loss function~\cite{Wilson2017TheMV}. The adaptive optimizer Adam, on the other hand, is particularly popular~\cite{AdamPopular} and is generally considered fast and good. In the experiment, SGD's momentum constant was set to 0.9.
+
+Directly related to the optimizer is the learning rate. Both optimizers were tested with different learning rates from a range that should allow training within a reasonable time. It was expected that lower learning rates always lead to a better result given sufficient training time, but that the improvements become smaller and smaller as the learning rate decreases, so that a sufficiently good learning rate can be declared for each optimizer. SGD with momentum was expected perform slightly better after a longer training time. Depending on the ratio of additional training time to gained performance, a decision should be made between the optimizers.
+
+\begin{figure}[t]
+    \centering
+    \input{5_experiments/4_texter/2_static/8_optimizer/sgd_vs_adam/sgd_vs_adam}
+    \caption{Simple and attentive Texter optimized via SGD and Adam with high to low learning rates (red = 1.0, orange, yellow, black, green, blue, purple = 0.001) on the fb-owe-1-clean text set}
+    \label{fig:5_experiments/4_texter/2_static/8_optimizer/sgd_vs_adam/sgd_vs_adam}
+\end{figure}
+
+Unfortunately, even at the highest learning rate, SGD converged too slowly to estimate definitive results. Therefore,~\ref{tab:5_experiments/4_texter/2_static/8_optimizer/grid_search} only shows the results for Adam. The four plots in Figure~\ref{fig:5_experiments/4_texter/2_static/8_optimizer/sgd_vs_adam/sgd_vs_adam} illustrate the training of the simple and the attentive Texter using SGD and Adam with different learning rates. The upper plots show SGD's slowly converging curves while Adam's bottom plots paint a contrary picture. Even with the highest learning rate, SGD is slower than Adam with the lowest learning rate and would most likely need at least 200 more episodes to converge. An optimizer-independent observation is that the complex model appears to be more sensitive to learning rates that are too high. For SGD the highest learning rate leads to a slower training progress and for Adam the training does not work at all at the two highest learning rates. This information is also reflected in Table~\ref{tab:5_experiments/4_texter/2_static/8_optimizer/grid_search}, which also reveals another fact that is not directly evident from the plot: A lower learning rate does not automatically result in better performance. However, the nearest explanation is that training is simply not finished at that point. Figure~\ref{tab:5_experiments/4_texter/2_static/8_optimizer/grid_search} suggests that the training of the attentive Texter is somewhat slower, but at a learning rate of 0.003, the training of both models appears to converge after the specified 200 epochs, which is why this learning rate is used in the other experiments.

@@ -1,0 +1,12 @@
+The Aggregator produces the POWER model's final predictions for an entity by merging the Ruler's and Texter's
+predictions.
+As part of the merge process, the combined prediction set is again sorted by confidence leading to a mix of the top
+Ruler and Texter predictions as the most promising predictions.
+If a fact is predicted by Ruler and Texter, the final prediction is assigned the higher confidence, and the prediction
+will have the Ruler's ranked rules as well as the Texter's ranked sentences attached.
+
+As expected, by combining the Ruler's and the Texter's predictions, recall improves.
+Precision, on the other hand, decreases as correct facts predicted by both components are not counted twice during
+evaluation while the Ruler's and Texter's false positives rarely overlap.
+However, as the combined prediction sets are sorted by confidence, average precision increases as the best predictions
+from both components fill the top slots as shown in chapter~\ref{ch:5_experiments}.

@@ -1,0 +1,9 @@
+Standardmäßig werden Regeln mit Support größer eins und Konfidenz größer 0.001 (?) beibehalten, also praktisch alle Regeln. Durch eine Beschränkung auf qualitativ hochwertigere Regeln kann die Laufzeit des Rulers verringert werden. Welche Auswirkungen dies auf die Qualität der Fakten-Vorhersagen hat wird in diesem Experiment überprüft in dem die Hemmschwellen für Support und Konfidenz höher angesetzt werden. Die Variation von Support und Konfidenz Schwellen erfolgt unabhängig voneinander. Die Erwartung ist, dass das Entfernen von Regeln mit niedrigem Support einen negative Effekt auf die Vorhersagequalität hat, da seltene Regeln veloren gehen könnten die bestimmte Randfälle sehr gut beschreiben. Ein Anheben der Konfidenzschwelle sollte zu einer Verbesserung von Präzision, Recall und somit F1 führen, gleichzeit aber die letztendlich wichtige mAP schwächen, da qualitativ niederwertige Regeln nicht zu Vorhersagen führen können die bei den Top-Fakten-Vorhersagen stören.
+
+different confidence thresholds
+
+<results>
+
+cut out rules with low support
+
+<results>
