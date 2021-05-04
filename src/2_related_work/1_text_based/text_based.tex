@@ -1,1 +1,16 @@
-OWE
+Most state-of-the-art models follow the second, embedding approach, which proved successful to many tasks outside graph applications, like image~\cite{} or natural language processing~\cite{}, for example. On knowledge graphs, the idea is to map each entity onto a certain spot in the relatively low-dimensional embedding space, whereby low means a few hundred dimensions, which is low compared to manually designed feature vectors. Relations, on the other hand are represented by two entities' relative positions to each other. By training an embedding model, the entity embeddings are moved in the embedding space such that their relative locations match the relations in the original graph. The learned embedding space then enables quick inference, because calculating the embeddings' floating point numbers is very cheap for modern processors.
+
+
+state-of-the-art \cite{Wang2017KnowledgeGE}
+embedding-based represents graph in low-dimensional vector space
+entities in space, relationships encoded as relative position
+embeddings learned to that similar embeddings close, different embeddings far apart
+
+
+Villmov et al OWE \cite{Shah2019AnOE}
+extension to embedding-based model
+embed graph into vector space
+embed texts into vector space
+align graphs
+apply alignment function to new ents in text space
+
