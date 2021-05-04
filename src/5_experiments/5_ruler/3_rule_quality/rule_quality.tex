@@ -1,9 +1,29 @@
-Standardmäßig werden Regeln mit Support größer eins und Konfidenz größer 0.001 (?) beibehalten, also praktisch alle Regeln. Durch eine Beschränkung auf qualitativ hochwertigere Regeln kann die Laufzeit des Rulers verringert werden. Welche Auswirkungen dies auf die Qualität der Fakten-Vorhersagen hat wird in diesem Experiment überprüft in dem die Hemmschwellen für Support und Konfidenz höher angesetzt werden. Die Variation von Support und Konfidenz Schwellen erfolgt unabhängig voneinander. Die Erwartung ist, dass das Entfernen von Regeln mit niedrigem Support einen negative Effekt auf die Vorhersagequalität hat, da seltene Regeln veloren gehen könnten die bestimmte Randfälle sehr gut beschreiben. Ein Anheben der Konfidenzschwelle sollte zu einer Verbesserung von Präzision, Recall und somit F1 führen, gleichzeit aber die letztendlich wichtige mAP schwächen, da qualitativ niederwertige Regeln nicht zu Vorhersagen führen können die bei den Top-Fakten-Vorhersagen stören.
+Besides the number of mined rules, the quality of the rules plays a crucial role for the Ruler's performance. By default, rules with support greater than 1 and confidence greater than 0.0001, i.e. virtually all rules, are kept~\cite{AnyBURL}. It was assumed that the Ruler's predictions might be improved if low-quality rules were filtered out. Therefore, two experiments were conducted in which rules below a certain support or confidenence are rejected. The experiments were conducted independent from another using rules that were mined within 10 seconds, which leads to a smaller rule set than the runtime of 100 seconds used for the other Ruler experiments, but should lead to equivalent observations. The experiments consider splits with varying shares of known test facts to see whether their entities profit differently from higher quality rules.
 
-different confidence thresholds
 
-<results>
+
+The expectation is that removing rules with low support will have a negative effect on prediction quality, since rare rules that describe certain edge cases very well may be lost. Raising the confidence threshold should improve precision, recall, and thus F1, but at the same time weaken the ultimately important mAP, since low-quality rules cannot lead to predictions that interfere with top-fact predictions.
+
+
+
+
 
 cut out rules with low support
 
-<results>
+\begin{table}
+    \centering
+    \input{5_experiments/5_ruler/3_rule_quality/supp_results}
+    \caption{Vary min conf}
+    \label{tab:5_experiments/5_ruler/3_rule_quality/supp_results}
+\end{table}
+
+different confidence thresholds
+
+\begin{table}
+    \centering
+    \input{5_experiments/5_ruler/3_rule_quality/conf_results}
+    \caption{Vary min conf}
+    \label{tab:5_experiments/5_ruler/3_rule_quality/conf_results}
+\end{table}
+
+not shown: precision, recall

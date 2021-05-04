@@ -1,0 +1,24 @@
+Die Annahme, dass während der Inferenz 50 der Fakten einer Testentität bekannt seien führt zu einem stabilen Evaluationsergebnis, insbesondere wenn das Datenset nur wenige Fakten pro Entität bereithält. Stehen jedoch viele Fakten zur Verfügung entspricht die Annahme nicht mehr dem in der Praxis interessanten Few-Shot-Szenario. Bei einer Testentität aus dem FB-Split entsprechen 50 im Schnitt bereits neun bekannten Fakten pro Entität.
+
+The assumption that 50\% of a test entity's facts are known during inference leads to a stable evaluation result, especially if the data set provides only a few facts per entity. However, if many facts are available, the assumption no longer corresponds to a few-shot scenario which is particularly interesting in practice. For a test entity from the FB split, 50\% known test facts already corresponds to an average of nine facts per entity.
+
+To get an idea how much the number of known test facts affects the Ruler's function, this experiment evaluates all of the Power splits introduced in Section~\ref{sec:5_experiments/2_power_datasets}, including the splits which include none or all of the entities' facts in the known test set. Test entities without known test facts correspond to open-world entities. Although, the Ruler cannot predict facts for them, they were processed to assure that the evaluation code would calculate precision and recall to 100\% and 0\%, respectively. The splits that include all of an entity's test facts as known facts does not represent a practical use case for the Ruler, neither. Still, it has been included to show how much increasing the share of known facts beyond 50\% would bring. In practice, the most interesting use cases, include the splits with a low percentage of known test facts. The expectation was that recall would increase logarithmically with the number of known test facts, as the first fact about an entity reveals much more information than the last one, while precision should be independent from the choice of random known facts. Thus, F1 and mAP were expected to increase logarithmically with the proportion of known facts.
+
+\begin{table}
+    \centering
+    \input{5_experiments/5_ruler/1_known/results}
+    \caption{Ruler evaluation against unknown. Codex 50 means 50\% known test facts}
+    \label{tab:5_experiments/5_ruler/1_unknown/all_results}
+\end{table}
+
+Wie erwartet steigt
+
+Für die Splits ohne bekannte Testfakten ist der Recall größer null, weil es Entitäten ohne Ground Truth Fakten gibt. Der Ruler, der ohne bekannte Testfakten keine Vorhersage machen kann, liegt also für diese wenigen Entitäten richtig wenn er keine Vorhersage macht.
+
+could evaluate against unknown valid facts, close to use case, or could eval against all valid facts as usual []
+ok to validate against known + unknown facts because known not seen during training
+eval against unknown means filter out predicted known facts
+table ? shows comparison between both eval methods
+when evaluating against known + unknown, best result for 100
+when evaluating against unknwon, best result for 50 as balance between known and remaining for prediction. 0 = open world = no preds, 100 = no left for prediction
+

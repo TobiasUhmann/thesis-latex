@@ -1,10 +1,12 @@
-\begin{tabular}{| l | r | r | r | r | r | r | r |}
+\begin{tabular}{| l | l | r | r | r | r | r | r | r |}
     \hline
 
-    \multicolumn{1}{|c|}{\textbf{Split}} &
-    \multicolumn{7}{|c|}{\textbf{Min Support}} \\
+    \multirow{2}{*}{\textbf{Split}} &
+    &
+    \multicolumn{7}{|c|}{\textbf{Minimal Support}} \\
 
-    \multicolumn{1}{|c|}{} &
+    &
+    &
     \multicolumn{1}{|c|}{\textbf{1}} &
     \multicolumn{1}{|c|}{\textbf{3}} &
     \multicolumn{1}{|c|}{\textbf{10}} &
@@ -15,21 +17,18 @@
 
     \hline \hline
 
-    CDE-0   &  &  &  &  &  &  &  \\
-    CDE-5   &  &  &  &  &  &  &  \\
-    CDE-15  &  &  &  &  &  &  &  \\
-    CDE-30  &  &  &  &  &  &  &  \\
-    CDE-50  &  &  &  &  &  &  &  \\
-    CDE-100 &  &  &  &  &  &  &  \\
+    \multirow{5}{*}{CDE-50}
+    & \textbf{Rules} & \num{2461}  & \num{2316}  & \num{1267} & \num{732}  & \num{354} & \num{104} & \num{33} \\
+    & \textbf{Prec}  & 6844        & 6845        & 6937       & 7022       & 7105      & 7223      & 7568     \\
+    & \textbf{Rec}   & 1864        & 1863        & 1846       & 1821       & 1746      & 1619      & 1162     \\
+    & \textbf{F1}    & 2568        & 2567        & 2579       & 2556       & 2452      & 2273      & 1654     \\
+    & \textbf{mAP}   & 1715        & 1714        & 1701       & 1677       & 1612      & 1498      & 1082     \\ \hline
 
-    \hline
+    \multirow{5}{*}{FB-50}
+    & \textbf{Rules} & \num{12145} & \num{11996} & \num{6162} & \num{1764} & \num{764} & \num{398} & \num{59} \\
+    & \textbf{Prec}  & 7859        & 7875        & 7917       & 8030       & 8092      & 8227      & 8735     \\
+    & \textbf{Rec}   & 2213        & 2212        & 2076       & 1818       & 1666      & 1486      & 0693     \\
+    & \textbf{F1}    & 2851        & 2850        & 2680       & 2322       & 2136      & 1877      & 0944     \\
+    & \textbf{mAP}   & 2035        & 2035        & 1917       & 1682       & 1541      & 1372      & 0668     \\ \hline
 
-    FB-0    &  &  &  &  &  &  &  \\
-    FB-5    &  &  &  &  &  &  &  \\
-    FB-15   &  &  &  &  &  &  &  \\
-    FB-30   &  &  &  &  &  &  &  \\
-    FB-50   &  &  &  &  &  &  &  \\
-    FB-100  &  &  &  &  &  &  &  \\
-
-    \hline
 \end{tabular}

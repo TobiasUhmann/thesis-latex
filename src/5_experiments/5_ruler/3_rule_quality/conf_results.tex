@@ -1,10 +1,12 @@
-\begin{tabular}{| l | r | r | r | r | r | r |}
+\begin{tabular}{| l | l | r | r | r | r | r | r |}
     \hline
 
-    \multicolumn{1}{|c|}{\textbf{Split}} &
-    \multicolumn{7}{|c|}{\textbf{Min Confidence}} \\
+    \multirow{2}{*}{\textbf{Split}} &
+    &
+    \multicolumn{6}{|c|}{\textbf{Minimal Confidence}} \\
 
-    \multicolumn{1}{|c|}{} &
+    &
+    &
     \multicolumn{1}{|c|}{\textbf{0.5}} &
     \multicolumn{1}{|c|}{\textbf{0.6}} &
     \multicolumn{1}{|c|}{\textbf{0.7}} &
@@ -14,21 +16,21 @@
 
     \hline \hline
 
-    CDE-0   &  &  &  &  &  &  \\
-    CDE-5   &  &  &  &  &  &  \\
-    CDE-15  &  &  &  &  &  &  \\
-    CDE-30  &  &  &  &  &  &  \\
-    CDE-50  &  &  &  &  &  &  \\
-    CDE-100 &  &  &  &  &  &  \\
+    \multirow{5}{*}{CDE-50}
+    & \textbf{Rules} & \num{2461}  & \num{1945}  & \num{1482} & \num{1217} & \num{947}  & \num{635}  \\
+    & \textbf{Prec}  & 6844        & 7702        & 8526       & 9301       & 9553       & 9905       \\
+    & \textbf{Rec}   & 1864        & 1498        & 1135       & 0808       & 0652       & 0118       \\
+    & \textbf{F1}    & 2568        & 2191        & 1739       & 1276       & 1036       & 0113       \\
+    & \textbf{mAP}   & 1715        & 1423        & 1104       & 0798       & 0648       & 0118       \\
 
     \hline
 
-    FB-0    &  &  &  &  &  &  \\
-    FB-5    &  &  &  &  &  &  \\
-    FB-15   &  &  &  &  &  &  \\
-    FB-30   &  &  &  &  &  &  \\
-    FB-50   &  &  &  &  &  &  \\
-    FB-100  &  &  &  &  &  &  \\
+    \multirow{5}{*}{FB-50}
+    & \textbf{Rules} & \num{12145} & \num{10503} & \num{8149} & \num{5921} & \num{2563} & \num{1690} \\
+    & \textbf{Prec}  & 7859        & 8088        & 8555       & 9097       & 9641       & 9861       \\
+    & \textbf{Rec}   & 2213        & 2088        & 1822       & 1308       & 0657       & 0421       \\
+    & \textbf{F1}    & 2851        & 2734        & 2420       & 1795       & 0899       & 0501       \\
+    & \textbf{mAP}   & 2035        & 1929        & 1695       & 1242       & 0652       & 0420       \\
 
     \hline
 \end{tabular}

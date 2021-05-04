@@ -1,29 +1,25 @@
-While training the Texter means repeatedly applying backpropagation to the Texter's neural network, the Ruler's equivalent is mining rules on the known train facts. The found rules are then used during inference to infer new facts from the few ones known about a query entity. In contrast to the Texter's training, all train facts are used for rule mining and all test facts are considered in the experiments - only one experiment deviates from this. Thus, the macro F1 and mAP metrics calculated over all test entities that were used for the contextual Texter's final results are the default metrics applied to the Ruler.
+While training the Texter means repeatedly applying backpropagation to the Texter's neural network, the Ruler's equivalent is mining rules on the known train facts. The found rules are then used during inference to infer new facts from the ones known about a query entity. In contrast to the Texter's training, all train facts are used for rule mining and all test facts are considered during evaluation - only one experiment deviates from this. Thus, the macro F1 and mAP metrics calculated over all test entities that were used for the contextual Texter's final evaluation are the default metrics applied to the Ruler.
 
-For rule mining, \num{137738} and \num{238191} training facts are available in the CDE and FB splits, respectively. Depending on how long AnyBURL runs, rule sets of a similar magnitude can be found. For the final evaluation, a runtime of 100s was set after which \num{235701} rules were found for the CDE and \num{299210} ones for the FB Split. The vast majority of these rules have a rule body consisting of a single fact, such as (lives in, Norway) => (speaks, English), for example.
+For rule mining, \num{137738} and \num{238191} training facts are available in the CDE and FB splits, respectively. Depending on how long AnyBURL runs, more rules can be mined than the graph contains train facts. The final Rulers for the CDE and FB splits leverage \num{1743694} and \num{2510667} rules, respectively, that were mined after \num{1000} seconds on an Intel i7 quad-core processor. The vast majority of these rules have a rule body consisting of a single fact, such as (lives in, Norway) => (speaks, English), for example. Most of the rules have a confidence below 0.5, i.e. the fact they is probably wrong. Those facts are discarded, leaving \num{785514} useful facts on CDE and \num{} ones on the FB split.
 
-The mined rules are then used for prediction by searching for rule groundings within the known facts, which include all train facts in addition to the query entity's known test facts. The heads of the rules for which a grounding could be found then yield the predicted facts. Table~\ref{tab:5_experiments/5_ruler/results} shows the evaluation results from preicting facts for all test entities in the CDE and FB splits and comparing them to the ground truth test facts. All of the Power splits introduced in Section~\ref{sec:5_experiments/2_power_datasets} are considered, including the splits which include none or all of the entities' test facts in the known test set. Test entities without known test facts correspond to open-world entities. Although, the Ruler cannot predict facts for them, they were processed to assure that the evaluation code would calculate precision and recall to 100\% and 0\%, respectively. The splits that include all of an entity's test facts as known facts does not represent a practical use case for the Ruler, neither. It has been included to show up the theoretical upper bound the Ruler can achieve. In practice, the most interesting use cases, in respect to the Ruler, include the splits with a low percentage of known test facts. It was expected that F1 and mAP would increase as the proportion of known test facts is increased. The results on the FB split should be better because  more train facts as well as more known test facts exist per entity.
+The useful rules are then used for prediction by searching for rule groundings within the known facts, which include all train facts in addition to the query entity's known test facts. The heads of the rules for which a grounding could be found then yield the predicted facts. Table~\ref{tab:5_experiments/5_ruler/results} shows the results obtained when evaluating the predictions against all test facts. The "50" suffix refers to the fact that 50\% of the test facts may be used to apply rules during inference. Section~\ref{subsec:5_experiments/5_ruler/1_known} presents the results for different percentages. As one would expect, the FB15K-237-related results are once again better than the CoDEx-M ones, due to the larger training set and the higher number of facts per entity.
 
-% confidence distribution ?
-% support distribution ?
-% rule length distribution ?
-
-\begin{table}
+\begin{table}[h]
     \centering
     \input{5_experiments/5_ruler/results}
     \caption{Ruler evaluation against known+unknown. Codex 50 means 50\% known test facts}
     \label{tab:5_experiments/5_ruler/results}
 \end{table}
 
+In the following, Section~\ref{subsec:5_experiments/5_ruler/1_known} shows how well the Ruler works in a few shot scenarios and presents an alternative evaluation scenario, Section~\ref{subsec:5_experiments/5_ruler/2_rule_count} shows how important the number of rules is the performance of the Ruler, and Section~\ref{subsec:5_experiments/5_ruler/3_rule_quality} explains why restriction to high-quality rules leads to worse performance. All further evaluations were performed on Rulers that were trained on the rule set mined after 10 seconds, which does not influence the qualitative statements. Table~\ref{tab:5_experiments/5_ruler/2_rule_count/results} in Section~\ref{subsec:5_experiments/5_ruler/2_rule_count} can be used to estimate performances for larger rule sets.
 
+\subsection{Known Test Facts}
+\label{subsec:5_experiments/5_ruler/1_known}
+\input{5_experiments/5_ruler/1_known/known}
 
-\subsection{Eval against unknown}
-\label{subsec:5_experiments/5_ruler/1_unknown}
-\input{5_experiments/5_ruler/1_unknown/unknown}
-
-\subsection{More rules}
+\subsection{Number of Rules}
 \label{subsec:5_experiments/5_ruler/2_rule_count}
-\input{5_experiments/5_ruler/2_rule_count/rule_count.tex}
+\input{5_experiments/5_ruler/2_rule_count/rule_count}
 
 \subsection{Rule Quality}
 \label{subsec:5_experiments/5_ruler/3_rule_quality}
