@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CsvFileAttributes">
+    <option name="attributeMap">
+      <map>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\attentive_adam\lr_0_001.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\attentive_adam\lr_0_03.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\attentive_sgd\lr_0_001.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\attentive_sgd\lr_0_03.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\attentive_sgd\lr_0_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\simple_adam\lr_0_001.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\8_optimizer\sgd_vs_adam\simple_sgd\lr_0_003.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\a_appendix\static_classes_1\cde_irt_5_attentive\class_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\a_appendix\static_classes_1\cde_irt_5_simple\class_2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\a_appendix\static_classes_1\cde_irt_5_simple\class_3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\a_appendix\static_classes_1\cde_irt_5_simple\class_98.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
