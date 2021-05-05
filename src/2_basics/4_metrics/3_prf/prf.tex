@@ -1,26 +1,26 @@
 \emph{Precision}, \emph{recall} and \emph{F1} score focus on the quality of positive predictions. Precision gives an impression of how reliable positive predictions are, recall tells how many of the actual positive elements are declared as such, and F1 is a measure that combines both precision and recall in one value. All three metrics take values between 0 and 1 with higher being better.
 
-Precision is the ratio of true positive predictions to all positive predictions as noted in~\ref{eq:3_basics/4_metrics/3_prf/precision}. In the above cat example, correctly identifying three out of five cats but also classifying one dog as a cat results in a precision of $3 / (3 + 1) = 0.75$. The two missed out cats do not play a role. Precision is also called \emph{positive predictive value} (PPV).
+Precision is the ratio of true positive predictions to all positive predictions as noted in~\ref{eq:2_basics/4_metrics/3_prf/precision}. In the above cat example, correctly identifying three out of five cats but also classifying one dog as a cat results in a precision of $3 / (3 + 1) = 0.75$. The two missed out cats do not play a role. Precision is also called \emph{positive predictive value} (PPV).
 
 \begin{align}
     Precision = \frac{TP}{TP + FP}
-    \label{eq:3_basics/4_metrics/3_prf/precision}
+    \label{eq:2_basics/4_metrics/3_prf/precision}
 \end{align}
 
-Recall, on the other hand, compares the number of true positives the the number of all ground truth positives as shown in~\ref{eq:3_basics/4_metrics/3_prf/recall}. Looking again at the cat example, identifying three out of five cats in total leads to a recall of $3 / (3 + 2) = 0.6$. The dog that was mistaken as a cat does not count in. Recall is also referred to as \emph{true positive rate} (TPR).
+Recall, on the other hand, compares the number of true positives the the number of all ground truth positives as shown in~\ref{eq:2_basics/4_metrics/3_prf/recall}. Looking again at the cat example, identifying three out of five cats in total leads to a recall of $3 / (3 + 2) = 0.6$. The dog that was mistaken as a cat does not count in. Recall is also referred to as \emph{true positive rate} (TPR).
 
 \begin{align}
     Recall = \frac{TP}{TP + FN}
-    \label{eq:3_basics/4_metrics/3_prf/recall}
+    \label{eq:2_basics/4_metrics/3_prf/recall}
 \end{align}
 
-Precision and recall are directly dependent on each other. A cautious model that only predicts positives when it is absolutely sure achieves high precision but low recall. Conversely, it is easy to achieve optimal recall by making positive predictions for all elements, though precision will suffer in that case. The F score serves as a measure that reaches a high value when a reasonable balance between precision and recall is found. Equation~\ref{eq:3_basics/4_metrics/3_prf/f_beta} shows the formula for the general $F_\beta$ score whose parameter $\beta$ determines whether the focus should rather be shifted to precision or recall. Setting $\beta = 1$ yields the $F_1$ score in~\ref{eq:3_basics/4_metrics/3_prf/f_1} as the harmonic mean in which precision and recall are equally weighted.
+Precision and recall are directly dependent on each other. A cautious model that only predicts positives when it is absolutely sure achieves high precision but low recall. Conversely, it is easy to achieve optimal recall by making positive predictions for all elements, though precision will suffer in that case. The F score serves as a measure that reaches a high value when a reasonable balance between precision and recall is found. Equation~\ref{eq:2_basics/4_metrics/3_prf/f_beta} shows the formula for the general $F_\beta$ score whose parameter $\beta$ determines whether the focus should rather be shifted to precision or recall. Setting $\beta = 1$ yields the $F_1$ score in~\ref{eq:2_basics/4_metrics/3_prf/f_1} as the harmonic mean in which precision and recall are equally weighted.
 
 \begin{align}
     F_\beta &= (1 + \beta^2) \cdot \frac{Precision \cdot Recall}{\beta^2 \cdot Precision + Recall}
-    \label{eq:3_basics/4_metrics/3_prf/f_beta} \\
+    \label{eq:2_basics/4_metrics/3_prf/f_beta} \\
     F_1 &= 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}
-    \label{eq:3_basics/4_metrics/3_prf/f_1}
+    \label{eq:2_basics/4_metrics/3_prf/f_1}
 \end{align}
 
 When including more than one class in the evaluation, for example when predicting for each photo whether it is a cat, a dog or a horse, the question arises how to combine the results of the respective classes. Three of several possibilities are as follows:

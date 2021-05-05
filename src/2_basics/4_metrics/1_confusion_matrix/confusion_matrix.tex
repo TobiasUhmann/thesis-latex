@@ -1,4 +1,4 @@
-All considered metrics are defined with the help of terms from a so-called confusion matrix as shown in Figure~\ref{fig:3_basics/4_metrics/1_confusion_matrix}. The matrix emerges from the general scenario in which predictions are made for a set of objects that can be either true or false. A prediction is true if its statement is consistent with reality about the object, also called ground truth, and false if the prediction contradicts reality. An example scenario would be an image recognition that has to determine whether a photo shows a cat or not. Then, four mutually exclusive types of predictions can be distinguished:
+All considered metrics are defined with the help of terms from a so-called confusion matrix as shown in Figure~\ref{fig:2_basics/4_metrics/1_confusion_matrix}. The matrix emerges from the general scenario in which predictions are made for a set of objects that can be either true or false. A prediction is true if its statement is consistent with reality about the object, also called ground truth, and false if the prediction contradicts reality. An example scenario would be an image recognition that has to determine whether a photo shows a cat or not. Then, four mutually exclusive types of predictions can be distinguished:
 
 \begin{itemize}
     \item \textbf{\emph{True positives}} (TP) are predictions stating that a condition holds true when this is indeed the case. In the image recognition example, this would correspond to the case where the model correctly classifies a cat image as a cat.
@@ -14,9 +14,9 @@ Although it is generally desirable to obtain as many correct predictions as poss
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{3_basics/4_metrics/1_confusion_matrix/matrix}
+    \includegraphics[width=\textwidth]{2_basics/4_metrics/1_confusion_matrix/matrix}
     \caption{Confusion Matrix}
-    \label{fig:3_basics/4_metrics/1_confusion_matrix}
+    \label{fig:2_basics/4_metrics/1_confusion_matrix}
 \end{figure}
 
 "positive", "negative", "true", "false" predictions, "positive", "negative" elements
