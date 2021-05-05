@@ -1,29 +1,23 @@
-Besides the number of mined rules, the quality of the rules plays a crucial role for the Ruler's performance. By default, rules with support greater than 1 and confidence greater than 0.0001, i.e. virtually all rules, are kept~\cite{AnyBURL}. It was assumed that the Ruler's predictions might be improved if low-quality rules were filtered out. Therefore, two experiments were conducted in which rules below a certain support or confidenence are rejected. The experiments were conducted independent from another using rules that were mined within 10 seconds, which leads to a smaller rule set than the runtime of 100 seconds used for the other Ruler experiments, but should lead to equivalent observations. The experiments consider splits with varying shares of known test facts to see whether their entities profit differently from higher quality rules.
+Besides the number of mined rules, the rules' quality plays a crucial role for the Ruler's performance. By default, rules with support equals of at least $supp_{min} = 2$ and confidence of at least $conf_{min} = 0.5$ are considered. It was assumed that the Ruler's predictions might improve the rules were further restricted to those with high support and confidence. Therefore, two independent experiments were conducted in which minimal support and confidence were gradually increased. Both experiments were also evaluated over Power splits with varing number of known test facts during inference to whether high-quality rules were increasingly beneficial in few-shot scenarios.
 
-
-
-The expectation is that removing rules with low support will have a negative effect on prediction quality, since rare rules that describe certain edge cases very well may be lost. Raising the confidence threshold should improve precision, recall, and thus F1, but at the same time weaken the ultimately important mAP, since low-quality rules cannot lead to predictions that interfere with top-fact predictions.
-
-
-
-
-
-cut out rules with low support
+For the experiment on varying the minimal support threshold it was expected that precision would not vary between low- and high-support rules, but that recall would decrease strongly due to a restriction to few high-support rules. Therefore, F1 and mAP were assumed to drop in accordance with recall. Table~\ref{tab:5_experiments/5_ruler/3_rule_quality/supp_results} shows the measurements for minimum support thresholds ranging from the default value of 2 up to 1000.
 
 \begin{table}
     \centering
     \input{5_experiments/5_ruler/3_rule_quality/supp_results}
-    \caption{Vary min conf}
+    \caption{Ruler test results for varying support thresholds $supp_{min}$ and constant confidence thresholds $conf_{min} = 0.5$ on rules mined after $t = 100s$}
     \label{tab:5_experiments/5_ruler/3_rule_quality/supp_results}
 \end{table}
 
-different confidence thresholds
+The first numbers that stick out, but are not surprising, are the low numbers of high-confidence rules, especially on the CDE split. More interesting, however, is that precision does actually increase for high-support rules and recall does not suffer as much as expected, because few high-support rules seem to be able to stemm many predictions on their own. But still, the decrease in recall outweighs the increase in precision which is why the other experiments as well as the final evaluation keep all useful rules regardless of their support.
+
+In case of rule confidence, expectations were higher. It was assumed that the decreasing performance in the experiment on different rule minig times, presented in Section~\ref{subsec:5_experiments/5_ruler/2_rule_count}, was due to a decreasing confidence of newly found rules and that this effect could be counteracted by increasing the minimum confidence threshold for rules. While this would reduce the number of usable rules, it was hoped that there were enough high-confidence rules to keep up the correct predictions. At a certain confidence threshold, a turning point was expected at which the decreasing recall would become too severe. Table A shows the results for confidence thresholds between 0.5 and 1.0.
 
 \begin{table}
     \centering
     \input{5_experiments/5_ruler/3_rule_quality/conf_results}
-    \caption{Vary min conf}
+    \caption{Ruler test results for constant support threshold $supp_{min} = 2$ and varying confidence thresholds $conf_{min}$ on rules mined after $t = 100s$}
     \label{tab:5_experiments/5_ruler/3_rule_quality/conf_results}
 \end{table}
 
-not shown: precision, recall
+What stands out is the large number of rules with a confidence of 100\% which make up roughly a fifth of all rules on both fact splits. Overall, confidence values are distributed quite uniformly over rules with $conf >= 0.5$. As expected, precision increases significantly with confidence, but contrary to expectations, recall drops faster from the first confidence raise on so that the inital conidence threshold of 0.5 is kept as default.
