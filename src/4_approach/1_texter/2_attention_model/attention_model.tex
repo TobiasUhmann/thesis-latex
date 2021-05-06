@@ -4,22 +4,15 @@ For example, the class (is, married) should especially to sethe assumption was t
 
 The Texter is essentially a multi-label classifier with a fixed number of sentences as input and the most common facts, or more precisely, the most common relation-tail tuples that form facts together with the query entity as the fact's head, as its output classes. Figure~\ref{fig:4_approach/1_texter/2_attention_model/texter_architecture} sketches the basic idea of the classifier: Given some sentences about the query entity one, multiple or none of the relation-tail tuples are predicted.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{4_approach/1_texter/2_attention_model/texter_architecture}
-    \caption{Concept behind the Texter: Given an entity's sentences, the multi-label classifier decides for applicable relation-tail tuples}
-    \label{fig:4_approach/1_texter/2_attention_model/texter_architecture}
-\end{figure}
-
 Although it would be desirable to predict any kind of facts that appear in the training data, the output classes are limited to the most common ones to prevent two major problems: First, it would be difficult to counter the impact of the extreme class imbalance between the most and least common classes, leading to overfitting and ineffectiveness, respectively. Second, the increase in learnable parameters would further facilitate overfitting and lead to longer training and inference times. In practice, however, the effects of limiting the output classes are negligible as most relation-tail tuples $(rel \in Relations, tail \in Entities)$ from the theoretically vast domain $Relations \times Entities$ never occur. For example, relation-tail tuples such as $(speaks, actor)$ never occur, limiting the number of reasonable classes and thereby increasing the share of the fixed number of top classes. Furthermore, rare classes can still be predicted by the Ruler.
 
 At a closer look, the Texter consists of an embedding layer, an attention layer, the actual classification layer and a \lstinline{predict()} function. Figure~\ref{fig:common_attention_architecture} shows the three layers which contain all of the model's learnable parameters. The embedding layer receives the query entity's sentences, embeds each one, and passes the sentence embeddings on to the attention layer. The attention layer uses internal \emph{class embeddings} to produce class-dependent entity embeddings that primarily represent the sentences most relevant for the respective class. Those entity embeddings are then passed to the classification layer that pushes the entity embeddings through simple perceptrons, producing the output logits. The three layers are implemented together in the model's \lstinline{forward()} function that also returns the information on which sentences influenced which logits in addition to the logits themselves. That extra information is later used in the \lstinline{predict()} function to rank the facts by relevance for each class.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{4_approach/1_texter/2_attention_model/texter_architecture}
+    \includegraphics{4_approach/1_texter/2_attention_model/attention_architecture}
     \caption{Texter Architecture}
-    \label{fig:4_approach/1_texter/2_attention_model/texter_architecture2}
+    \label{fig:4_approach/1_texter/2_attention_model/attention_architecture}
 \end{figure}
 
 A walk through the forward phase shows the inner workings of the layers: Starting with the query entity's sentences, a tokenizer splits the sentences into tokens, the tokens are embedded, and the resulting token embeddings are combined to a sentence embedding that represents the sentence as a whole. There are multiple possible ways of choosing a tokenizer, embedding the tokens and combining the token embeddings, some of which are covered in chapter~\ref{ch:5_experiments}. The POWER model's Texter embeds the tokens using DistilBERT~\cite{Sanh2019DistilBERTAD}, a variant of the popular BERT transformer encoder. The DistilBERT model has been pre-trained before and is fine-tuned on the POWER dataset. The tokenizer must match the one used during pre-training - a byte pair encoding tokenizer in the case of DistilBERT - whose vocabulary is only extended by two special tokens that allow marking mentions of the entity within the sentences so that DistilBERT can better understand how the sentence relates to the entity. Finally, the embedding layer produces the sentence embeddings by averaging the respective token embeddings and passes them on to the attention layer.
