@@ -52,6 +52,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\plot_class_curves\cde_irt_5_attentive\class_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\plot_valid_curves\a_simple\fb-owe-1-clean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\5_experiments\4_texter\2_static\plot_valid_curves\b_attentive\fb-irt-1-clean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\a_appendix\static_classes_1\cde_irt_5_attentive\class_1.csv">
           <value>
             <Attribute>
