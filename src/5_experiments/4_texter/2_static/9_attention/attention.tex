@@ -5,7 +5,7 @@ Regarding the first question, the assumption was that the class embeddings conve
 \begin{table}[h]
     \centering
     \input{5_experiments/4_texter/2_static/9_attention/top_words}
-    \caption{Top words}
+    \caption{Top words matching the static, attentive Texter's classes}
     \label{tab:5_experiments/4_texter/2_static/9_attention/top_words}
 \end{table}
 
@@ -16,7 +16,7 @@ Before that, the second question was clarified whether the attention mechanism w
 \begin{table}[h]
     \centering
     \input{5_experiments/4_texter/2_static/9_attention/kari_soft}
-    \caption{Kari}
+    \caption{Result when predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with Softmax - $\phi_c(S)$ and GT give the model's logits and ground truth for the whole entity while $\sigma(\langle e_c, e_s \rangle)$ and $\psi_c(s)$ are the class-sentence attentions and model logits when the attention mechanism is skipped, respectively}
     \label{tab:5_experiments/4_texter/2_static/9_attention/kari_soft}
 \end{table}
 
@@ -31,7 +31,7 @@ This uncertainty about the order of the sentences also exists in the final model
 \begin{table}[h]
     \centering
     \input{5_experiments/4_texter/2_static/9_attention/kari}
-    \caption{Kari}
+    \caption{Result when predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with sigmoid - $\phi_c(S)$ and GT give the model's logits and ground truth for the whole entity while $\sigma(\langle e_c, e_s \rangle)$ denotes the class-sentence attentions}
     \label{tab:5_experiments/4_texter/2_static/9_attention/kari}
 \end{table}
 
@@ -48,7 +48,7 @@ Leveraging this relationship, Figure~\ref{fig:5_experiments/4_texter/2_static/9_
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{5_experiments/4_texter/2_static/9_attention/kari_softmax}
-    \caption{Sent}
+    \caption{Illustration of how the attention values for the example entity Kari Hotakainen can be traced back to class-related keywords that influence the overall sentence embeddings - low/high class-word attentions are highlighted in purple/yellow}
     \label{fig:5_experiments/4_texter/2_static/9_attention/kari_softmax}
 \end{figure}
 

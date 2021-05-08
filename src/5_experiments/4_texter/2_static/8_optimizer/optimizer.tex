@@ -3,7 +3,7 @@ Besides the loss function, another important aspect of training is the way the g
 \begin{table}[t]
     \centering
     \input{5_experiments/4_texter/2_static/8_optimizer/grid_search}
-    \caption{Different learning rates}
+    \caption{Evaluation results for static Texters when applying different learning rates during training - all entries show the macro F1 over all classes, the best results per text set are in bold}
     \label{tab:5_experiments/4_texter/2_static/8_optimizer/grid_search}
 \end{table}
 
@@ -14,7 +14,7 @@ Directly related to the optimizer is the learning rate. Both optimizers were tes
 \begin{figure}[t]
     \centering
     \input{5_experiments/4_texter/2_static/8_optimizer/sgd_vs_adam/sgd_vs_adam}
-    \caption{Simple and attentive Texter optimized via SGD and Adam with high to low learning rates (red = 1.0, orange, yellow, black, green, blue, purple = 0.001) on the fb-owe-1-clean text set}
+    \caption{Static Texter optimized via SGD and Adam with high to low learning rates (red = 1.0, orange, yellow, black, green, blue, purple = 0.001) on the fb-owe-1-clean text set}
     \label{fig:5_experiments/4_texter/2_static/8_optimizer/sgd_vs_adam/sgd_vs_adam}
 \end{figure}
 
