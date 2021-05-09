@@ -1,50 +1,51 @@
-\begin{tabular}{| l | r | r | l |}
+%\begin{tabularx}{\textwidth}{| l | >{\hsize=.4\hsize}X | >{\hsize=.2\hsize}X | >{\hsize=.6\hsize}X |}
+\begin{tabular}{| l | r | r |}
     \hline
     
     \multicolumn{1}{|c|}{\textbf{Vectors}} &
     \multicolumn{1}{|c|}{\textbf{Emb Size}} &
-    \multicolumn{1}{|c|}{\textbf{Vocab Size}} &
-    \multicolumn{1}{|c|}{\textbf{Trained on}} \\
+    \multicolumn{1}{|c|}{\textbf{Vocab Size}} \\
+%    \multicolumn{1}{|c|}{\textbf{Trained on}} \\
     
     \hline \hline
     
-    charngram.100d & 100 & \num{874474} & 
-    ~200mio paraphrase pairs from the paraphrase database PPDB \cite{Ganitkevitch2013PPDBTP} \\
+    charngram.100d & 100 & \num{874474} \\
+%    ~200mio paraphrase pairs from the paraphrase database PPDB \cite{Ganitkevitch2013PPDBTP} \\
     
     \hline
     
-    fasttext.simple.300d & 300 & \num{111051} & 
-    ~6mio articles from English Wikipedia (en.wikipedia.org) \\
+    fasttext.simple.300d & 300 & \num{111051} \\
+%    ~6mio articles from English Wikipedia (en.wikipedia.org) \\
     
     \hline
     
-    fasttext.en.300d & 300 & \num{2519370} & 
-    190k articles from Wikipedia in simplified English (simple.wikipedia.org) \\
+    fasttext.en.300d & 300 & \num{2519370} \\
+%    190k articles from Wikipedia in simplified English (simple.wikipedia.org) \\
     
     \hline
     
-    glove.6B.50d  &  50 & \multirow{4}{*}{\num{400000}} & \multirow{4}{*}{6bn tokens from Wikipedia and Gigaword 5 \cite{Gigaword}} \\
-    glove.6B.100d & 100 &                               & \\
-    glove.6B.200d & 200 &                               & \\
-    glove.6B.300d & 300 &                               & \\
+    glove.6B.50d  &  50 & \multirow{4}{*}{\num{400000}} \\ % & \multirow{4}{*}{6bn tokens from Wikipedia and Gigaword 5 \cite{Gigaword}} \\
+    glove.6B.100d & 100 &                               \\ % & \\
+    glove.6B.200d & 200 &                               \\ % & \\
+    glove.6B.300d & 300 &                               \\ % & \\
     
     \hline
     
-    glove.twitter.27B.25d  &  25 & \multirow{4}{*}{\num{1917494}} &
-    \multirow{4}[*]{27bn tokens from 2bn Twitter tweets}{}\\
-    glove.twitter.27B.50d  &  50 &                                & \\
-    glove.twitter.27B.100d & 100 &                                & \\
-    glove.twitter.27B.200d & 200 &                                & \\
+    glove.twitter.27B.25d  &  25 & \multirow{4}{*}{\num{1917494}} \\ % &
+%    \multirow{4}[*]{27bn tokens from 2bn Twitter tweets}{}\\
+    glove.twitter.27B.50d  &  50 &                                \\ % & \\
+    glove.twitter.27B.100d & 100 &                                \\ % & \\
+    glove.twitter.27B.200d & 200 &                                \\ % & \\
     
     \hline
     
-    glove.42B.300d & 300 & \num{1917494} & 
-    42bn tokens from Common Crawl \cite{CommonCrawl} \\
+    glove.42B.300d & 300 & \num{1917494} \\ % &
+%    42bn tokens from Common Crawl~\cite{CommonCrawl} \\
     
     \hline
     
-    glove.840B.300d & 300 & \num{2196017} & 
-    840bn tokens from Common Crawl \\
+    glove.840B.300d & 300 & \num{2196017} \\ % &
+%    840bn tokens from Common Crawl \\
     
     \hline
 \end{tabular}

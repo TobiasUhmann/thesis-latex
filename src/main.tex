@@ -44,11 +44,11 @@
 
     \begin{abstract}
 
-        Knowledge graphs store facts about objects in a graph structure. The graph's nodes represent entities while its edges represent relationsships between the objects. For example, the fact "Germany is part of the EU" would be stored as an edge representing the relationship "part of" that connects the two nodes representing "Germany" and "EU", respectively. Typical application scenarios include voice assistants and recommender systems. Large knowledge graphs are typically incomplete and need to be updated continuously. AI can support in this task of knowledge graph completion by suggesting probable facts it can infer from the existing graph. Information beyond the plain graph structure, such as textual entity descriptions, can be leveraged to improve the predictions.
+        Knowledge graphs store facts about objects in a graph structure. The graph's nodes represent entities while its edges represent relationsships between the objects. For example, the fact "Germany is part of the EU" would be stored as an edge representing the relationship "part of" that connects the two nodes representing "Germany" and "EU". Typical application scenarios include voice assistants and recommender systems. Large knowledge graphs are typically incomplete and need to be updated continuously. AI can support in this task of knowledge graph completion by suggesting probable facts it can infer from the existing graph. Information beyond the plain graph structure, such as textual entity descriptions, can be leveraged to improve the predictions.
 
-        Most recent knowledge graph completion models approached the problem successfully by embedding the graph in a low-dimensional vector space. Further extensions for those embedding-based approaches make use of textual information to enable predictions about open-world entities for whom no facts are known in the existing graph. Alternative to embedding-based approaches, symbolic rule-base systems capture patterns in the graph structure in form of logical rules. Recent works have shown that rule-based models can achieve similar results to embedding-based approaches and have the advantage that model's rule-based decisions are comprehensible by humans.
+        Most recent knowledge graph completion models approached the problem successfully by embedding the graph in a low-dimensional vector space. Further extensions for those embedding-based approaches make use of textual information to enable predictions about open-world entities for whom no facts are known in the existing graph. Alternative to embedding-based approaches, symbolic, rule-based systems capture patterns in the graph structure in form of logical rules. Recent works have shown that rule-based models can achieve similar results to embedding-based approaches and have the advantage that the model's rule-based decisions are comprehensible by humans.
 
-        In this work, a rule-based knowledge graph completion model is combined with a text-based model to produce comprehensible predictions, improve performance using textual information and support open-world entities. In addition to presenting the rules that led to a prediction, the text-based component leverages an attention-mechanism and state-of-the-art NLP models to give an explanation for its text-based decision. It is shown that the ensemble model produces better results than the rule- and text-based components on their own.
+        In this work, a rule-based knowledge graph completion model is combined with a text-based model to produce comprehensible predictions, improve performance using textual information and support prediction for open-world entities. In addition to presenting the rules that led to a prediction, the text-based component leverages an attention-mechanism and state-of-the-art NLP models to give an explanation for its text-based decision. It is shown that the ensemble model produces better results than the rule- and text-based components on their own.
 
     \end{abstract}
 
@@ -86,6 +86,7 @@
     \input{6_conclusion/conclusion}
 
 
+    \appendix
     \chapter{Appendix}
     \label{ch:a_appendix}
     \input{a_appendix/appendix}

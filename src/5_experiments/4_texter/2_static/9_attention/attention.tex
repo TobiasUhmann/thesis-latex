@@ -3,8 +3,9 @@ In the course of all the described experiments, the performance of both the simp
 Regarding the first question, the assumption was that the class embeddings converge against keywords that are particularly meaningful for a class during training. To confirm this conjecture, the class embeddings $class_c$, of a trained texter were scalar multiplied with all word embeddings $word_w$ of the vocabulary, the resulting scalar products $\langle class_c, word_w \rangle$ were sorted, and the values with the largest absolute values $|\langle class_c, word_w \rangle|$ were examined for plausibility. Thereby, the indices $1 <= c <= |C|$ and $1 <= w <= |V|$ specify one of the classes from the class set $C$ and a word from the vocabulary $V$, respectively. It was expected that among these top candidates mainly words would be found that clearly speak for or against the corresponding class. Table shows the top words the attentive Texter reacts to after being trained on the CDE split with cde-irt-5-clean texts.
 
 \begin{table}[h]
-    \centering
-    \input{5_experiments/4_texter/2_static/9_attention/top_words}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/4_texter/2_static/9_attention/top_words}
+    }
     \caption{Top words matching the static, attentive Texter's classes}
     \label{tab:5_experiments/4_texter/2_static/9_attention/top_words}
 \end{table}

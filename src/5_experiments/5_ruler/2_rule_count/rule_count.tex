@@ -1,8 +1,9 @@
 Concerning the Ruler's training, the number of mined rules should play the decisive role over the success in inference. With increasing searching, new rules should be mined steadily in the graph up to a certain point. The expectation was that at the beginning most rules should be found per time interval and that the rate at which new rules are added should flatten over time until the information from the graph structure is exhausted. However, it was also assumed that the number of useful rules with $conf_{min} > 0.5$ would be exhausted earlier and that only rules with lower confidence would be found thereafter. Until then, recall was expected to grow quickly. How the quality of the rules would change during the finding process was not certain. It was assumed that rules with high support would be found at the beginning, so that the support of new rules would decrease in the course of mining. Regarding the confidence, there was no clear expectation. Overall, it was assumed that the changing quality during the finding process should have a negligible effect compared to the increasing recall and that F1 and mAP should therefore increase continuously. A decrease in F1 and mAP was excluded because rules with $conf_{min} > 0.5$ should generally have a positive effect. Table~\ref{tab:5_experiments/5_ruler/2_rule_count/results} shows the emprical results.
 
 \begin{table}
-    \centering
-    \input{5_experiments/5_ruler/2_rule_count/results}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/5_ruler/2_rule_count/results}
+    }
     \caption{Ruler test results for rule sets after varying rule mining times with $supp_{min} = 2$ and $conf_{min} = 0.5$}
     \label{tab:5_experiments/5_ruler/2_rule_count/results}
 \end{table}

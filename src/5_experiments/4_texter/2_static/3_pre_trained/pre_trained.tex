@@ -4,7 +4,7 @@ When pre-trained embeddings are provided, Texter's embedding block initializes a
 
 Just as the models used in pre-training use different tokenizers, the resulting pre-trained embeddings also differ. In the experiment at hand, a total of 13 variants of three different types of pre-trained embedding sets were tried. The embedding sets vary in embedding size, vocabulary size and the text corpus pre-training was conducted on. Table~\ref{tab:5_experiments/4_texter/2_static/3_pre_trained/vector_sets} lists all embedding sets tried during the experiment.
 
-\begin{table}[h]
+\begin{table}[t]
     \centering
     \input{5_experiments/4_texter/2_static/3_pre_trained/vector_sets}
     \caption{Pre-trained word embedding sets considered for evaluation}
@@ -25,9 +25,9 @@ In the experiment all 13 embedding sets were evaluated. For brevity, Table~\ref{
 
 The expected outcome of the experiment was a significant performance increase for both, simple and attentive Texter, just as other works did. Between the embedding sets, medium deviations were assumed, depending on how similar the data during pre-training resembled those of the IRT text sets. In case of the text sets with CDE and IRT sentences taken from Wikipedia, the GloVe embeddings were therefore the favorite candidate. Regarding the embedding type, there were no clear expectations, as both a large GloVe vocabulary and compound charachter n-grams should be able to cover the vocabulary of the natural language texts. However, it was assumed that a larger text corpus used for pre-training would lead to a noteable performance improvement, for example for fasttext.en.300d compared to fasttext.simple.300d or glove.840B.300d compared to glove.42B.300d. Finally, it was expected that an increase in embedding size would have a similar strong effect as for randomly initialized embeddings.
 
-\begin{table}[h]
-    \input{5_experiments/4_texter/2_static/3_pre_trained/grid_search}
+\begin{table}[t]
     \makebox[\textwidth][c]{
+        \input{5_experiments/4_texter/2_static/3_pre_trained/grid_search}
     }
     \caption{Evaluation results for static Texter with various pre-trained embedding sets - all entries show the macro F1 over all classes, the best results per text set are in bold}
     \label{tab:5_experiments/4_texter/2_static/3_pre_trained/grid_search}
