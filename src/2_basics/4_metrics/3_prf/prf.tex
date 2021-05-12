@@ -1,20 +1,20 @@
-\emph{Precision}, \emph{recall} and \emph{F1} score focus on the quality of positive predictions. Precision gives an impression of how reliable positive predictions are, recall tells how many of the actual positive elements are declared as such, and F1 is a measure that combines both precision and recall in one value. All three metrics take values between 0 and 1 with higher being better.
+\emph{Precision}, \emph{recall} and \emph{F1} focus on the quality of positive predictions. Precision gives an impression of how reliable positive predictions are, recall tells how many of the actual positive elements are declared as such, and F1 is a measure that combines both precision and recall in one value. All three metrics take values from $[0, 1]$ whereby higher is better.
 
-Precision is the ratio of true positive predictions to all positive predictions as noted in~\ref{eq:2_basics/4_metrics/3_prf/precision}. In the above cat example, correctly identifying three out of five cats but also classifying one dog as a cat results in a precision of $3 / (3 + 1) = 0.75$. The two missed out cats do not play a role. Precision is also called \emph{positive predictive value} (PPV).
+Precision, also known as \emph{positive predictive value (PPV)}, is the ratio of true positive predictions to all positive predictions as noted in~\ref{eq:2_basics/4_metrics/3_prf/precision}. False negatives, that means objects whose condition is actually true that have been missed out, are not considered. If a model does not produce any predictions, precision is undefined and has to be defined in accordance with the evaluation scenario. For example, in that case precision might be defined as 1 if the dataset does not contain any ground truth positives and 0 otherwise, because the model should not produce any predictions if, and only if, there are no ground truth positives.
 
 \begin{align}
     Precision = \frac{TP}{TP + FP}
     \label{eq:2_basics/4_metrics/3_prf/precision}
 \end{align}
 
-Recall, on the other hand, compares the number of true positives the the number of all ground truth positives as shown in~\ref{eq:2_basics/4_metrics/3_prf/recall}. Looking again at the cat example, identifying three out of five cats in total leads to a recall of $3 / (3 + 2) = 0.6$. The dog that was mistaken as a cat does not count in. Recall is also referred to as \emph{true positive rate} (TPR).
+Recall on the other hand, also known as \emph{true positive rate (TPR)}, compares the number of true positives to the number of all ground truth positives as shown in~\ref{eq:2_basics/4_metrics/3_prf/recall}. False positives, that means objects wrongly classified as positives, do not count in. If the evaluated datset does not contain any ground truth positives, recall is undefined and might be specified as 1, because the model did not miss out any ground truth positives.
 
 \begin{align}
     Recall = \frac{TP}{TP + FN}
     \label{eq:2_basics/4_metrics/3_prf/recall}
 \end{align}
 
-Precision and recall are directly dependent on each other. A cautious model that only predicts positives when it is absolutely sure achieves high precision but low recall. Conversely, it is easy to achieve optimal recall by making positive predictions for all elements, though precision will suffer in that case. The F score serves as a measure that reaches a high value when a reasonable balance between precision and recall is found. Equation~\ref{eq:2_basics/4_metrics/3_prf/f_beta} shows the formula for the general $F_\beta$ score whose parameter $\beta$ determines whether the focus should rather be shifted to precision or recall. Setting $\beta = 1$ yields the $F_1$ score in~\ref{eq:2_basics/4_metrics/3_prf/f_1} as the harmonic mean in which precision and recall are equally weighted.
+Precision and recall are directly dependent on each other. A cautious model that only predicts positives when it is absolutely sure achieves high precision but low recall. Conversely, it is easy to achieve optimal recall by making positive predictions for all elements, though precision will suffer in that case. The \emph{F score} serves as a measure that considers both goals that reaches a high value when a reasonable balance between precision and recall is found. Equation~\ref{eq:2_basics/4_metrics/3_prf/f_beta} shows the formula for the general $F_\beta$ score whose parameter $\beta$ determines whether the focus should rather be shifted towards precision or recall. Setting $\beta = 1$ yields the $F_1$ score in~\ref{eq:2_basics/4_metrics/3_prf/f_1} as the harmonic mean in which precision and recall are weighted equally.
 
 \begin{align}
     F_\beta &= (1 + \beta^2) \cdot \frac{Precision \cdot Recall}{\beta^2 \cdot Precision + Recall}
@@ -23,14 +23,12 @@ Precision and recall are directly dependent on each other. A cautious model that
     \label{eq:2_basics/4_metrics/3_prf/f_1}
 \end{align}
 
-When including more than one class in the evaluation, for example when predicting for each photo whether it is a cat, a dog or a horse, the question arises how to combine the results of the respective classes. Three of several possibilities are as follows:
+Oftentimes, the predictions that should be made for a set of objects can be divided into disjunct subsets. For example, in a multi-label classification scenario, metrics can be calculated class-wise and when predicting facts for a set of entities, metrics can be calculated for each individual entity. In these cases there are multiple ways to calculate the metrics for the overall dataset:
 
 \begin{itemize}
-    \item Not combining the class results at all preserves the class-wise information but convoluted with a large number of classes.
+    \item Throw all predictions together and calculate the metrics over all predictions. This approach yields so-called \emph{micro} metrics, for example micro precision, recall and F1.
 
-    \item Merging all classes' predictions and calculating precision, recall and F score over all predictions is called \emph{micro} averaging. Underrepresented classes, which typically show poorer performance due to lack of training data, are less reflected in micro precision, recall and F score.
+    \item Calculate the metrics per subset, for example class-wise, and specify the resulting values as such. This approach can yield detailed insights, but potentially leads to many key figures.
 
-    \item Calculating each class' scores individually and averaging the class-wise metrics yields \emph{macro} precision, recall and F score. In this case, underrepresented classes have the same impact as classes with many ground truth positives. Macro values are therefore often worse than the corresponding micro values.
+    \item Calculate the metrics per subset and average the results, yielding the so-called \emph{macro} metrics.
 \end{itemize}
-
-For very rare classes, there may be zero positives within a subset of the entire data set. If a good model does not predict false positives in this case, precision is undefined. In the context of a macro averaging, precision could be considered 0 because the model does not make a correct prediction, it could be defined as 1 because the model does not make an incorrect prediction, or the class could be excluded from averaging. Similarly, a withholding model might always make negative predictions so that recall is undefined. Therefore, the same considerations must be made for Recall and F Score.

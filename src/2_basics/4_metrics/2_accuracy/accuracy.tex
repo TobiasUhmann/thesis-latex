@@ -1,7 +1,8 @@
-Nevertheless, a first metric, \emph{accuracy} should be defined -- a common, general metric that takes both true positives and true negatives into account equally. In case of binary classification, accuracy is the rate of correct predictions over all predictions:
+One of the most common general-purpose metrics is \emph{accuracy}, which measures a models overall capability to make correct positive and negative predictions. In case of binary classification, accuracy is the rate of correct predictions over all predictions:
 
-\[
+\begin{align}
     Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
-\]
+    \label{eq:2_basics/4_metrics/2_accuracy/accuracy}
+\end{align}
 
-Colloquially speaking, accuracy answers the question of how good predictions are in general. In terms of the image classification example from before, classifying three out of five cat images as cats and four out of five dogs as dogs, this leads to an accuracy of $\frac{3 + 4}{3 + 4 + 2 + 1} = 0.7$. Although accuracy is a useful and intuitive metric in general, it can be misleading when it comes to inbalanced classes. For example, if nine out of ten animal photos showed dogs, a model could simply reach 90\% accuracy by always predicting the predominant dog class. To counteract this, balanced accuracy~\cite{Mower2005PREPMtPR} can be used instead. However, as mention earlier, for KGC, metrics that focus on positive predictions are preferred.
+Colloquially speaking, accuracy answers the question of how good predictions are in general. It takes values in $[0, 1]$, whereby higher is better. However, although accuracy is a useful and intuitive metric in general, it can be misleading when it comes to inbalanced classes, because a model can simply reach high accuracy by always predicting the predominant class. For example, if nine out of ten ground truth values are false, a model could reach 90\% accuracy by always predicting false. To counteract this, balanced accuracy~\cite{Mower2005PREPMtPR} can be used instead. However, as mention earlier, as negative predictions do not play a big role for KGC models in an open-world scenario, accuracy will only play a minor role in this work, anyway.

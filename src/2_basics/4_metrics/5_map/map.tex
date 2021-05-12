@@ -1,13 +1,24 @@
-precision, recall, f1 do not consider order of predictions
-power yields probabilities for facts, makes sense to rank probable facts higher
-like google search
+Another metrics that considers ranking is \emph{average precision (AP)}. In contrast to MRR it considers not only the top-most relevant result, but all of relevant results, including those not retrieved if the results are limited to a certain number. Given an object for which there are a set of relevant items $R$ and a model that predicts a set of items $P$, average precision is calculated as per Equation~\ref{eq:2_basics/4_metrics/5_map/ap}, in which $Prec@k$ is the precision among the first $k$ retrieved items and $rel@k$ is 1 if the $k$th item is relevant and 0 otherwise.
 
-\[
-    AP@n = \frac{1}{GTP} \sum_{k=1}^{n} P@n \cdot rel@n
-\]
+\begin{align}
+    AP = \frac{1}{|R|} \sum_{k=1}^{|P|} Precision@k \cdot rel@k
+    \label{eq:2_basics/4_metrics/5_map/ap}
+\end{align}
 
-then, mean over all entities = mean of all average precisions = mAP
+Figure~\ref{fig:2_basics/4_metrics/4_mrr/mrr_map} illustrates the calculation of average precision by an example modeled after a possible list of facts predicted by the Power model when applied to the example entity Lisa from the graph in Chapter~\ref{ch:1_introduction}. Given the list of four predicted facts, sorted by confidence and covering two relevant facts, average precision for Lisa is calculated by adding up the $Precision@k$ values of the relevant facts and dividing the sum by the total number of relevant facts, including the one missing from the predictions.
 
-\[
-    mAP = \frac{1}{N} \sum_{i=1}^{N} AP_i
-\]
+\begin{figure}[t]
+    \centering
+    \includegraphics{2_basics/4_metrics/5_map/mrr_map}
+    \caption{Calculation of average precision by example of a list of fact predictions, ranked by confidence and containing two of the totally three relevant facts - relevant facts are in green, irrelevant ones in red and the missed out relevant one in grey}
+    \label{fig:2_basics/4_metrics/5_map/mrr_map}
+\end{figure}
+
+As for the MRR, mAP takes values in $(0, 1]$ and is not defined if there are no relevant items for an object. Again, the latter case might be handled by ignoring such objects. When evaluating $n$ objects, each with $AP_i$ with $1 <= i <= n$, \emph{mean average precision (mAP)} is calculated as the overall average value:
+
+\begin{align}
+    mAP = \frac{1}{n} \sum_{i=1}^{n} AP_i
+    \label{eq:2_basics/4_metrics/5_map/map}
+\end{align}
+
+
