@@ -1,13 +1,24 @@
-\section{Text-Based}
-\label{sec:3_related_work/1_text_based}
-\input{3_related_work/1_text_based/text_based}
+Not surprisingly, many different approaches to knowledge graph completion have been developed. These can be categorized according to various criteria, such as whether they operate on the pure graph or use auxiliary information, or whether they are primarily aimed at predicting facts or are designed for a downstream task. Basically, however, symbolic and embedding-based approaches can be distinguished, which also roughly covers the chronological order.
+
+The classical, symbolic approaches consider graphs in their "natural" form where entities and relations are clearly distinguishable objects. The classic example of a symbolic approach is a rule miner that finds logical rules can then be used to predict new facts. Advantages of symbolic approaches are that they do not require training, since they are directly applicable to graphs. Furthermore, as for the example rule, they process the symbols in a way that is comprehensible to humans, which also allows manually adding general and domain-specific knowledge. A limitation of distinct symbols is that similarities between them cannot easily be leveraged. For example, rules for the entity $City$ do not automatically apply to the entity $Town$. Another drawback is poor scalability due to long computation times for large graphs.
+
+In contrast to symbolic approaches are the embedding-based ones that originate from the field of NLP where the concept is used to embed words in a continuous, low-dimensional vector space. Analogously, KGC models embed the entities and relations of a graph using floating-point vectors, which can be processed very efficiently by modern processors. Moreover, similarities between entities and relations can be covered. For example, the entity $City$ could be assigned a similar embedding as $Town$. Then, when processing $Town$-related knowledge, there is a good chance that patterns related to $City$ can be used. One disadvantage of embedding-based models is that they must first be trained extensively until they reach their desired relative position to other embeddings, which requires large amounts of training data. Furthermore, the learned embeddings are not comprehensible to humans, so that the decision of the model cannot be understood.
+
+Besides the pure facts of a knowledge graph, in practice there is often additional information about the entities and relations such as textual descriptions that can be used in KGC. In particular, such additional information enables the consideration of open-world scenarios in which predictions shall be made for entities for which no facts exist are known.
+
+In the following, Section~\ref{sec:3_related_work/1_symbolic} reviews symbolic approaches -- in particular the rule-based approach relevant to this work. Subsequently, Section~\ref{sec:3_related_work/2_embedding_based} gives an overview of different approaches of the widespread, state-of-the-art embedding-based models. Finally, section~\ref{sec:3_related_work/3_additional_information} shows how embedding-based models incorporate additional information, such as textual entity descriptions, to improve performance before Chapter~\ref{ch:4_approach} continues to explain how this work's Power model uses additional information in combination with a rule-based model.
 
 
-\section{Rule-Based}
-\label{sec:3_related_work/2_rule_based}
-\input{3_related_work/2_rule_based/rule_based}
+\section{Symbolic}
+\label{sec:3_related_work/1_symbolic}
+\input{3_related_work/1_symbolic/symbolic}
 
 
-\section{Combined}
-\label{sec:3_related_work/3_combined}
-\input{3_related_work/3_combined/combined}
+\section{Embedding-Based}
+\label{sec:3_related_work/2_embedding_based}
+\input{3_related_work/2_embedding_based/embedding_based}
+
+
+\section{Using Additional Information}
+\label{sec:3_related_work/3_additional_information}
+\input{3_related_work/3_additional_information/additional_information}
