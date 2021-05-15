@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        cycle list name = tb,
+        grid = both,
+        legend pos = outer north east,
+        scale = 0.6,
+        xlabel = epoch,
+        ylabel = F1,
+    ]
+        \addplot table [x = Step, y = Value, col sep = comma] {5_experiments/3_texter/2_static/plot_valid_curves/a_simple/fb-owe-1-clean.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {5_experiments/3_texter/2_static/plot_valid_curves/a_simple/fb-irt-30-clean.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {5_experiments/3_texter/2_static/plot_valid_curves/a_simple/fb-irt-15-clean.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {5_experiments/3_texter/2_static/plot_valid_curves/a_simple/fb-irt-5-clean.csv};
+        \addplot table [x = Step, y = Value, col sep = comma] {5_experiments/3_texter/2_static/plot_valid_curves/a_simple/fb-irt-1-clean.csv};
+    \end{axis}
+\end{tikzpicture}

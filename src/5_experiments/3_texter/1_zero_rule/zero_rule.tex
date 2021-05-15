@@ -1,0 +1,27 @@
+Zero-rule baselines are naive models that give an idea of how well a problem could be tackled by a naive approach, such as simply guessing random solutions. Any model performing worse than a zero-rule baseline cannot be considered useful. For example, in a coin toss, one would already achieve 50\% accuracy, precision and recall by randomly guessing between heads and tails. A coin-flip predicting model that does not exceed that performance would not be considered useful.
+
+The purpose of this subsection is to determine the absolute baseline for the classification problem at hand that the Texter has to exceed. Therefore, the best zero-rule for the binary multi-label classification the Texter dataset poses has to be found. Randomly guessing with a 50:50 chance which of an entity's classes hold true is one naive strategy, but there are better ones when it comes to unbalanced classes such as the Texter dataset's ones. For example, for a class with an 80:20 chance to be true, randomly guessing true in 80 of 100 cases leads to better accurracy than choosing equally between true and false.
+
+In general, performance for a random guessing strategy can be calculated. For example, accuracy in an unbalanced classification scenario with two possible outcomes 0 and 1 can be calculated as $P(\hat{y} = y) = P(\hat{y} = 0) \cdot P(y = 0) + P(\hat{y} = 1) \cdot P(y = 1)$ where $y$ is the ground truth outcome and $\hat{y}$ is the predicted outcome. While $P(y = 0)$ and $P(y = 1)$ depend on the regarded class' outcome distribution, the values of $P(\hat{y} = 0)$ and $P(\hat{y} = 1)$, and thus the probability to predict the ground truth value, depend on the guessing strategy. In this evaluation, four potential guessing strategies were considered with respect to each class:
+
+\begin{itemize}
+    \item \emph{Uniformly} guessing between 0 and 1, i.e. $P(\hat{y} = 0)$ = $P(\hat{y} = 1)$ = 0.5
+
+    \item \emph{Stratified} guessing, which means that each outcome is guessed according to its frequency, i.e. $P(\hat{y} = 0)$ = $P(y = 0)$ and $P(\hat{y} = 1)$ = $P(y = 1)$
+
+    \item Always guessing the \emph{most frequent} outcome, i.e.  $P(\hat{y} = 0)$ = 1 and $P(\hat{y} = 1)$ = 0 if 0 is the most common outcome
+
+    \item \emph{Constantly guessing 1}, i.e. $P(\hat{y} = 0)$ = 0 and $P(\hat{y} = 1)$ = 1
+\end{itemize}
+
+Similarly, precision, recall and F1 could also be calculated for each class of the Texter dataset. Averaging each class' metrics over all classes would finally yield each zero-rule strategy's performance for the whole Texter dataset. For this evaluation, the zero-rule strategies were implemented and measured instead. The values in~\ref{tab:5_experiments/3_texter/1_zero_rule/results} were gathered by running each of the four zero-rule strategies ten times and averaging the values. For each zero-rule strategy, performance is shown for the most common class, the least common class and the average over all classes. As shown before, the Texter datasets' classes arrays are very sparse, so it was expected that constantly predicting the most common output false for all classes would lead to the highest accurracy. However, since F1 is the more relevant metric in regard to predicting true positives, constantly predicting true was expected to be the best zero-rule strategy.
+
+\begin{table}[h]
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/1_zero_rule/results}
+    }
+    \caption{Evaluation of various zero-rule baselines on the Texter datasets derived from the CDE and FB splits - the best average values per split are marked bold (column-wise)}
+    \label{tab:5_experiments/3_texter/1_zero_rule/results}
+\end{table}
+
+As it turned out, constantly predicting true for all classes is indeed the best random guessing strategoy for the Texter dataset derived from the FB split, leading to an F1 score of 9.43\% which serves as the absolute baseline for any Texter predicting facts for the FB split. Surprisingly, the best zero-rule strategy for the Texter dataset derived from the CDE split is randomly guessing between true and false, leading to over 20.19\% F1 score, which is almost twice as much as the value achieved when constantly guessing true. Those two percentages have to be kept in mind when regarding any performances achieved by actually learning models.

@@ -1,0 +1,8 @@
+The above presented accuracy, precision, recall and F1 metrics are useful in a classification task where no priorization among the predictions is required. However, in an \emph{information retrieval (IR)} scenario, such as a web search, for example, a model might yield a sorted list of predictions where the ranking actually plays a major role. Usually, IR scenarios do not differentiate between positive and negative predictions, but rather between more or less relevant predictions that are returned by decreasing relevance.
+
+In those cases it is more important to rank relevant items as high as possible among the overall results than it is assign the correct probability, or class if there is probability threshold, to each item. When it is most important to receive a correct top-most prediction for each query, the \emph{mean reciprocal rank (MRR)} is the metric of choice. Given the results of $n$ queries it is calculated as per Equation~\ref{subsec:2_basics/2_metrics/3_mrr}, where $rank_i$ is the rank of the top-most relevant item among the predictions of the $i$th query results. Each reciprocal rank, and thus the mean over all reciprocal ranks, lies in $(0, 1]$, with higher being better. If a query result does not contain any relevant item, the reciprocal rank is undefined. Depending on the use case, the object might be skipped or assigned a specific value. A typical application scenario for MRR would be the evaluation of a voice assistant that has to respond with the single most relevant answer it gets from a model.
+
+\begin{align}
+    MRR = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{rank_i}
+    \label{eq:2_basics/2_metrics/3_mrr/mrr}
+\end{align}

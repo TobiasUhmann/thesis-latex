@@ -1,0 +1,40 @@
+When designing and implementing machine learning models, scientists act on experience when it comes to architectural decisions and hyperparameter choices. In the early stages of a model, a trained eye on processing examples and observing the loss curve enable rapid progress. However, as the model matures, it becomes essential to quantify its performance with respect to comprehensive validation and test sets. Besides the selection of appropriate validation and test data, it is important to choose a meaningful metric that fits the problem. For example, when all of a models predictions are equally relevant, one would aim for an overall high precision, whereas a use case that involves a human processing the results manually, such as a web search, for example, one would choose a ranking metric that rewards good results at the top of a list.
+
+All considered metrics are defined by terms from the so-called confusion matrix shown in Figure~\ref{fig:2_basics/2_metrics/1_confusion_matrix}. The matrix applies to the general scenario in which predictions are made about a certain condition for a set of objects. Thereby, an object's actual condition can be positive or negative, also referred to as its \emph{ground truth}, as can be the object's predicted condition. A prediction is \emph{true}, or correct, if its predicted condition is consistent with the object's actual condition and \emph{false} otherwise. Furthermore, objects whose prediction is positive are called \emph{positives}, while objects whose predictions are negative are called \emph{negatives}. Depending on their actual and their predicted condition, each object falls into one of four distinct categories:
+
+\begin{figure}[t]
+    \centering
+    \includegraphics{2_basics/2_metrics/confusion_matrix}
+    \caption{Confusion Matrix dividing objects into four distinctive groups depending on their actual and predicted condition}
+    \label{fig:2_basics/2_metrics/1_confusion_matrix}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{\emph{True positives}} (TP) are objects for which the regarded condition is positive and whose predicted conditions is also positive.
+
+    \item \textbf{\emph{False positives}} (FP) are objects for which the regarded condition is positive but whose predicted condition is negative. This type of error is referred to as a \emph{Type I error}.
+
+    \item \textbf{\emph{False negatives}} (FN) are objects for which the condition is actually negative but whose predicted condition is positive. This second kind of errornous prediction is also referred to as \emph{Type II error}.
+
+    \item \textbf{\emph{True negatives}} (TN) are objects for which the condition is actually negative and whose predicted condition is also negative.
+\end{itemize}
+
+Although it is generally desirable to obtain as many correct predictions as possible, true positives and true negatives are often differently important and errors of type one and two differently severe. In medicine, for example, not recognizing a disease could be much worse than accidentally diagnosing a healthy person as ill. Conversely, not recognizing guilt in a lawsuit might be less serious than convicting someone who is innocent. In the context of knowledge graph completion under the open-world assumption, the focus lies on true positives since the KGC model cannot make any qualified statements about false facts without negative samples in the graph. Omitting a fact from the prediction only means that the model has too little evidence for that fact, not that it can falsify it.
+
+%The purpose of this section is to explain those metrics relevant for this work. Section~\ref{fig:2_basics/2_metrics/1_confusion_matrix} defines basic terms used by the following sections. Sections~\ref{subsec:2_basics/2_metrics/1_accuracy} and~\ref{subsec:2_basics/2_metrics/2_prf} then present the general purpose metrics accuracy, precision, recall and F1 score while Sections~\ref{subsec:2_basics/2_metrics/3_mrr} and~\ref{subsec:2_basics/2_metrics/4_map} discuss the ranking metrics MRR and mAP\@.
+
+\subsection{Accuracy}
+\label{subsec:2_basics/2_metrics/1_accuracy}
+\input{2_basics/2_metrics/1_accuracy/accuracy}
+
+\subsection{Precision, Recall and F1}
+\label{subsec:2_basics/2_metrics/2_prf}
+\input{2_basics/2_metrics/2_prf/prf}
+
+\subsection{Mean Reciprocal Rank}
+\label{subsec:2_basics/2_metrics/3_mrr}
+\input{2_basics/2_metrics/3_mrr/mrr}
+
+\subsection{Mean Average Precision}
+\label{subsec:2_basics/2_metrics/4_map}
+\input{2_basics/2_metrics/4_map/map}

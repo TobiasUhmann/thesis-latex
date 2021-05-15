@@ -1,0 +1,38 @@
+Modern NLP models pick up where classical models with static word embedding reach their limits when it comes to long sentences in which the relationship between the words is even more important for the words', and thus, the overall sentence's meaning. For this purpose, the particularly successful transformers use internal attention mechanisms that learn for each word which other words in the sentence are particularly relevant and should therefore be included in the word embedding. This results in a context-dependent embedding for each occurrence of a word.
+
+Besides embedding usual words and some standard tokens that represent unknown words and paddings, the here employed DistilBERT also supports the special [CLS] and [SEP] tokens introduced by the BERT model. The [CLS] token's purpose is to capture the meaning of the sentence as a whole during training, while the [SEP] token is used to separate subsequent sentences, but does not play a role in Power's Texter. In addition, the Texter supports the definition of custom tokens, such as the ones used for marking or masking in the IRT text sets. This additional information should lead to a significant performance increase, even when the entity mention is masked, as it preserves the information what the surrounding sentence is about.
+
+For the Texter's architecture the change from a lookup table for embeddings to the use of DistilBERT does not mean a big change as it only affects the embedding block. The classification block and, in  case of the attentive version, the attention block remain the same. In particular, design choices from the experiments with static word embeddings, like the usage of the sigmoid funtion in the attention block, are kept. During training, however, the optimizer has to be adjusted to accommodate the deep transformers within the embedding block.
+
+After the switch to DistilBERT, the training of the texter takes many times longer. However, the training can be terminated after 50 epochs as in the following experiments. Table~\ref{tab:5_experiments/3_texter/3_context/results} shows the evaluation results for the final Texter after that time. In addition to the previously regarded macro F1 score over all predictable classes, Table~\ref{tab:5_experiments/3_texter/3_context/results} also provides F1 and mAP in respect to all facts from the Power split - including those not predictable by the Texter. It is important to note that the latter are averaged over the test entities instead of the Texter's classes. Therefore, the F1 score against all facts are not necessarily worse than the F1 score calculated on the predictable facts, because, while the unpredictable facts make it more difficult to achieve a high F1 across all entities, at the same time the drag-down effect of the rare classes is eliminated. In addition to the contextual Texters' evaluation results, the static Texters' final results from Section~\ref{subsec:5_experiments/3_texter/2_static} are given for comparison where available. Furthermore, Appendix~\ref{ch:a_appendix} contains the detailed Table~\ref{tab:a_appendix/context_final_prec_rec} that provides the precision and recall values.
+
+\begin{table}
+    \centering
+    \input{5_experiments/3_texter/3_context/results}
+    \caption{Final evaluation of contextual Texter on all text sets - results of static Texter given for comparison, contextual Texter evaluated against predicted facts (F1) and all facts (F1 all, mAP all)}
+    \label{tab:5_experiments/3_texter/3_context/results}
+\end{table}
+
+The final evaluation results reveal some interesting facts. First of all, the contextual Texter performs better on clean text sets than the static Texter most of the time, but not always. While the contextual Texter performs better on almost all IRT text sets, it does not for the CDE and OWE sentences. In fact, those two text sets are the best examples for a trend that can also be found on the IRT text sets: It seems that the attentive Texter benefits more from contextual word embeddings than the simple model. The next big point is, that markings bring great improvements as it was expected, while the masked texts test are in between the clean and marked ones in terms of F1. In terms of mAP, however, the masked text sets lead to better predictions than their marked counterparts in multiple cases. Speaking of mAP, a final observation is, that evaluating against all facts from the Power split leads to significantly worse results on the FB split than it does on the CDE split, which is due to the fact that the FB classes cover a smaller portion of the larger FB split.
+
+Overall, it can be stated, that the Texter performs better when using contextual word embeddings, especially when marked texts are available. Therefore, the contextual Texter is the default in the Power model. However, depending on the given text set as well as hardware support, static word embeddings might be a noteworthy alternative. When comparing the simple and attentive versions of the contextual Texter, the simple one yields slightly better results. Still, the attentive Texter is kept due to its ability to compare its ability to rank its input sentences.
+
+In the following, Subsections~\ref{subsubsec:5_experiments/3_texter/3_context/1_sent_len}~--~\ref{subsubsec:5_experiments/3_texter/3_context/3_optimizer} will look at some experiments on the updated embedding block and the adjusted Optimizer used to train the deep contextual Texter.
+
+% before Subsection~\ref{subsubsec:5_experiments/3_texter/3_context/4_attention} checks whether the attention mechanism's has improved.
+
+\subsubsection{Varying sentence length}
+\label{subsubsec:5_experiments/3_texter/3_context/1_sent_len}
+\input{5_experiments/3_texter/3_context/1_sent_len/sent_len}
+
+\subsubsection{Pooling}
+\label{subsubsec:5_experiments/3_texter/3_context/2_pooling}
+\input{5_experiments/3_texter/3_context/2_pooling/pooling}
+
+\subsubsection{Optimizer}
+\label{subsubsec:5_experiments/3_texter/3_context/3_optimizer}
+\input{5_experiments/3_texter/3_context/3_optimizer/optimizer}
+
+%\subsubsection{Attention Mechanism}
+%\label{subsubsec:5_experiments/3_texter/3_context/4_attention}
+%\input{5_experiments/3_texter/3_context/4_attention/attention}

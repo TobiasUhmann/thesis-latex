@@ -9,7 +9,7 @@ Technically, the Power ensemble consists of three components as shown in Figure~
     \label{fig:4_approach/power_architecture}
 \end{figure}
 
-Depending on the dataset at hand, either the Ruler or Texter might perform better. In general, the Texter should perform better for graphs that contain many similar facts, such as $(x, part~of, Asia)$ with $x \in \{China, India, Japan, \dots\}$, while the Ruler also works well on diverse datasets but cannot handle open-world entities about which no facts are known. Together, they complement each other: The Ruler handles very rare facts while the Texter can bootstrap the prediction process on open-world entities until the Ruler can join when some facts are available for rule application. In Chapter~\ref{sec:5_experiments/6_aggregator}, the Ruler's and Texter's evaluation results are compared to each other as well as to the results achieved by the Aggregator.
+Depending on the dataset at hand, either the Ruler or Texter might perform better. In general, the Texter should perform better for graphs that contain many similar facts, such as $(x, part~of, Asia)$ with $x \in \{China, India, Japan, \dots\}$, while the Ruler also works well on diverse datasets but cannot handle open-world entities about which no facts are known. Together, they complement each other: The Ruler handles very rare facts while the Texter can bootstrap the prediction process on open-world entities until the Ruler can join when some facts are available for rule application. In Chapter~\ref{sec:5_experiments/5_aggregator}, the Ruler's and Texter's evaluation results are compared to each other as well as to the results achieved by the Aggregator.
 
 \section{Texter}
 \label{sec:4_approach/1_texter}

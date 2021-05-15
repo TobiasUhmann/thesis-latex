@@ -1,0 +1,34 @@
+\emph{Precision}, \emph{recall} and \emph{F1} focus on the quality of positive predictions. Precision gives an impression of how reliable positive predictions are, recall tells how many of the actual positive elements are declared as such, and F1 is a measure that combines both precision and recall in one value. All three metrics take values from $[0, 1]$ whereby higher is better.
+
+Precision, also known as \emph{positive predictive value (PPV)}, is the ratio of true positive predictions to all positive predictions as noted in~\ref{eq:2_basics/2_metrics/2_prf/precision}. False negatives, that means objects whose condition is actually true that have been missed out, are not considered. If a model does not produce any predictions, precision is undefined and has to be defined in accordance with the evaluation scenario. For example, in that case precision might be defined as 1 if the dataset does not contain any ground truth positives and 0 otherwise, because the model should not produce any predictions if, and only if, there are no ground truth positives.
+
+\begin{align}
+    Precision = \frac{TP}{TP + FP}
+    \label{eq:2_basics/2_metrics/2_prf/precision}
+\end{align}
+
+Recall on the other hand, also known as \emph{true positive rate (TPR)}, compares the number of true positives to the number of all ground truth positives as shown in~\ref{eq:2_basics/2_metrics/2_prf/recall}. False positives, that means objects wrongly classified as positives, do not count in. If the evaluated datset does not contain any ground truth positives, recall is undefined and might be specified as 1, because the model did not miss out any ground truth positives.
+
+\begin{align}
+    Recall = \frac{TP}{TP + FN}
+    \label{eq:2_basics/2_metrics/2_prf/recall}
+\end{align}
+
+Precision and recall are directly dependent on each other. A cautious model that only predicts positives when it is absolutely sure achieves high precision but low recall. Conversely, it is easy to achieve optimal recall by making positive predictions for all elements, though precision will suffer in that case. The \emph{F score} serves as a measure that considers both goals that reaches a high value when a reasonable balance between precision and recall is found. Equation~\ref{eq:2_basics/2_metrics/2_prf/f_beta} shows the formula for the general $F_\beta$ score whose parameter $\beta$ determines whether the focus should rather be shifted towards precision or recall. Setting $\beta = 1$ yields the $F_1$ score in~\ref{eq:2_basics/2_metrics/2_prf/f_1} as the harmonic mean in which precision and recall are weighted equally.
+
+\begin{align}
+    F_\beta &= (1 + \beta^2) \cdot \frac{Precision \cdot Recall}{\beta^2 \cdot Precision + Recall}
+    \label{eq:2_basics/2_metrics/2_prf/f_beta} \\
+    F_1 &= 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}
+    \label{eq:2_basics/2_metrics/2_prf/f_1}
+\end{align}
+
+Oftentimes, the predictions that should be made for a set of objects can be divided into disjunct subsets. For example, in a multi-label classification scenario, metrics can be calculated class-wise and when predicting facts for a set of entities, metrics can be calculated for each individual entity. In these cases there are multiple ways to calculate the metrics for the overall dataset:
+
+\begin{itemize}
+    \item Throw all predictions together and calculate the metrics over all predictions. This approach yields so-called \emph{micro} metrics, for example micro precision, recall and F1.
+
+    \item Calculate the metrics per subset, for example class-wise, and specify the resulting values as such. This approach can yield detailed insights, but potentially leads to many key figures.
+
+    \item Calculate the metrics per subset and average the results, yielding the so-called \emph{macro} metrics.
+\end{itemize}
