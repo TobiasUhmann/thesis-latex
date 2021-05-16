@@ -9,7 +9,7 @@ After the switch to DistilBERT, the training of the texter takes many times long
 \begin{table}
     \centering
     \input{5_experiments/3_texter/3_context/results}
-    \caption{Final evaluation of contextual Texter on all text sets - results of static Texter given for comparison, contextual Texter evaluated against predicted facts (F1) and all facts (F1 all, mAP all)}
+    \caption{Final evaluation of the contextual Texter on all text sets. Results of the static Texter are given for comparison. The contextual Texter is evaluated against the Texter dataset's test subset (F1) and against all facts from the respective split (F1 all, mAP all). The contextual Texter outperforms the simple Texter in general, especially when leveraging markings in the text. The attentive Texter profits more from contextual word embeddings. Still, the simple Texter performs better in terms of mAP.}
     \label{tab:5_experiments/3_texter/3_context/results}
 \end{table}
 

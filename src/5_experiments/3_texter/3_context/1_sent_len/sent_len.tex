@@ -3,7 +3,7 @@ While the sentence length, or more precisely the number of tokens, is not a crit
 \begin{table}[h]
     \centering
     \input{5_experiments/3_texter/3_context/1_sent_len/grid_search}
-    \caption{Evaluation results for contextual Texters capping the input sentences at various lengths - all entries show the macro F1 over all classes, the best results per text set are in bold}
+    \caption{Contextual Texters when capping the input sentences after various numbers of BPE tokens. Numbers show F1 scores. Best value per row marked bold. Generally, considering more tokens improves performance, but capping at 32 tokens already yields good results, especially on text sets with short sentences.}
     \label{tab:5_experiments/3_texter/3_context/1_sent_len/grid_search}
 \end{table}
 

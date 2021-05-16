@@ -5,7 +5,7 @@ For the experiment on varying the minimal support threshold it was expected that
 \begin{table}
     \centering
     \input{5_experiments/4_ruler/3_rule_quality/supp_results}
-    \caption{Ruler test results for varying support thresholds $supp_{min}$ and constant confidence thresholds $conf_{min} = 0.5$ on rules mined after $t = 100s$}
+    \caption{Ruler results for various minimum support thresholds. Ruler ues rules mined after $t = 100s$ and keeps rules with $conf_{min} = 0.5$. Restricting to rules with high support does not improve performance.}
     \label{tab:5_experiments/4_ruler/3_rule_quality/supp_results}
 \end{table}
 
@@ -16,7 +16,7 @@ In case of rule confidence, expectations were higher. It was assumed that the de
 \begin{table}
     \centering
     \input{5_experiments/4_ruler/3_rule_quality/conf_results}
-    \caption{Ruler test results for constant support threshold $supp_{min} = 2$ and varying confidence thresholds $conf_{min}$ on rules mined after $t = 100s$}
+    \caption{Ruler results for various minimum confidence thresholds. Ruler ues rules mined after $t = 100s$ and keeps rules with $supp_{min} = 2$. Restricting to rules with high confidence does not improve performance.}
     \label{tab:5_experiments/4_ruler/3_rule_quality/conf_results}
 \end{table}
 

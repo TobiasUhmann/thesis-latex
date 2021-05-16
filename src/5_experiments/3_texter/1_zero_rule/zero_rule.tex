@@ -16,11 +16,11 @@ In general, performance for a random guessing strategy can be calculated. For ex
 
 Similarly, precision, recall and F1 could also be calculated for each class of the Texter dataset. Averaging each class' metrics over all classes would finally yield each zero-rule strategy's performance for the whole Texter dataset. For this evaluation, the zero-rule strategies were implemented and measured instead. The values in~\ref{tab:5_experiments/3_texter/1_zero_rule/results} were gathered by running each of the four zero-rule strategies ten times and averaging the values. For each zero-rule strategy, performance is shown for the most common class, the least common class and the average over all classes. As shown before, the Texter datasets' classes arrays are very sparse, so it was expected that constantly predicting the most common output false for all classes would lead to the highest accurracy. However, since F1 is the more relevant metric in regard to predicting true positives, constantly predicting true was expected to be the best zero-rule strategy.
 
-\begin{table}[h]
+\begin{table}[t]
     \makebox[\textwidth][c]{
         \input{5_experiments/3_texter/1_zero_rule/results}
     }
-    \caption{Evaluation of various zero-rule baselines on the Texter datasets derived from the CDE and FB splits - the best average values per split are marked bold (column-wise)}
+    \caption{Evaluation of various zero-rule baselines on the CDE and FB splits. The best average values per split are marked bold (column-wise). Thus, uniform sampling sets the baseline on the CDE split (20.19\% F1), while constantly predicting true leads to the best result on the FB split (9.43\% F1).}
     \label{tab:5_experiments/3_texter/1_zero_rule/results}
 \end{table}
 

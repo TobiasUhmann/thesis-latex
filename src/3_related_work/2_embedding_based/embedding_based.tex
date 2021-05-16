@@ -7,7 +7,7 @@ Various KGC models differ in their choice of a concrete embedding space, whether
 \begin{figure}[t]
     \centering
     \includegraphics{3_related_work/2_embedding_based/translational}
-    \caption{Concept behind translational KGC models: Relations are implicitly embedded as vectors between entities - either (a) directly, as for TransE, or (b) indirectly, as for TransH, which projects entity embeddings to relation-specific hyperplanes before performing translation, which supports more complex relations}
+    \caption{Concept behind translational KGC models: Relations are implicitly represented as vectors between entities - either (a) directly, as for TransE, or (b) indirectly, as for TransH, which projects entity embeddings to relation-specific hyperplanes before performing translation, which supports more complex relations.}
     \label{fig:3_related_work/2_embedding_based/translational}
 \end{figure}
 
@@ -23,7 +23,7 @@ Problems with TransE's simple approach arise when it comes to 1-n, n-1 and n-m r
 \begin{figure}[t]
     \centering
     \includegraphics{3_related_work/2_embedding_based/tensor_decomposition}
-    \caption{Exmple for tensor decomposition - a high-dimensional tensor can be approximated as the sum of outer products of lower-dimensional tensors}
+    \caption{Example for tensor decomposition: A high-dimensional tensor (here, the matrix $M$) can be approximated as the sum of outer products of lower-dimensional tensors (here, the vectors $x_1$, $y_1$, $x_2$ and $y_2$).}
     \label{fig:3_related_work/2_embedding_based/tensor_decomposition}
 \end{figure}
 
@@ -46,7 +46,7 @@ Again, the goal of training is to find embeddings that maximize the scoring func
 \begin{figure}[t]
     \centering
     \includegraphics{3_related_work/2_embedding_based/mlp}
-    \caption{Architecture of the neural MLP model~\cite{Dong2014KnowledgeVA} - a fact is embedded using matrices for head, relation and tail embeddings as well as the non-linear $\tanh$ function before the results is scalar multiplied with a weight vector to determine the fact's score}
+    \caption{Architecture of the neural MLP model~\cite{Dong2014KnowledgeVA}. In the first layer, a fact $(\textbf{h}, \textbf{r}, \textbf{t})$ is embedded using three matrices for head, relation and tail embeddings as well as the non-linear $\tanh$ function. In the second layer, the fact's score is calculated as the scalar product of the fact embedding and a weight vector $w$.}
     \label{fig:3_related_work/2_embedding_based/mlp}
 \end{figure}
 

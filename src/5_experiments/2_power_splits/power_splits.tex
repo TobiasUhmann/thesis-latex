@@ -3,7 +3,7 @@ Theoretically an IRT fact split and matching text set are sufficient for trainin
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{5_experiments/2_power_splits/power_split}
-    \caption{Repartitioning an IRT fact split into a Power split by merging the train subsets and splitting validation and test subsets into facts are known and unknown during inference, respectively}
+    \caption{Repartitioning an IRT fact split into a Power split by merging the training fact subsets and splitting open-world validation and test subsets into facts are known and unknown during inference, respectively.}
     \label{fig:5_experiments/2_power_splits/power_split}
 \end{figure}
 
@@ -12,7 +12,7 @@ The percentage of known and unknown facts can be varied when creating the Power 
 \begin{table}[t]
     \centering
     \input{5_experiments/2_power_splits/power_splits_table}
-    \caption{Power splits with varying ratios of known validation and test facts - for example, "CDE-50" denotes the CoDEx-M-based Power split with half of the test facts being available for rule application during inference while the FB-0 Power split does not reveal any of the FB15k-237 facts during inference}
+    \caption{Power splits with varying ratios of known validation and test fact. For example, "CDE-50" denotes the CoDEx-M-based Power split with half of the test facts being available for rule application during inference while the FB-0 Power split does not reveal any of the FB15k-237 facts during inference.}
     \label{tab:5_experiments/2_power_splits/power_splits_table}
 \end{table}
 

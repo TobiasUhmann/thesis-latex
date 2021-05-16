@@ -3,7 +3,7 @@ In the simple Texter, the sentence embeddings produced by the embedding block, t
 \begin{figure}[t]
     \centering
     \includegraphics{4_approach/1_texter/2_simple_model/simple_architecture}
-    \caption{Simple Texter Architecture: Each sentence is embedded and classified individually before the final pooling layer combines the results}
+    \caption{Simple Texter architecture: Given the sentence embeddings from the embedding block, each sentence is classified individually in the classification block. A pooling layer determines the Texter's output class logits by combining the sentences' class logits.}
     \label{fig:4_approach/1_texter/2_simple_model/simple_architecture}
 \end{figure}
 

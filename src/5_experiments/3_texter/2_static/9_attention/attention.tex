@@ -6,7 +6,7 @@ Regarding the first question, the assumption was that the class embeddings conve
     \makebox[\textwidth][c]{
         \input{5_experiments/3_texter/2_static/9_attention/top_words}
     }
-    \caption{Top words matching the static, attentive Texter's classes}
+    \caption{Top words matching the class embeddings of the static, attentive Texter. The words do not resemble the classes.}
     \label{tab:5_experiments/3_texter/2_static/9_attention/top_words}
 \end{table}
 
@@ -14,10 +14,10 @@ Contrary to the assumption, the top words do not show a clear relation to the re
 
 Before that, the second question was clarified whether the attention mechanism weights the sentences most heavily that are also the most meaningful on their own. For this purpose, the attentive Texter was extended by a method that bypasses the attention mechanism during inference. The trained model is still passed multiple sentences per entity when called, but instead of these being calculated entity embeddings in the attention block, the sentence embeddings are pushed directly through the classification block. That function, denoted as $\psi$ in the following, finally returns the non-aggregated class logits for each individual sentence. However, since the linear layers of the complex model were actually trained on the entity embeddings, this experiment only works with a texter in whose attention block the softmax function is used. This is because the Sigmoid version, unlike the Softmax version, does not have the property that the individual set embeddings have the same order of magnitude as the entity embeddings. Therefore, the results of the attentive model trained with Softmax on the cde-irt-5-clean texts are shown below. However, since the performance of the Softmax version is almost as high as that of the Sigmoid version, the results should be representative. Table~\ref{tab:5_experiments/3_texter/2_static/9_attention/kari_soft} presents exemplary values for the entity Kari Hotakainen, a Finnish writer. In addition to the five rather short sentences about Kari as well as the model predictions and the ground truth concerning the four most frequent classes in the CDE split, for each class-sentence combination it is stated to which proportion the sentence embedding normally enters into the entity embedding and which result the function $\psi$ yields when the attention mechanism is bypassed. Considering only the selected classes, the positive predictions for logits above the zero threshold in the example result in a precision of 33\%, a recall of 100\%, and thus an overall F1 score of 33\% and thereby close to the cde-irt-5-clean text set's average value of 37.6\%. However, it must be mentioned that the observable effectiveness of the attention mechanism is rather above average. The example was chosen mainly because of the short sentences.
 
-\begin{table}[h]
+\begin{table}[t]
     \centering
     \input{5_experiments/3_texter/2_static/9_attention/kari_soft}
-    \caption{Result when predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with Softmax - $\phi_c(S)$ and GT give the model's logits and ground truth for the whole entity while $\sigma(\langle e_c, e_s \rangle)$ and $\psi_c(s)$ are the class-sentence attentions and model logits when the attention mechanism is skipped, respectively}
+    \caption{Predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with the \textbf{softmax} function in the attention block. For an entity with a sentence set $S$, $\phi_c(S)$ and GT give the predicted class logits and ground truth. For each class $c$ and sentence $s$, $A_{cs}$ gives the class-sentence attention. $\psi_c(s)$ yields a sentence's individual class logits if the attention mechanism is skipped. The largest values in terms of amount are marked bold for each class (column-wise). The model prefers sentences that would come to a strong decision by themselves.}
     \label{tab:5_experiments/3_texter/2_static/9_attention/kari_soft}
 \end{table}
 
@@ -32,7 +32,7 @@ This uncertainty about the order of the sentences also exists in the final model
 \begin{table}[h]
     \centering
     \input{5_experiments/3_texter/2_static/9_attention/kari}
-    \caption{Result when predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with sigmoid - $\phi_c(S)$ and GT give the model's logits and ground truth for the whole entity while $\sigma(\langle e_c, e_s \rangle)$ denotes the class-sentence attentions}
+    \caption{Predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with the \textbf{sigmoid} function in the attention block. For an entity with a sentence set $S$, $\phi_c(S)$ and GT give the predicted class logits and ground truth. For each class $c$ and sentence $s$, $A_{cs}$ gives the class-sentence attention. The sigmoid values that deviate most from 0.5 are marked bold for each class (column-wise). The model tends to score sentences that favor a class high and unfavorable ones low.}
     \label{tab:5_experiments/3_texter/2_static/9_attention/kari}
 \end{table}
 
@@ -49,7 +49,7 @@ Leveraging this relationship, Figure~\ref{fig:5_experiments/3_texter/2_static/9_
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{5_experiments/3_texter/2_static/9_attention/kari_softmax}
-    \caption{Illustration of how the attention values for the example entity Kari Hotakainen can be traced back to class-related keywords that influence the overall sentence embeddings - low/high class-word attentions are highlighted in purple/yellow}
+    \caption{Illustration of how the attention values for the example entity Kari Hotakainen can be traced back to class-related keywords that influence the overall sentence embeddings. Each cell shows the same sentence from the view of the Texter with softmax (top) and sigmoid (bottom) function. High (low) class-word attentions are highlighted in yellow (purple). The Texter that uses the sigoid function reacts much more to class-related keywords.}
     \label{fig:5_experiments/3_texter/2_static/9_attention/kari_softmax}
 \end{figure}
 

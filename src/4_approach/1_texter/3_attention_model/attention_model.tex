@@ -6,7 +6,7 @@ Technically, the attention mechanism is implemented as an attention block betwee
     \makebox[\textwidth][c]{
         \includegraphics{4_approach/1_texter/3_attention_model/attention_architecture}
     }
-    \caption{Attentive Texter Architecture: Compared to the simple version, an additional attention block determines the attention of each class embedding (purple) towards each sentence embeddings (black) to weight the sentence embeddings properly when summing them up to class-wise entity embeddings (green) that are then passed to the slightly modified classification block - class $(x, born~in, Amsterdam)$ abbreviated to "from AMS", etc.}
+    \caption{Attentive Texter architecture: Compared to the simple version, an additional attention block determines the attention of each class embedding (purple) towards each sentence embeddings (black) to weight the sentence embeddings properly when summing them up to class-wise entity embeddings (green) that are then passed to the slightly modified classification block. Classes are abbreviated, e.g. $(x, born~in, Amsterdam)$ to "from AMS".}
     \label{fig:4_approach/1_texter/3_attention_model/attention_architecture}
 \end{figure}
 
@@ -29,7 +29,7 @@ Similar to the simple Texter, the attentive Texter's classification layer consis
 \begin{figure}[t]
     \centering
     \includegraphics{4_approach/1_texter/3_attention_model/multi_linear}
-    \caption{The classification block's linear layer being trained w.r.t. a single output class, because the input entity embedding is not helpful for training other classes}
+    \caption{In case of the attentive Texter, the classification block's linear layer is trained w.r.t. a single output class, because the input entity embedding is not helpful for training other classes.}
     \label{fig:4_approach/1_texter/3_attention_model/multi_linear}
 \end{figure}
 

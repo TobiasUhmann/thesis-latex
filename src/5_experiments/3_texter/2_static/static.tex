@@ -3,7 +3,7 @@ First, the embedding block in both, the simple and the attentive Texter, is inve
 \begin{table}[t]
     \centering
     \input{5_experiments/3_texter/2_static/results}
-    \caption{Final evluation results for the simple and the attentive Texter using static word embeddings - for each text set, the better model is marked in terms of precision, recall and F1}
+    \caption{Final evluation results for the simple and the attentive Texter using \textbf{static word embeddings}. For each text set, the better model is marked in terms of precision, recall and F1. Both modells perform about equally well.}
     \label{tab:5_experiments/3_texter/2_static/results}
 \end{table}
 
@@ -14,7 +14,7 @@ In addition to the final evaluation results on the test data, Figure~\ref{fig:5_
 \begin{figure}[t]
     \centering
     \input{5_experiments/3_texter/2_static/plot_valid_curves/plot_valid_curves}
-    \caption{Validation F1 curves during training the Texter on the FB split with 1 OWE sentence (red), 30 IRT sentences (orange), 15 IRT sentences (yellow), 5 IRT sentences (black) or 1 IRT sentence (green) per entity}
+    \caption{Validation F1 curves while training the static Texter on the FB split with 1 OWE sentence (red), 30 IRT sentences (orange), 15 IRT sentences (yellow), 5 IRT sentences (black) or 1 IRT sentence (green) per entity. The simple Texter reaches its optimal parameters earlier. Both models' curves converge against similar scores.}
     \label{fig:5_experiments/3_texter/2_static/plot_valid_curves}
 \end{figure}
 
@@ -23,7 +23,7 @@ What is not visible in Figure~\ref{fig:5_experiments/3_texter/2_static/plot_vali
 \begin{figure}[t]
     \centering
     \input{5_experiments/3_texter/2_static/plot_class_curves/plot_class_curves}
-    \caption{Class-wise validation F1 curves during training the Texter on the CDE split with 5 IRT sentences per entity - comparison between the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black)}
+    \caption{Class-wise validation F1 curves while training the static Texter on the CDE split with 5 IRT sentences per entity - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
     \label{fig:5_experiments/3_texter/2_static/plot_class_curves}
 \end{figure}
 
