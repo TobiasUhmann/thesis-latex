@@ -7,12 +7,12 @@ After the entity embeddings have been formed from the sentence embeddings in the
     \label{eq:5_experiments/3_texter/2_static/7_weight_factor/wbce}
 \end{align}
 
-In an experiment, whose results fill Table~\ref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it should be verified that the use of class weights has a positive effect. Furthermore, it should be ensured that the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, also smaller and larger weights were included in the comparison by halving and doubling the classes' reciprocals, respectively.
+In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it should be verified that the use of class weights has a positive effect. Furthermore, it should be ensured that the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, also smaller and larger weights were included in the comparison by halving and doubling the classes' reciprocals, respectively.
 
 \begin{table}[t]
     \centering
     \input{5_experiments/3_texter/2_static/7_weight_factor/grid_search}
-    \caption{Static Texters when multiplying the class weights with different factors. Numbers show F1 scores. Best result per row marked bold. The "None" column shows the results when applying no class weights at all. Applying class weights in the first place is more important than the weight factor.}
+    \caption{Static Texters when multiplying the class weights with different factors. Numbers show F1 scores. Best result per row marked bold. The ``None'' column shows the results when applying no class weights at all. Applying class weights in the first place is more important than the weight factor.}
     \label{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}
 \end{table}
 
