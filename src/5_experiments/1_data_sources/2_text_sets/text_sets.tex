@@ -3,9 +3,9 @@ In addition to the open-world fact splits of FB15k-237 and CoDEx-M, Hamann provi
 \autoref{tab:5_experiments/1_data_sources/2_text_sets/text_sets_table} lists some example sentences from selected text sets and shortly describes the naming schema behind the text sets' names that will be used throughout this chapter. \autoref{tab:a_appendix/text_sets_all} in \autoref{ch:a_appendix} contains a complete list of all considered text sets. For example, the text set named ``cde-irt-5-marked'' indicates that it contains up to five marked sentences for each entity in the CoDEx-M graph. Thereby, the four dash-separated name parts denote (1) the graph for whose entities texts are provided, (2) the texts' origin, (3) the maximum number of sentences per entity, and (4) whether the sentences are marked masked. There are three types of sentences that are distinguished by their source:
 
 \begin{itemize}
-    \item The \emph{CDE sentences} were provided by the authors of the CoDEx paper~\cite{}. They are the entities' first sentence from their respective Wikipedia page and thus very specific.
+    \item The \emph{CDE sentences} were provided by the authors of the CoDEx paper~\cite{Safavi2020CoDExAC}. They are the entities' first sentence from their respective Wikipedia page and thus very specific.
 
-    \item The \emph{IRT sentences} have been introduced in Hamann's IRT paper~\cite{}. They are randomly sampled entity contexts from the English Wikipedia that mention the entity in a more or less meaningful way anywhere in the sentence.
+    \item The \emph{IRT sentences} have been introduced in Hamann's IRT paper~\cite{IRT}. They are randomly sampled entity contexts from the English Wikipedia that mention the entity in a more or less meaningful way anywhere in the sentence.
 
     \item The \emph{OWE sentences} are very compact entity descriptions, often consisting of only a few words. They were created by Villmov et al. during the work on their OWE model for open-world KGC~\cite{Shah2019AnOE}.
 \end{itemize}
