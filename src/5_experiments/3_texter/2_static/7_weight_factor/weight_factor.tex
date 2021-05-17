@@ -1,14 +1,3 @@
-After the entity embeddings have been formed from the sentence embeddings in the attention block, they are passed through the classification block which outputs the final class logits of the forward() function. In case of the simple model, the attention block is omitted and the sentence embeddings are used directly for classification. In either case, the forward() function's class logits are taken as input by the loss function during training to calculate the model's loss in regard to the ground truth class labels.
-
-% TODO moved to approach
-
-\begin{align}
-    wBCE(x, y) = - \frac{1}{C} \sum_{c = 1}^C w_c \cdot log(\sigma(x)) + (1 - y) \cdot log(1 - \sigma(x))
-    \label{eq:5_experiments/3_texter/2_static/7_weight_factor/wbce}
-\end{align}
-
-In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it should be verified that the use of class weights has a positive effect. Furthermore, it should be ensured that the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, also smaller and larger weights were included in the comparison by halving and doubling the classes' reciprocals, respectively.
-
 \begin{table}[t]
     \centering
     \input{5_experiments/3_texter/2_static/7_weight_factor/grid_search}
@@ -16,4 +5,13 @@ In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_stati
     \label{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}
 \end{table}
 
-The empirical values are in line with the theoretical expectations. Although omitting class weights produces useful values - especially on the FB split where the 100 most frequent classes have higher frequencies than on the CDE split - applying class weights significantly improve performance. Thereby, it seems more important to apply weights at all than to fine-tune the weights. In most cases, it does not matter much whether the weights are halved or doubled. On average, the plain reciprocals seem to be the best choice, which is why they are set as the default.
+After the entity embeddings have been formed from the sentence embeddings in the attention block, they are passed through the classification block which outputs the final class logits. In the case of the simple model, the attention block is omitted and the sentence embeddings are used directly for classification. In either case, the class logits are taken as input by the loss function during training to calculate the model's loss in regard to the ground truth class labels.
+
+In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it was tested whether the use of class weights really has a positive effect. Furthermore, it was tested whether the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, the binary cross-entropy loss function explained in \autoref{ch:4_approach} has been extended by a \emph{weight factor} $\omega$ that multiplies the class weights by a constant value. Thus, by setting $\omega \neq 1$, it can be tested whether increasing or decreasing the class weights enhances the training process. \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search} shows the observed results.
+
+\begin{align}
+    L_{\omega wBCE}(\textbf{y}, \hat{\textbf{y}}) = - \frac{1}{|C|} \sum_{c = 1}^{|C|} \omega \cdot \textbf{w}_c \cdot log(\sigma(\textbf{y})) + (1 - \hat{\textbf{y}}) \cdot log(1 - \sigma(\textbf{y}))
+    \label{eq:5_experiments/3_texter/2_static/7_weight_factor/wwbce}
+\end{align}
+
+The empirical values are in line with the theoretical expectations. Although omitting class weights produces useful results - especially on the FB split where the 100 most frequent classes have higher frequencies than on the CDE split, applying class weights significantly improves performance. Thereby, it seems more important to apply weights at all than to fine-tune the weights. In most cases, it does not matter much whether the weights are halved or doubled. On average, the plain reciprocals of the class frequencies seem to be the best choice, which is why they are set as the class weights.
