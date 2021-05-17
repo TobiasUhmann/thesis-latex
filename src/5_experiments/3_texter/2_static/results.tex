@@ -1,52 +1,77 @@
-\begin{tabular}{| l | l | r | r | r | r |}
-    \hline
+\begin{tabular}{ l l c r r r }
+    \toprule
 
-    \multirow{2}{*}{\textbf{Text Set}} &
-    \multirow{2}{*}{\textbf{Texter}} &
-    \multicolumn{3}{|c|}{\textbf{Macro over Classes}} \\
+    \multicolumn{1}{l}{\textbf{Text Set}} &
+    \multicolumn{1}{l}{\textbf{Texter}} & \phantom &
+    \multicolumn{3}{c}{\textbf{Macro over Classes}} \\
 
-    & &
-    \multicolumn{1}{|c|}{\textbf{Prec}} &
-    \multicolumn{1}{|c|}{\textbf{Rec}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} \\ \hline \hline
+    \cmidrule{4-6}
+
+    & 
+    &&
+    \multicolumn{1}{c}{\textbf{Prec}} &
+    \multicolumn{1}{c}{\textbf{Rec}} &
+    \multicolumn{1}{c}{\textbf{F1}} \\
+    
+    \midrule
 
     \multirow{2}{*}{cde-cde-1-clean}
-    & Simple    & \textbf{49.02} & 47.57 & 47.67 \\
-    & Attentive & 46.86 & \textbf{51.09} & \textbf{47.98} \\ \hline
+    & Simple    && \textbf{49.02} & 47.57 & 47.67 \\
+    & Attentive && 46.86 & \textbf{51.09} & \textbf{47.98} \\
+
+    \addlinespace
 
     \multirow{2}{*}{cde-irt-1-clean}
-    & Simple    & 25.20 & \textbf{34.18} & \textbf{28.13} \\
-    & Attentive & \textbf{26.70} & 31.41 & 27.43 \\ \hline
+    & Simple    && 25.20 & \textbf{34.18} & \textbf{28.13} \\
+    & Attentive && \textbf{26.70} & 31.41 & 27.43 \\
+
+    \addlinespace
 
     \multirow{2}{*}{cde-irt-5-clean}
-    & Simple    & 36.49 & \textbf{44.38} & \textbf{38.98} \\
-    & Attentive & \textbf{39.20} & 37.11 & 36.98 \\ \hline
+    & Simple    && 36.49 & \textbf{44.38} & \textbf{38.98} \\
+    & Attentive && \textbf{39.20} & 37.11 & 36.98 \\
+
+    \addlinespace
 
     \multirow{2}{*}{cde-irt-15-clean}
-    & Simple    & 41.83 & \textbf{48.69} & \textbf{44.07} \\
-    & Attentive & \textbf{44.63} & 37.39 & 39.78 \\ \hline
+    & Simple    && 41.83 & \textbf{48.69} & \textbf{44.07} \\
+    & Attentive && \textbf{44.63} & 37.39 & 39.78 \\
+
+    \addlinespace
 
     \multirow{2}{*}{cde-irt-30-clean}
-    & Simple    & 40.73 & \textbf{50.09} & \textbf{44.11} \\
-    & Attentive & \textbf{43.60} & 36.10 & 38.78 \\ \hline \hline
+    & Simple    && 40.73 & \textbf{50.09} & \textbf{44.11} \\
+    & Attentive && \textbf{43.60} & 36.10 & 38.78 \\
+    
+    \midrule
 
     \multirow{2}{*}{fb-owe-1-clean}
-    & Simple    & 42.36 & \textbf{86.72} & 54.03 \\
-    & Attentive & \textbf{45.21} & 84.03 & \textbf{56.16} \\ \hline
+    & Simple    && 42.36 & \textbf{86.72} & 54.03 \\
+    & Attentive && \textbf{45.21} & 84.03 & \textbf{56.16} \\
+
+    \addlinespace
 
     \multirow{2}{*}{fb-irt-1-clean}
-    & Simple    & 26.40 & 46.68 & 32.51 \\
-    & Attentive & \textbf{27.01} & \textbf{49.90} & \textbf{34.26} \\ \hline
+    & Simple    && 26.40 & 46.68 & 32.51 \\
+    & Attentive && \textbf{27.01} & \textbf{49.90} & \textbf{34.26} \\
+
+    \addlinespace
 
     \multirow{2}{*}{fb-irt-5-clean}
-    & Simple    & 34.37 & \textbf{55.95} & 40.88 \\
-    & Attentive & \textbf{39.21} & 50.63 & \textbf{43.50} \\ \hline
+    & Simple    && 34.37 & \textbf{55.95} & 40.88 \\
+    & Attentive && \textbf{39.21} & 50.63 & \textbf{43.50} \\
+
+    \addlinespace
 
     \multirow{2}{*}{fb-irt-15-clean}
-    & Simple    & \textbf{48.95} & \textbf{54.85} & \textbf{50.06} \\
-    & Attentive & 48.89 & 52.75 & 49.92 \\ \hline
+    & Simple    && \textbf{48.95} & \textbf{54.85} & \textbf{50.06} \\
+    & Attentive && 48.89 & 52.75 & 49.92 \\
+
+    \addlinespace
 
     \multirow{2}{*}{fb-irt-30-clean}
-    & Simple    & 43.90 & \textbf{63.31} & \textbf{50.55} \\
-    & Attentive & \textbf{50.57} & 48.47 & 48.79 \\ \hline
+    & Simple    && 43.90 & \textbf{63.31} & \textbf{50.55} \\
+    & Attentive && \textbf{50.57} & 48.47 & 48.79 \\
+    
+    \bottomrule
 \end{tabular}

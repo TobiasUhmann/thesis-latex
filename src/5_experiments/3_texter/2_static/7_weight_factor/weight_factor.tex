@@ -7,10 +7,10 @@
 
 After the entity embeddings have been formed from the sentence embeddings in the attention block, they are passed through the classification block which outputs the final class logits. In the case of the simple model, the attention block is omitted and the sentence embeddings are used directly for classification. In either case, the class logits are taken as input by the loss function during training to calculate the model's loss in regard to the ground truth class labels.
 
-In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it was tested whether the use of class weights really has a positive effect. Furthermore, it was tested whether the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, the binary cross-entropy loss function explained in \autoref{ch:4_approach} has been extended by a \emph{weight factor} $\omega$ that multiplies the class weights by a constant value. Thus, by setting $\omega \neq 1$, it can be tested whether increasing or decreasing the class weights enhances the training process. \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search} shows the observed results.
+In an experiment, whose results fill \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}, it was tested whether the use of class weights really has a positive effect. Furthermore, it was tested whether the choice to calculate the weights as the reciprocal of the class frequencies is optimal. Therefore, the binary cross-entropy loss function in \autoref{eq:2_basics/1_neural_networks/bce} has been extended by a \emph{weight factor} $\omega$ that multiplies the class weights by a constant value. Thus, by setting $\omega \neq 1$, it can be tested whether increasing or decreasing the class weights enhances the training process. \autoref{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search} shows the observed results.
 
 \begin{align}
-    L_{\omega wBCE}(\textbf{y}, \hat{\textbf{y}}) = - \frac{1}{|C|} \sum_{c = 1}^{|C|} \omega \cdot \textbf{w}_c \cdot log(\sigma(\textbf{y})) + (1 - \hat{\textbf{y}}) \cdot log(1 - \sigma(\textbf{y}))
+    L_{\omega wBCE}(\textbf{y}, \hat{\textbf{y}}) = - \frac{1}{|C|} \sum_{c = 1}^{|C|} \omega \cdot \textbf{w}_c \cdot log(\sigma(\textbf{y}_c)) + (1 - \hat{\textbf{y}}_c) \cdot log(1 - \sigma(\textbf{y}_c))
     \label{eq:5_experiments/3_texter/2_static/7_weight_factor/wwbce}
 \end{align}
 

@@ -1,33 +1,36 @@
-\begin{tabular}{| l | r | r | r | r |}
-    \hline
+\begin{tabular}{ l c r r r c r }
+    \toprule
 
-    \multicolumn{1}{|c|}{\textbf{Split}} &
-    \multicolumn{3}{|c|}{\textbf{Macro over entities}} &
-    \multicolumn{1}{|c|}{\textbf{mAP}} \\
+    \multicolumn{1}{l}{\textbf{Split}} & \phantom &
+    \multicolumn{3}{c}{\textbf{Macro over entities}} & \phantom &
+    \multicolumn{1}{c}{\textbf{mAP}} \\
 
-    \multicolumn{1}{|c|}{} &
-    \multicolumn{1}{|c|}{\textbf{Prec}} &
-    \multicolumn{1}{|c|}{\textbf{Rec}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{} \\
+    \cmidrule{3-5}
 
-    \hline \hline
 
-    CDE-0   & 100.00 &  0.84 &  0.84 &  0.84 \\
-    CDE-5   &  86.10 &  7.93 & 11.20 &  7.44 \\
-    CDE-15  &  71.55 & 18.05 & 24.45 & 16.48 \\
-    CDE-30  &  63.07 & 27.45 & 34.90 & 24.55 \\
-    CDE-50  &  59.71 & 34.29 & 40.89 & 30.05 \\
-    CDE-100 &  53.88 & 42.68 & 45.46 & 36.47 \\
+    \multicolumn{1}{c}{} &&
+    \multicolumn{1}{c}{\textbf{Prec}} &
+    \multicolumn{1}{c}{\textbf{Rec}} &
+    \multicolumn{1}{c}{\textbf{F1}} &&
+    \multicolumn{1}{c}{} \\
 
-    \hline
+    \midrule
 
-    FB-0    & 100.00 &  3.19 &  3.19 &  3.19 \\
-    FB-5    &  84.53 & 13.63 & 17.40 & 12.68 \\
-    FB-15   &  77.31 & 24.21 & 29.90 & 21.86 \\
-    FB-30   &  70.47 & 32.29 & 38.16 & 28.91 \\
-    FB-50   &  66.76 & 38.22 & 42.88 & 33.91 \\
-    FB-100  &  61.03 & 45.28 & 47.08 & 39.31 \\
+    CDE-0   && 100.00 &  0.84 &  0.84 &&  0.84 \\
+    CDE-5   &&  86.10 &  7.93 & 11.20 &&  7.44 \\
+    CDE-15  &&  71.55 & 18.05 & 24.45 && 16.48 \\
+    CDE-30  &&  63.07 & 27.45 & 34.90 && 24.55 \\
+    CDE-50  &&  59.71 & 34.29 & 40.89 && 30.05 \\
+    CDE-100 &&  53.88 & 42.68 & 45.46 && 36.47 \\
 
-    \hline
+    \addlinespace
+
+    FB-0    && 100.00 &  3.19 &  3.19 &&  3.19 \\
+    FB-5    &&  84.53 & 13.63 & 17.40 && 12.68 \\
+    FB-15   &&  77.31 & 24.21 & 29.90 && 21.86 \\
+    FB-30   &&  70.47 & 32.29 & 38.16 && 28.91 \\
+    FB-50   &&  66.76 & 38.22 & 42.88 && 33.91 \\
+    FB-100  &&  61.03 & 45.28 & 47.08 && 39.31 \\
+
+    \bottomrule
 \end{tabular}

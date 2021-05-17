@@ -1,53 +1,59 @@
-\begin{tabular}{| l | r | r | r | r | r | r | r | r |}
-    \hline
+\begin{tabular}{ l c r c r r r c r c r r r }
+    \toprule
 
-    \multicolumn{1}{|c|}{\textbf{Text Set}} &
-    \multicolumn{4}{|c|}{\textbf{Simple Texter}} &
-    \multicolumn{4}{|c|}{\textbf{Attending Texter}} \\
+    \multicolumn{1}{l}{\textbf{Text Set}} & \phantom &
+    \multicolumn{5}{c}{\textbf{Simple Texter}} & \phantom &
+    \multicolumn{5}{c}{\textbf{Attending Texter}} \\
+
+    \cmidrule{3-7}
+    \cmidrule{9-13}
     
-    &
-    \multicolumn{1}{|c|}{\textbf{Stat}} &
-    \multicolumn{3}{|c|}{\textbf{Contextual}} &
-    \multicolumn{1}{|c|}{\textbf{Stat}} &
-    \multicolumn{3}{|c|}{\textbf{Contextual}} \\
+    &&
+    \multicolumn{1}{c}{\textbf{Stat}} & \phantom &
+    \multicolumn{3}{c}{\textbf{Contextual}} &&
+    \multicolumn{1}{c}{\textbf{Stat}} & \phantom &
+    \multicolumn{3}{c}{\textbf{Contextual}} \\
 
-    \multicolumn{1}{|c|}{} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{\textbf{\thead{F1 \\ All}}} &
-    \multicolumn{1}{|c|}{\textbf{\thead{mAP \\ All}}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{\textbf{\thead{F1 \\ All}}} &
-    \multicolumn{1}{|c|}{\textbf{\thead{mAP \\ All}}} \\
+    \cmidrule{5-7}
+    \cmidrule{11-13}
 
-    \hline \hline
+    \multicolumn{1}{c}{} &&
+    \multicolumn{1}{c}{\textbf{F1}} &&
+    \multicolumn{1}{c}{\textbf{F1}} &
+    \multicolumn{1}{c}{\textbf{\thead{F1 \\ All}}} &
+    \multicolumn{1}{c}{\textbf{\thead{mAP \\ All}}} &&
+    \multicolumn{1}{c}{\textbf{F1}} &&
+    \multicolumn{1}{c}{\textbf{F1}} &
+    \multicolumn{1}{c}{\textbf{\thead{F1 \\ All}}} &
+    \multicolumn{1}{c}{\textbf{\thead{mAP \\ All}}} \\
 
-    cde-cde-1-clean    & 47.67 & 44.10 & 41.08 & 35.92 & 47.98 & 49.26 & 42.57 & 33.40 \\ \hline
-    cde-irt-1-clean    & 28.13 & 32.83 & 32.56 & 26.64 & 27.43 & 32.80 & 32.14 & 22.89 \\
-    cde-irt-1-marked   &       & 36.60 & 35.69 & 28.44 &       & 35.02 & 34.41 & 24.41 \\
-    cde-irt-1-masked   &       & 32.98 & 33.64 & 26.65 &       & 30.49 & 31.78 & 22.36 \\ \hline
-    cde-irt-5-clean    & 38.98 & 42.37 & 40.03 & 32.15 & 36.98 & 39.81 & 38.04 & 27.88 \\
-    cde-irt-5-marked   &       & 43.26 & 41.02 & 31.71 &       & 41.88 & 38.95 & 28.27 \\
-    cde-irt-5-masked   &       & 43.76 & 40.81 & 32.39 &       & 39.50 & 37.66 & 27.39 \\ \hline
-    cde-irt-15-clean   & 44.07 & 45.22 & 42.09 & 32.96 & 39.78 & 42.80 & 40.48 & 29.59 \\
-    cde-irt-15-marked  &       & 44.50 & 41.86 & 32.82 &       & 44.04 & 41.31 & 30.54 \\
-    cde-irt-15-masked  &       & 47.37 & 43.22 & 34.31 &       & 43.39 & 40.72 & 30.31 \\ \hline
-    cde-irt-30-clean   & 44.11 & 44.47 & 42.62 & 33.07 & 38.78 & 43.83 & 41.47 & 31.80 \\
-    cde-irt-30-marked  &       & 43.39 & 42.67 & 33.30 &       & 46.82 & 42.86 & 32.41 \\
-    cde-irt-30-masked  &       & 49.24 & 45.03 & 36.03 &       & 45.05 & 42.35 & 32.89 \\ \hline \hline
-    fb-owe-1-clean     & 54.03 & 53.62 & 34.29 & 28.93 & 56.16 & 57.87 & 35.42 & 28.90 \\ \hline
-    fb-irt-1-clean     & 32.51 & 40.19 & 27.48 & 23.08 & 34.26 & 39.56 & 27.60 & 22.12 \\
-    fb-irt-1-marked    &       & 47.89 & 32.54 & 26.21 &       & 47.07 & 31.54 & 24.15 \\
-    fb-irt-1-masked    &       & 43.07 & 29.11 & 24.02 &       & 43.11 & 27.56 & 21.23 \\ \hline
-    fb-irt-5-clean     & 40.88 & 46.18 & 32.75 & 25.74 & 43.50 & 49.53 & 31.91 & 24.18 \\
-    fb-irt-5-marked    &       & 53.16 & 34.45 & 26.89 &       & 54.28 & 34.67 & 26.49 \\
-    fb-irt-5-masked    &       & 50.08 & 34.49 & 27.33 &       & 48.74 & 32.28 & 24.45 \\ \hline
-    fb-irt-15-clean    & 50.06 & 49.69 & 33.73 & 26.01 & 49.92 & 56.93 & 33.55 & 25.71 \\
-    fb-irt-15-marked   &       & 54.85 & 34.80 & 27.17 &       & 58.68 & 35.76 & 27.66 \\
-    fb-irt-15-masked   &       & 53.74 & 34.97 & 26.65 &       & 56.34 & 34.82 & 26.39 \\ \hline
-    fb-irt-30-clean    & 50.55 & 50.69 & 34.39 & 26.81 & 48.79 & 51.44 & 34.45 & 26.48 \\
-    fb-irt-30-marked   &       & 51.10 & 35.76 & 27.45 &       & 56.78 & 35.22 & 26.85 \\
-    fb-irt-30-masked   &       & 47.56 & 36.96 & 29.16 &       & 56.25 & 36.08 & 27.40 \\ \hline
+    \midrule
+
+    cde-cde-1-clean    && 47.67 && 44.10 & 41.08 & 35.92 && 47.98 && 49.26 & 42.57 & 33.40 \\ \addlinespace
+    cde-irt-1-clean    && 28.13 && 32.83 & 32.56 & 26.64 && 27.43 && 32.80 & 32.14 & 22.89 \\
+    cde-irt-1-marked   &&       && 36.60 & 35.69 & 28.44 &&       && 35.02 & 34.41 & 24.41 \\
+    cde-irt-1-masked   &&       && 32.98 & 33.64 & 26.65 &&       && 30.49 & 31.78 & 22.36 \\ \addlinespace
+    cde-irt-5-clean    && 38.98 && 42.37 & 40.03 & 32.15 && 36.98 && 39.81 & 38.04 & 27.88 \\
+    cde-irt-5-marked   &&       && 43.26 & 41.02 & 31.71 &&       && 41.88 & 38.95 & 28.27 \\
+    cde-irt-5-masked   &&       && 43.76 & 40.81 & 32.39 &&       && 39.50 & 37.66 & 27.39 \\ \addlinespace
+    cde-irt-15-clean   && 44.07 && 45.22 & 42.09 & 32.96 && 39.78 && 42.80 & 40.48 & 29.59 \\
+    cde-irt-15-marked  &&       && 44.50 & 41.86 & 32.82 &&       && 44.04 & 41.31 & 30.54 \\
+    cde-irt-15-masked  &&       && 47.37 & 43.22 & 34.31 &&       && 43.39 & 40.72 & 30.31 \\ \addlinespace
+    cde-irt-30-clean   && 44.11 && 44.47 & 42.62 & 33.07 && 38.78 && 43.83 & 41.47 & 31.80 \\
+    cde-irt-30-marked  &&       && 43.39 & 42.67 & 33.30 &&       && 46.82 & 42.86 & 32.41 \\
+    cde-irt-30-masked  &&       && 49.24 & 45.03 & 36.03 &&       && 45.05 & 42.35 & 32.89 \\ \midrule
+    fb-owe-1-clean     && 54.03 && 53.62 & 34.29 & 28.93 && 56.16 && 57.87 & 35.42 & 28.90 \\ \addlinespace
+    fb-irt-1-clean     && 32.51 && 40.19 & 27.48 & 23.08 && 34.26 && 39.56 & 27.60 & 22.12 \\
+    fb-irt-1-marked    &&       && 47.89 & 32.54 & 26.21 &&       && 47.07 & 31.54 & 24.15 \\
+    fb-irt-1-masked    &&       && 43.07 & 29.11 & 24.02 &&       && 43.11 & 27.56 & 21.23 \\ \addlinespace
+    fb-irt-5-clean     && 40.88 && 46.18 & 32.75 & 25.74 && 43.50 && 49.53 & 31.91 & 24.18 \\
+    fb-irt-5-marked    &&       && 53.16 & 34.45 & 26.89 &&       && 54.28 & 34.67 & 26.49 \\
+    fb-irt-5-masked    &&       && 50.08 & 34.49 & 27.33 &&       && 48.74 & 32.28 & 24.45 \\ \addlinespace
+    fb-irt-15-clean    && 50.06 && 49.69 & 33.73 & 26.01 && 49.92 && 56.93 & 33.55 & 25.71 \\
+    fb-irt-15-marked   &&       && 54.85 & 34.80 & 27.17 &&       && 58.68 & 35.76 & 27.66 \\
+    fb-irt-15-masked   &&       && 53.74 & 34.97 & 26.65 &&       && 56.34 & 34.82 & 26.39 \\ \addlinespace
+    fb-irt-30-clean    && 50.55 && 50.69 & 34.39 & 26.81 && 48.79 && 51.44 & 34.45 & 26.48 \\
+    fb-irt-30-marked   &&       && 51.10 & 35.76 & 27.45 &&       && 56.78 & 35.22 & 26.85 \\
+    fb-irt-30-masked   &&       && 47.56 & 36.96 & 29.16 &&       && 56.25 & 36.08 & 27.40 \\ \bottomrule
 
 \end{tabular}

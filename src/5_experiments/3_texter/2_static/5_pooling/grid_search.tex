@@ -1,56 +1,77 @@
-\begin{tabular}{| l | l | r | r | r |}
-    \hline
+\begin{tabular}{ l l c r r r }
+    \toprule
 
-    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Text Set}}} &
-    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Model}}} &
-    \multicolumn{3}{|c|}{\textbf{Pooling Function}} \\
+    \multicolumn{1}{l}{\textbf{Text Set}} &
+    \multicolumn{1}{l}{\textbf{Texter}} & \phantom &
+    \multicolumn{3}{c}{\textbf{Pooling Function}} \\
+
+    \cmidrule{4-6}
 
     &
-    &
-    \multicolumn{1}{|c|}{\textbf{Max}} &
-    \multicolumn{1}{|c|}{\textbf{Mean}} &
-    \multicolumn{1}{|c|}{\textbf{Sum}} \\
+    &&
+    \multicolumn{1}{c}{\textbf{Max}} &
+    \multicolumn{1}{c}{\textbf{Mean}} &
+    \multicolumn{1}{c}{\textbf{Sum}} \\
 
-    \hline \hline
+    \midrule
 
     \multirow{2}{*}{cde-cde-1-clean}
-    & Simple    & 46.19 & 47.62 & \textbf{48.67} \\
-    & Attentive & 39.93 & \textbf{47.63} & 24.54 \\ \hline
+    & Simple    && 46.19 & 47.62 & \textbf{48.67} \\
+    & Attentive && 39.93 & \textbf{47.63} & 24.54 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{cde-irt-1-clean}
-    & Simple    & 28.22 & 27.95 & \textbf{29.51} \\
-    & Attentive & 16.96 & \textbf{27.02} & 13.14 \\ \hline
+    & Simple    && 28.22 & 27.95 & \textbf{29.51} \\
+    & Attentive && 16.96 & \textbf{27.02} & 13.14 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{cde-irt-5-clean}
-    & Simple    & 39.32 & 38.99 & \textbf{41.19} \\
-    & Attentive & 22.11 & \textbf{37.48} & 15.74 \\ \hline
+    & Simple    && 39.32 & 38.99 & \textbf{41.19} \\
+    & Attentive && 22.11 & \textbf{37.48} & 15.74 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{cde-irt-15-clean}
-    & Simple    & 43.81 & 43.83 & \textbf{45.51} \\
-    & Attentive & 23.43 & \textbf{39.58} & 15.56 \\ \hline
+    & Simple    && 43.81 & 43.83 & \textbf{45.51} \\
+    & Attentive && 23.43 & \textbf{39.58} & 15.56 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{cde-irt-30-clean}
-    & Simple    & 43.84 & 44.00 & \textbf{45.93} \\
-    & Attentive & 20.78 & \textbf{38.62} & 16.98 \\ \hline \hline
+    & Simple    && 43.84 & 44.00 & \textbf{45.93} \\
+    & Attentive && 20.78 & \textbf{38.62} & 16.98 \\
+    
+    \midrule
 
     \multirow{2}{*}{fb-owe-1-clean}
-    & Simple    & \textbf{56.57} & 53.77 & 56.19 \\
-    & Attentive & 55.26 & \textbf{55.67} & 43.01 \\ \hline
+    & Simple    && \textbf{56.57} & 53.77 & 56.19 \\
+    & Attentive && 55.26 & \textbf{55.67} & 43.01 \\ 
+
+    \addlinespace
 
     \multirow{2}{*}{fb-irt-1-clean}
-    & Simple    & 30.37 & 32.64 & \textbf{34.47} \\
-    & Attentive & 22.38 & \textbf{33.55} & 18.82 \\ \hline
+    & Simple    && 30.37 & 32.64 & \textbf{34.47} \\
+    & Attentive && 22.38 & \textbf{33.55} & 18.82 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{fb-irt-5-clean}
-    & Simple    & \textbf{43.15} & 40.41 & 42.56 \\
-    & Attentive & 27.76 & \textbf{42.28} & 18.14 \\ \hline
+    & Simple    && \textbf{43.15} & 40.41 & 42.56 \\
+    & Attentive && 27.76 & \textbf{42.28} & 18.14 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{fb-irt-15-clean}
-    & Simple    & 48.13 & 50.29 & \textbf{52.69} \\
-    & Attentive & 30.70 & \textbf{49.18} & 20.27 \\ \hline
+    & Simple    && 48.13 & 50.29 & \textbf{52.69} \\
+    & Attentive && 30.70 & \textbf{49.18} & 20.27 \\ 
+
+    \addlinespace
     
     \multirow{2}{*}{fb-irt-30-clean}
-    & Simple    & 48.31 & 51.26 & \textbf{52.49} \\
-    & Attentive & 28.67 & \textbf{49.03} & 18.68 \\ \hline
-
+    & Simple    && 48.31 & 51.26 & \textbf{52.49} \\
+    & Attentive && 28.67 & \textbf{49.03} & 18.68 \\
+    
+    \bottomrule
 \end{tabular}

@@ -1,34 +1,45 @@
-\begin{tabular}{| l | l | r | r | r | r | r | r | r |}
-    \hline
+\begin{tabular}{ l l c r r r r r r r }
+    \toprule
 
-    \multirow{2}{*}{\textbf{Split}} &
-    &
-    \multicolumn{7}{|c|}{\textbf{Minimal Support}} \\
+    \multicolumn{1}{l}{\textbf{Split}} &
+    & \phantom &
+    \multicolumn{7}{c}{\textbf{Minimal Support}} \\
+
+    \cmidrule{4-10}
 
     &
-    &
-    \multicolumn{1}{|c|}{\textbf{2}} &
-    \multicolumn{1}{|c|}{\textbf{3}} &
-    \multicolumn{1}{|c|}{\textbf{10}} &
-    \multicolumn{1}{|c|}{\textbf{30}} &
-    \multicolumn{1}{|c|}{\textbf{100}} &
-    \multicolumn{1}{|c|}{\textbf{300}} &
-    \multicolumn{1}{|c|}{\textbf{1000}} \\
+    &&
+    \multicolumn{1}{c}{\textbf{2}} &
+    \multicolumn{1}{c}{\textbf{3}} &
+    \multicolumn{1}{c}{\textbf{10}} &
+    \multicolumn{1}{c}{\textbf{30}} &
+    \multicolumn{1}{c}{\textbf{100}} &
+    \multicolumn{1}{c}{\textbf{300}} &
+    \multicolumn{1}{c}{\textbf{1000}} \\
 
-    \hline \hline
+    \midrule
 
     \multirow{5}{*}{CDE-50}
-    & \textbf{Rules} & \num{73034} & \num{66498} & \num{23646}  & \num{9446}  & \num{1634} & \num{202} & \num{34}   \\ \cline{2-9}
-    & \textbf{Prec}  & 59.71       & 59.77       & 62.05       & 64.12       & 66.60      & 68.98      & 75.83      \\
-    & \textbf{Rec}   & 34.29       & 34.19       & 32.14       & 28.89       & 24.36      & 19.77      & 12.00      \\
-    & \textbf{F1}    & 40.89       & 40.82       & 39.91       & 37.28       & 32.58      & 26.81      & 16.95      \\
-    & \textbf{mAP}   & 30.05       & 30.08       & 28.63       & 25.91       & 22.18      & 18.07      & 11.22      \\ \hline \hline
+    & \textbf{Rules} && \num{73034} & \num{66498} & \num{23646}  & \num{9446}  & \num{1634} & \num{202} & \num{34}   \\
+
+    \addlinespace
+
+    & \textbf{Prec}  && 59.71       & 59.77       & 62.05       & 64.12       & 66.60      & 68.98      & \textbf{75.83}      \\
+    & \textbf{Rec}   && \textbf{34.29}       & 34.19       & 32.14       & 28.89       & 24.36      & 19.77      & 12.00      \\
+    & \textbf{F1}    && \textbf{40.89}       & 40.82       & 39.91       & 37.28       & 32.58      & 26.81      & 16.95      \\
+    & \textbf{mAP}   && 30.05       & \textbf{30.08}       & 28.63       & 25.91       & 22.18      & 18.07      & 11.22      \\
+
+    \midrule
 
     \multirow{5}{*}{FB-50}
-    & \textbf{Rules} & \num{86273} & \num{80443} & \num{40342} & \num{16733} & \num{4514} & \num{1117} & \num{97}   \\ \cline{2-9}
-    & \textbf{Prec}  & 66.76       & 67.08       & 69.11       & 70.64       & 73.25      & 77.78      & 87.62      \\
-    & \textbf{Rec}   & 38.22       & 38.08       & 35.34       & 30.27       & 25.82      & 21.42      & 9.15       \\
-    & \textbf{F1}    & 42.88       & 42.78       & 40.59       & 35.71       & 31.33      & 26.52      & 12.51      \\
-    & \textbf{mAP}   & 33.91       & 33.91       & 31.86       & 27.46       & 23.57      & 19.52      & 8.55       \\ \hline
+    & \textbf{Rules} && \num{86273} & \num{80443} & \num{40342} & \num{16733} & \num{4514} & \num{1117} & \num{97}   \\
 
+    \addlinespace
+
+    & \textbf{Prec}  && 66.76       & 67.08       & 69.11       & 70.64       & 73.25      & 77.78      & \textbf{87.62}      \\
+    & \textbf{Rec}   && \textbf{38.22}       & 38.08       & 35.34       & 30.27       & 25.82      & 21.42      & 9.15       \\
+    & \textbf{F1}    && \textbf{42.88}       & 42.78       & 40.59       & 35.71       & 31.33      & 26.52      & 12.51      \\
+    & \textbf{mAP}   && \textbf{33.91}       & \textbf{33.91}       & 31.86       & 27.46       & 23.57      & 19.52      & 8.55       \\
+
+    \bottomrule
 \end{tabular}

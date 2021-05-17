@@ -3,6 +3,7 @@
 \include{preamble}
 
 \usepackage{amsmath}
+\usepackage{booktabs}
 \usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage{makecell}
@@ -49,7 +50,7 @@
 
         Most recent knowledge graph completion models approached the problem successfully by embedding the graph in a low-dimensional vector space. Further extensions to those embedding-based approaches make use of textual information to enable predictions about open-world entities for whom no facts are known in the existing graph. Alternative to embedding-based approaches, symbolic, rule-based systems capture patterns in the graph structure in form of logical rules. Recent works have shown that rule-based models can perform as well as embedding-based approaches and have the advantage that the model's rule-based decisions are comprehensible by humans.
 
-        In this work, the Power model, an ensemble model consisting of a rule-based and a text-based KGC model is introduced. The rule-based component employs rules mined by the rule miner AnyBURL to make predictions based on the graph's structure, while the text-based component leverages additional text information about the entities to improve performance and enable prediction for open-world entities, which cannot be handled by the rule-based system. Furthermore, Power explains its predictions by giving the rules and text prioritization that led to its decision. The text prioritization is achieved by using an attention mechanism that focuses on those texts that are most relevant. The texts are encoded using contextual word embeddings produced by a variant of the state-of-the-art BERT transformer, which is shown to improve performance compared to the usage of conventional, static word embeddings. Finally, it is shown that the ensemble model produces better results than the rule- and text-based models on their own.
+        In this work, the Power model, an ensemble model consisting of a rule-based and a text-based KGC model is introduced. The rule-based component uses rules mined by the rule miner AnyBURL to make predictions based on the graph's structure, while the text-based component leverages additional text information about the entities to improve performance and enable prediction for open-world entities, which cannot be handled by the rule-based system. Furthermore, Power explains its predictions by giving the rules and text prioritization that led to its decision. The text prioritization is achieved by using an attention mechanism that focuses on those texts that are most relevant. The texts are encoded using contextual word embeddings produced by a variant of the state-of-the-art BERT transformer, which is shown to improve performance compared to the usage of conventional, static word embeddings. Experiments on the FB15k-237 and CoDEx-M graphs combined with various entity texts, including randomly sampled contexts from Wikipedia, show that the ensemble model achieves up to 7\% higher mAP than the better of the rule- and text-based models on its own.
 
     \end{abstract}
 

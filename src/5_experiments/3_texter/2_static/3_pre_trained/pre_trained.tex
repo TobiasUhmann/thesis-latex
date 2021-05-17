@@ -25,7 +25,7 @@ In the experiment, all 13 embedding sets were evaluated. For brevity, \autoref{t
 
 The expected outcome of the experiment was a significant performance increase for both, simple and attentive Texter, just as observed in other works. Between the embedding sets, medium deviations were assumed, depending on how similar the data during pre-training resembled those of the IRT text sets. In the case of the text sets with CDE and IRT sentences taken from Wikipedia, the GloVe embeddings were therefore the favorite candidate. Regarding the embedding type, there were no clear expectations, as both a large GloVe vocabulary and compound character n-grams should be able to cover the vocabulary of the natural language texts. However, it was assumed that a larger text corpus used for pre-training would lead to a notable performance improvement, for example for fasttext.en.300d compared to fasttext.simple.300d or glove.840B.300d compared to glove.42B.300d. Finally, it was expected that an increase in embedding size would have a similarly strong effect as for randomly initialized embeddings.
 
-\begin{table}[t]
+\begin{table}[t!]
     \makebox[\textwidth][c]{
         \input{5_experiments/3_texter/2_static/3_pre_trained/grid_search}
     }

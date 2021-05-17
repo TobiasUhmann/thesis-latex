@@ -1,49 +1,52 @@
-\begin{tabular}{| l | r || r | r | r | r || r | r | r | r |}
-    \hline
+\begin{tabular}{ l r c r r r r c r r r r }
+    \toprule
     
-    \multirow{2}{*}{\textbf{Strategy}} &
-    \multirow{2}{*}{\textbf{\thead{Class \\ Rank}}} &
-    \multicolumn{4}{|c|}{\textbf{Macro over CDE Classes}} &
-    \multicolumn{4}{|c|}{\textbf{Macro over FB Classes}} \\
-    
+    \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Strategy}}} &
+    \multicolumn{1}{c}{\multirow{2}{*}{\textbf{\thead{Class \\ Rank}}}} & \phantom &
+    \multicolumn{4}{c}{\textbf{Macro over CDE Classes}} & \phantom &
+    \multicolumn{4}{c}{\textbf{Macro over FB Classes}} \\
+
+    \cmidrule{4-7}
+    \cmidrule{9-12}
+
     &
-    &
-    \multicolumn{1}{|c|}{\textbf{Acc}} &
-    \multicolumn{1}{|c|}{\textbf{Prec}} &
-    \multicolumn{1}{|c|}{\textbf{Rec}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} &
-    \multicolumn{1}{|c|}{\textbf{Acc}} &
-    \multicolumn{1}{|c|}{\textbf{Prec}} &
-    \multicolumn{1}{|c|}{\textbf{Rec}} &
-    \multicolumn{1}{|c|}{\textbf{F1}} \\
+    &&
+    \multicolumn{1}{c}{\textbf{Acc}} &
+    \multicolumn{1}{c}{\textbf{Prec}} &
+    \multicolumn{1}{c}{\textbf{Rec}} &
+    \multicolumn{1}{c}{\textbf{F1}} &&
+    \multicolumn{1}{c}{\textbf{Acc}} &
+    \multicolumn{1}{c}{\textbf{Prec}} &
+    \multicolumn{1}{c}{\textbf{Rec}} &
+    \multicolumn{1}{c}{\textbf{F1}} \\
     
-    \hline \hline
+    \midrule
 
     \multirow{3}{*}{Uniform}
-    & 1   & 50.46          & 40.33           & 50.69           & 44.91          & 50.98          & 35.63           & 52.03           & 42.28         \\
-    & avg & 55.01          & 16.48           & 55.23           & \textbf{20.19} & 50.04          & 5.25            & 50.21           & 8.73          \\
-    & 100 & 49.58          & 2.34            & 49.02           & 4.46           & 50.54          & 2.23            & 56.25           & 4.29          \\
+    & 1   && 50.46          & 40.33           & 50.69           & 44.91          && 50.98          & 35.63           & 52.03           & 42.28         \\
+    & avg && 55.01          & 16.48           & 55.23           & \textbf{20.19} && 50.04          & 5.25            & 50.21           & 8.73          \\
+    & 100 && 49.58          & 2.34            & 49.02           & 4.46           && 50.54          & 2.23            & 56.25           & 4.29          \\
 
-    \hline
+    \addlinespace
 
     \multirow{3}{*}{Stratified}
-    & 1   & 51.69          & 39.39           & 39.43           & 39.40          & 55.36          & 35.19           & 34.84           & 34.99         \\
-    & avg & 89.04          & 16.61           & 16.55           & 16.51          & 90.78          & 5.13            & 5.12            & 5.10          \\
-    & 100 & 95.50          & 2.86            & 2.68            & 2.76           & 96.17          & 1.64            & 1.88            & 1.75          \\
+    & 1   && 51.69          & 39.39           & 39.43           & 39.40          && 55.36          & 35.19           & 34.84           & 34.99         \\
+    & avg && 89.04          & 16.61           & 16.55           & 16.51          && 90.78          & 5.13            & 5.12            & 5.10          \\
+    & 100 && 95.50          & 2.86            & 2.68            & 2.76           && 96.17          & 1.64            & 1.88            & 1.75          \\
 
-    \hline
+    \addlinespace
 
     \multirow{3}{*}{\makecell{Most \\ frequent}}
-    & 1   & 60.14          & 100.00          & 0.00            & 0.00           & 65.48          & 100.00          & 0.00            & 0.00          \\
-    & avg & \textbf{93.53} & \textbf{100.00} & 0.10            & 0.10           & \textbf{94.78} & \textbf{100.00} & 0.00            & 0.00          \\
-    & 100 & 97.62          & 100.00          & 0.00            & 0.00           & 98.03          & 100.00          & 0.00            & 0.00          \\
+    & 1   && 60.14          & 100.00          & 0.00            & 0.00           && 65.48          & 100.00          & 0.00            & 0.00          \\
+    & avg && \textbf{93.53} & \textbf{100.00} & 0.10            & 0.10           && \textbf{94.78} & \textbf{100.00} & 0.00            & 0.00          \\
+    & 100 && 97.62          & 100.00          & 0.00            & 0.00           && 98.03          & 100.00          & 0.00            & 0.00          \\
 
-    \hline
+    \addlinespace
 
     \multirow{3}{*}{\makecell{Constant \\ true}}
-    & 1   & 39.86          & 39.86           & 100.00          & 57.00          & 34.51          & 34.52           & 100.00          & 51.32         \\
-    & avg & 6.47           & 6.47            & \textbf{100.00} & 11.31          & 5.22           & 5.22            & \textbf{100.00} & \textbf{9.43} \\
-    & 100 & 2.38           & 2.38            & 100.00          & 4.65           & 1.97           & 1.97            & 100.00          & 3.86          \\
+    & 1   && 39.86          & 39.86           & 100.00          & 57.00          && 34.51          & 34.52           & 100.00          & 51.32         \\
+    & avg && 6.47           & 6.47            & \textbf{100.00} & 11.31          && 5.22           & 5.22            & \textbf{100.00} & \textbf{9.43} \\
+    & 100 && 2.38           & 2.38            & 100.00          & 4.65           && 1.97           & 1.97            & 100.00          & 3.86          \\
 
-    \hline
+    \bottomrule
 \end{tabular}

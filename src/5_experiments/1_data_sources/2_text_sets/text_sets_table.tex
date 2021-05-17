@@ -1,22 +1,29 @@
-\begin{tabularx}{\textwidth}{| l | >{\hsize=.42\hsize}X | >{\hsize=.58\hsize}X |}
-    \hline
+\begin{tabularx}{\textwidth}{ l >{\hsize=.42\hsize}X >{\hsize=.58\hsize}X }
+    \toprule
     
-    \multicolumn{1}{|c|}{\textbf{Text Set}} &
-    \multicolumn{1}{|c|}{\textbf{Description}} &
-    \multicolumn{1}{|c|}{\textbf{Example}} \\ 
+    \multicolumn{1}{l}{\textbf{Text Set}} &
+    \multicolumn{1}{l}{\textbf{Description}} &
+    \multicolumn{1}{l}{\textbf{Example}} \\
     
-    \hline \hline
+    \midrule
     
     cde-cde-1-clean & One CDE sentence per CDE entity &
-    A Few Good Men is a 1992 American legal drama film directed by Rob Reiner and starring \dots \\ \hline
+    A Few Good Men is a 1992 American legal drama film directed by Rob Reiner and starring \dots \\ 
+    
+    \midrule
     
     cde-irt-5-marked & Up to five marked IRT sentences per CDE entity &
-    \dots for Best Film Editing for the feature film, [START] A Few Good Men [END] (1992). \\ \hline
+    \dots for Best Film Editing for the feature film, [START] A Few Good Men [END] (1992). \\ 
+
+    \midrule
     
     fb-irt-30-masked & Up to 30 masked IRT sentences per FB entity &
-    The [MASK] has qualified one male and one female athlete in the artistic gymnastics competition. \\ \hline
+    The [MASK] has qualified one male and one female athlete in the artistic gymnastics competition. \\ 
+
+    \midrule
     
     fb-owe-1-clean & One OWE sentence per FB entity &
-    Country in the caribbean. \\ \hline
+    Country in the caribbean. \\
 
+    \bottomrule
 \end{tabularx}
