@@ -3,8 +3,9 @@ The assumption that 50\% of a test entity's facts are known during inference lea
 To get an idea of how much the number of known test facts affects the Ruler's performance, this experiment evaluates all of the Power splits introduced in \autoref{sec:5_experiments/2_power_splits}, including the splits which include none or all of the entities' facts in the known test set. Test entities without known test facts correspond to open-world entities. Although the Ruler cannot predict facts for them, they were processed to assure that the evaluation code would calculate precision to 100\% and recall to 0\%. The splits that include all of an entity's test facts as known facts do not represent a practical use case for the Ruler, neither. Still, it is included to show how much increasing the share of known facts beyond 50\% would bring. In practice, the most interesting splits are the ones with a low share of known test facts. The expectation was that recall would increase with the number of known test facts, while precision should be independent of the number of known facts. Thus, F1 and mAP were expected to increase with the proportion of known facts. \autoref{tab:5_experiments/4_ruler/1_unknown/all_results} shows the observed results.
 
 \begin{table}
-    \centering
-    \input{5_experiments/4_ruler/1_known/results}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/4_ruler/1_known/results}
+    }
     \caption{Ruler results for Power splits with various numbers of facts availalbe for rule application. Ruler uses rules mined after $t = 100s$ and keeps rules that fulfill $supp_{min} = 2$ and $conf_{min} = 0.5$. The Ruler already achieves usable results when tested on the few-shot splits CDE-30 and FB-15.}
     \label{tab:5_experiments/4_ruler/1_unknown/all_results}
 \end{table}

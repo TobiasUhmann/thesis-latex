@@ -5,8 +5,9 @@ Besides embedding usual words and some standard tokens that represent unknown wo
 For the Texter's downstream architecture, the change from a lookup table for embeddings to the use of DistilBERT does not mean a big change as it only affects the embedding block -- the classification block and, in the case of the attentive version, the attention block remain untouched. In particular, design choices from the experiments with static word embeddings, such as the usage of the sigmoid function in the attention block, are kept. During training, however, the optimizer has to be adjusted to accommodate the deep transformers within the embedding block.
 
 \begin{table}
-    \centering
-    \input{5_experiments/3_texter/3_context/results}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/3_context/results}
+    }
     \caption{Final evaluation of the contextual Texter on all text sets. Results of the static Texter are given for comparison. The contextual Texter is evaluated against the Texter dataset's test subset (F1) and against all facts from the respective split (F1 all, mAP all). The contextual Texter outperforms the simple Texter in general, especially when leveraging markings in the text. The attentive Texter profits more from contextual word embeddings. Still, the simple Texter performs better in terms of mAP.}
     \label{tab:5_experiments/3_texter/3_context/results}
 \end{table}

@@ -17,8 +17,9 @@ Beforehand, the second question, asking whether the attention mechanism weights 
 \autoref{tab:5_experiments/3_texter/2_static/9_attention/kari_soft} presents exemplary results for the entity ``Kari Hotakainen'', a Finnish writer. At the edges, the table shows the four most frequent classes in the CDE split, the example entity's five sentences, the class logits predicted by the Texter as well as the respective ground truth values. The table's main block shows the attention value for each class-sentence combination in addition to the class logit produced by the $\psi$ function, i.e. the class prediction that would be obtained when bypassing the attention mechanism. The entity ``Kari Hotakainen'' has been chosen because its quantitative results are close to the average metric values for the cde-irt-5-clean text set: Considering only the selected classes, the predictions result in a precision of 33\%, a recall of 100\%, and thus an overall F1 score of 33\%, which is close to the Texter dataset's 37.6\%. In addition, the short sentences are well suited for presentation.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/2_static/9_attention/kari_soft}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/2_static/9_attention/kari_soft}
+    }
     \caption{Predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with the \textbf{softmax} function in the attention block. For an entity with a sentence set $S$, $\phi_c(S)$ and GT give the predicted class logits and ground truth. For each class $c$ and sentence $s$, $A_{cs}$ gives the class-sentence attention. $\psi_c(s)$ yields a sentence's individual class logits if the attention mechanism is skipped. The largest values in terms of amount are marked bold for each class (column-wise). The model prefers sentences that would come to a strong decision by themselves.}
     \label{tab:5_experiments/3_texter/2_static/9_attention/kari_soft}
 \end{table}
@@ -32,8 +33,9 @@ What is still missing, however, is a clear prioritization of the sentences. For 
 This uncertainty about the order of the sentences also exists in the final model that uses the sigmoid function, although to a lesser extent. Analogous to \autoref{tab:5_experiments/3_texter/2_static/9_attention/kari_soft},  \autoref{tab:5_experiments/3_texter/2_static/9_attention/kari} shows the attention values after the sigmoid function has been applied instead of the softmax, which is why the probabilities no longer sum up to 100\% column-wise. Furthermore, \autoref{tab:5_experiments/3_texter/2_static/9_attention/kari_soft} misses the results of the $\psi$ function which cannot be calculated here as explained before. The shown figures imply that the sigmoid version achieves a higher overall precision due to the correct prediction of $(x, is, actor)$ and that the inclusion of uncertain sentences is generally lower. But still, the order between the relevant sentences varies among training runs.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/2_static/9_attention/kari}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/2_static/9_attention/kari}
+    }
     \caption{Predicting facts for the example entity Kari Hotakainen using the static, attentive Texter with the \textbf{sigmoid} function in the attention block. For an entity with a sentence set $S$, $\phi_c(S)$ and GT give the predicted class logits and ground truth. For each class $c$ and sentence $s$, $A_{cs}$ gives the class-sentence attention. The sigmoid values that deviate most from 0.5 are marked bold for each class (column-wise). The model tends to score sentences that favor a class high and unfavorable ones low.}
     \label{tab:5_experiments/3_texter/2_static/9_attention/kari}
 \end{table}

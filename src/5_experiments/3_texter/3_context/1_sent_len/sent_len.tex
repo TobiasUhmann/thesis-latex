@@ -1,8 +1,9 @@
 While the sentence length, or more precisely the number of byte pair encoding tokens, is not a critical variable for the static Texter, since it is not expensive to simply pad all sentences to a sufficient length, this would lead to a significantly longer training time for the contextual Texter. Unfortunately, some of the randomly selected IRT sentences are significantly longer than average sentences and would lose much of their information when being shortened. Therefore, this experiment measures the sentence length from which this loss is negligible in order to keep the input token sequences for DistilBERT as short as possible. Table A shows the results for some sentence lengths. Sentence lengths beyond 64 BPE-Tokens have been evaluated but did not lead to improvements of more than one percent.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/3_context/1_sent_len/grid_search}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/3_context/1_sent_len/grid_search}
+    }
     \caption{Contextual Texters when capping the input sentences after various numbers of BPE tokens. Numbers show F1 scores. Best value per row marked bold. Generally, considering more tokens improves performance, but capping at 32 BPE tokens already yields good results, especially on text sets with short sentences.}
     \label{tab:5_experiments/3_texter/3_context/1_sent_len/grid_search}
 \end{table}

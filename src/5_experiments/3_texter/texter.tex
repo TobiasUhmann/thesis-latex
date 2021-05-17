@@ -1,15 +1,17 @@
 \begin{table}
-    \centering
-    \input{5_experiments/3_texter/texter_dataset}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/texter_dataset}
+    }
     \caption{Excerpt from a Texter dataset. For each entity, a fixed number of sentences is given and a sparse, binary array specifies which Texter classes hold.}
     \label{tab:5_experiments/3_texter/texter_dataset}
 \end{table}
 
-With a Power split in place and the evaluation metrics defined, the next step is training the Power model's components. In case of the Texter, however, an intermediate step is necessary. The Texter is trained with respect to a certain set of relation-tail tuples that make up its classes and requires a fixed number of sentences per entity. Therefore, an intermediate \emph{Texter dataset} is created from a Power split and a matching text set consisting of one row per entity, holding the entity's sentences and specifying which of the selected classes hold for that entity. \autoref{tab:5_experiments/3_texter/texter_dataset} shows the an example Texter dataset with eight classes and one sentence per entity. Experiments proved most successful when taking the most common relation-tail tuples from the considered Power split. For the experiments and the evaluation on the CDE and FB splits, the 100 most common relation-tail tuples were selected, because they cover over half of all facts in both splits and the rarest classes still occur often enough to provide enough training data. As for the number of sentences, the maximum number of sentences per entity available in the respective text set was taken. For example, when creating a Texter dataset from the CDE split and the cde-irt-5-clean text set, all of the entities' 5 sentences were shuffled and taken over into the Texter dataset. The few entities that had less sentences in the text set were left out of the Texter dataset.
+With a Power split in place and the evaluation metrics defined, the next step is training the Power model's components. In case of the Texter, however, an intermediate step is necessary. The Texter is trained with respect to a certain set of relation-tail tuples that make up its classes and requires a fixed number of sentences per entity. Therefore, an intermediate \emph{Texter dataset} is created from a Power split and a matching text set consisting of one row per entity, holding the entity's sentences and specifying which of the selected classes hold for that entity. \autoref{tab:5_experiments/3_texter/texter_dataset} shows an example Texter dataset with eight classes and one sentence per entity. Experiments yielded the best results when taking the most common relation-tail tuples from the considered Power split. For the experiments and the evaluation on the CDE and FB splits, the 100 most common relation-tail tuples were selected, because they cover over half of all facts in both splits and the rarest classes still occur often enough to provide enough training data. As for the sentences, the maximum number of sentences per entity available in the respective text set was taken. For example, when creating a Texter dataset from the CDE split and the cde-irt-5-clean text set, all of the entities' 5 sentences were shuffled and taken over into the Texter dataset. The few entities that had less sentences in the text set were left out of the Texter dataset.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/classes}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/classes}
+    }
     \caption{Most and least common classes on the CDE and FB splits. The denser FB15k-237 graph leads to more frequent classes in the FB split.}
     \label{tab:5_experiments/3_texter/classes}
 \end{table}

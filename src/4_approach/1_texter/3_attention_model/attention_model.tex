@@ -3,9 +3,7 @@ While the simple Texter produces good evaluation results and does return a prior
 Technically, the attention mechanism is implemented as an attention block between the embedding and the classification blocks as shown in \autoref{fig:4_approach/1_texter/3_attention_model/attention_architecture}. The embedding block is the same one used in the simple model, leveraging the DistilBERT encoder's contextual word embeddings to support marked input sentences and produce meaningful sentence embeddings. The classification differs slightly from the simple Texter to suit the characteristics of its new input.
 
 \begin{figure}[t]
-    \makebox[\textwidth][c]{
-        \includegraphics{4_approach/1_texter/3_attention_model/attention_architecture}
-    }
+    \includegraphics[width=\textwidth]{4_approach/1_texter/3_attention_model/attention_architecture}
     \caption{Attentive Texter architecture: Compared to the simple version, an additional attention block determines the attention of each class embedding (purple) towards each sentence embeddings (black) to weight the sentence embeddings properly when summing them up to class-wise entity embeddings (green) that are then passed to the slightly modified classification block. Classes are abbreviated, e.g. $(x, born~in, Amsterdam)$ to ``from AMS''.}
     \label{fig:4_approach/1_texter/3_attention_model/attention_architecture}
 \end{figure}

@@ -1,8 +1,9 @@
 After the entity embeddings have been formed from the sentence embeddings in the attention block, they are passed through the classification block which outputs the final class logits. In the case of the simple model, the attention block is omitted and the sentence embeddings are used directly for classification. In either case, the class logits are taken as input by the loss function during training to calculate the model's loss in regard to the ground truth class labels.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/2_static/7_weight_factor/grid_search}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/2_static/7_weight_factor/grid_search}
+    }
     \caption{Static Texters when multiplying the class weights with different factors. Numbers show F1 scores. Best result per row marked bold. The ``None'' column shows the results when applying no class weights at all. Applying class weights in the first place is more important than the weight factor.}
     \label{tab:5_experiments/3_texter/2_static/7_weight_factor/grid_search}
 \end{table}

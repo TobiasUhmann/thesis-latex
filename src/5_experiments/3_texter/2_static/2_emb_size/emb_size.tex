@@ -1,8 +1,9 @@
 Upon tokenization, the sentences' tokens are embedded -- using static word embeddings in the context of this chapter. For this, randomly initialized, or as shown in the next subsection, pre-trained embeddings can be used. When using randomly initialized embeddings, the questions of what embedding size and which random distribution to chose arises. As random distribution, the standard normal distribution $N(0, 1)$ is set. The optimal embedding size is determined via a grid search. It is related to, among other things, the amount of available training data and is determined via grid search. Small embeddings can hold little specific information and generalize well, whereas large embeddings can represent subtleties of individual tokens but are also more susceptible to overfitting. The grid search covers a wide range of embedding sizes around the expected optimal embedding size of about 200, a usual size in current models, including unrealistically small sizes to find out up to what degree it is worth increasing the size. Overall, expectations for the experiment were limited. Due to the moderately large amount of training data, randomly initialized embeddings were not expected to work well. Furthermore, when using the maximum embedding size of 1000, performance was expected to decrease due to overfitting. \autoref{tab:5_experiments/3_texter/2_static/2_emb_size/grid_search} shows the experiment's results.
 
 \begin{table}[t]
-    \centering
-    \input{5_experiments/3_texter/2_static/2_emb_size/grid_search}
+    \makebox[\textwidth][c]{
+        \input{5_experiments/3_texter/2_static/2_emb_size/grid_search}
+    }
     \caption{Static Texter with randomly initialized word embeddings of varying size. Numbers show F1 scores. Best result per row marked bold. The simple Texter profits from very large embeddings, while the attentive Texter's performance decreases from medium sizes on.}
     \label{tab:5_experiments/3_texter/2_static/2_emb_size/grid_search}
 \end{table}

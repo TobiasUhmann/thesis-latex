@@ -11,8 +11,9 @@ On the following pages, this appendix contains tables and plots that reveal nota
 \end{itemize}
 
 \begin{table}
-    \centering
-    \input{a_appendix/text_sets_all}
+    \makebox[\textwidth][c]{
+        \input{a_appendix/text_sets_all}
+    }
     \caption{Complete list of the IRT~\cite{IRT} text sets used in this work}
     \label{tab:a_appendix/text_sets_all}
 \end{table}
@@ -39,15 +40,17 @@ On the following pages, this appendix contains tables and plots that reveal nota
 \end{figure}
 
 \begin{table}
-    \centering
-    \input{a_appendix/static_vectors_2}
+    \makebox[\textwidth][c]{
+        \input{a_appendix/static_vectors_2}
+    }
     \caption{Static Texter with various pre-trained embeddings, part II (part I in \autoref{subsubsec:5_experiments/3_texter/2_static/3_pre_trained}). Numbers show F1 scores. Best entry per row marked bold if part I of tables does not contain better result. ``Rand'' column shows best results for randomly initialized embeddings for comparison.}
     \label{tab:a_appendix/static_vectors_2}
 \end{table}
 
 \begin{table}
-    \centering
-    \input{a_appendix/context_final_prec_rec}
+    \makebox[\textwidth][c]{
+        \input{a_appendix/context_final_prec_rec}
+    }
     \caption{Evaluation results for the contextual Texter, including precision and recall, on all text sets. Text sets with high-quality texts lead to very high recall. Increasing the number of sentences per entity increases precision of the simple Texter, and additionally increases recall of the attentive Texter in most cases.}
     \label{tab:a_appendix/context_final_prec_rec}
 \end{table}
