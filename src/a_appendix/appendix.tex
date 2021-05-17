@@ -1,14 +1,47 @@
-\begin{table}[h]
+On the following pages, this appendix contains tables and plots that reveal notable insights mentioned in their respective chapters but were extracted for better readability:
+
+\begin{itemize}
+    \item \autoref{tab:a_appendix/text_sets_all} lists all IRT text sets used throughout the Texter experiments.
+
+    \item Figures~\ref{fig:a_appendix/static_classes_1}~--~\ref{fig:a_appendix/static_classes_3} show the static Texter's class-wise validation F1 curves on all clean text sets.
+
+    \item \autoref{tab:a_appendix/static_vectors_2} shows the static Texter's evaluation results on the pre-trained GloVe embedding sets that did not fit into \autoref{tab:5_experiments/3_texter/2_static/3_pre_trained/grid_search}.
+
+    \item \autoref{tab:a_appendix/context_final_prec_rec} shows the precision and recall results for the final contextual Texter, whose F1 and mAP values are presented in \autoref{tab:5_experiments/3_texter/3_context/results}.
+\end{itemize}
+
+\begin{table}
     \centering
     \input{a_appendix/text_sets_all}
     \caption{Complete list of the IRT~\cite{IRT} text sets used in this work}
     \label{tab:a_appendix/text_sets_all}
 \end{table}
 
+\begin{figure}
+    \centering
+    \input{a_appendix/static_classes_1/static_classes_1}
+    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part I - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
+    \label{fig:a_appendix/static_classes_1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{a_appendix/static_classes_2/static_classes_2}
+    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part II - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
+    \label{fig:a_appendix/static_classes_2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{a_appendix/static_classes_3/static_classes_3}
+    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part III - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
+    \label{fig:a_appendix/static_classes_3}
+\end{figure}
+
 \begin{table}
     \centering
     \input{a_appendix/static_vectors_2}
-    \caption{Emb}
+    \caption{Static Texter with various pre-trained embeddings, part II (part I in \autoref{subsubsec:5_experiments/3_texter/2_static/3_pre_trained}). Numbers show F1 scores. Best entry per row marked bold if part I of tables does not contain better result. ``Rand'' column shows best results for randomly initialized embeddings for comparison.}
     \label{tab:a_appendix/static_vectors_2}
 \end{table}
 
@@ -18,24 +51,3 @@
     \caption{Evaluation results for the contextual Texter, including precision and recall, on all text sets. Text sets with high-quality texts lead to very high recall. Increasing the number of sentences per entity increases precision of the simple Texter, and additionally increases recall of the attentive Texter in most cases.}
     \label{tab:a_appendix/context_final_prec_rec}
 \end{table}
-
-\begin{figure}[h]
-    \centering
-    \input{a_appendix/static_classes_1/static_classes_1}
-    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part I - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
-    \label{fig:a_appendix/static_classes_1}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \input{a_appendix/static_classes_2/static_classes_2}
-    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part II - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
-    \label{fig:a_appendix/static_classes_2}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \input{a_appendix/static_classes_3/static_classes_3}
-    \caption{Class-wise validation F1 curves while training the static Texter on various Texter datasets, part III - comparison between performance on the most common classes (red, orange, yellow), the least common classes (green, blue, purple) and the average value over all classes (black). Common classes perform well, while rare classes might perform well or not at all. Simple and attentive Texter treat common and rare classes similiarly.}
-    \label{fig:a_appendix/static_classes_3}
-\end{figure}
